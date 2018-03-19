@@ -44,17 +44,7 @@
             this.rejerMedTunGroupBox.SuspendLayout();
             this.pepperoniGroupBox.SuspendLayout();
             this.SuspendLayout();
-            // 
-            // almPizzaCheckBox1
-            // 
-            this.almPizzaCheckBox1.AutoSize = true;
-            this.almPizzaCheckBox1.Location = new System.Drawing.Point(9, 22);
-            this.almPizzaCheckBox1.Name = "almPizzaCheckBox1";
-            this.almPizzaCheckBox1.Size = new System.Drawing.Size(73, 17);
-            this.almPizzaCheckBox1.TabIndex = 0;
-            this.almPizzaCheckBox1.Text = "Almindelig";
-            this.almPizzaCheckBox1.UseVisualStyleBackColor = true;
-            this.almPizzaCheckBox1.CheckedChanged += new System.EventHandler(this.AlmPizzaCheckBox1_CheckedChanged);
+           
             // 
             // RejerTunAntalLabel
             // 
@@ -73,6 +63,18 @@
             this.almPizzaTextbox1.Size = new System.Drawing.Size(34, 20);
             this.almPizzaTextbox1.TabIndex = 2;
             // 
+            // almPizzaCheckBox1
+            // 
+            this.almPizzaCheckBox1.AutoSize = true;
+            this.almPizzaCheckBox1.Location = new System.Drawing.Point(9, 22);
+            this.almPizzaCheckBox1.Name = "almPizzaCheckBox1";
+            this.almPizzaCheckBox1.Size = new System.Drawing.Size(73, 17);
+            this.almPizzaCheckBox1.TabIndex = 0;
+            this.almPizzaCheckBox1.Text = "Almindelig";
+            this.almPizzaCheckBox1.UseVisualStyleBackColor = true;
+            //this.almPizzaCheckBox1.CheckedChanged += new System.EventHandler(this.AlmPizzaCheckBox1_CheckedChanged);
+            this.almPizzaCheckBox1.CheckedChanged += new System.EventHandler(this.pizzaCheckBoxGlobal_CheckedChanged); // global event
+            // 
             // almPizzaCheckBox2
             // 
             this.almPizzaCheckBox2.AutoSize = true;
@@ -82,7 +84,8 @@
             this.almPizzaCheckBox2.TabIndex = 3;
             this.almPizzaCheckBox2.Text = "Almindelig";
             this.almPizzaCheckBox2.UseVisualStyleBackColor = true;
-            this.almPizzaCheckBox2.CheckedChanged += new System.EventHandler(this.almPizzaCheckBox2_CheckedChanged);
+            //this.almPizzaCheckBox2.CheckedChanged += new System.EventHandler(this.almPizzaCheckBox2_CheckedChanged);
+            this.almPizzaCheckBox2.CheckedChanged += new System.EventHandler(this.pizzaCheckBoxGlobal_CheckedChanged); // global event
             // 
             // familyPizzaCheckBox1
             // 
@@ -93,7 +96,8 @@
             this.familyPizzaCheckBox1.TabIndex = 4;
             this.familyPizzaCheckBox1.Text = "Family";
             this.familyPizzaCheckBox1.UseVisualStyleBackColor = true;
-            this.familyPizzaCheckBox1.CheckedChanged += new System.EventHandler(this.familyPizzaCheckBox1_CheckedChanged);
+            //this.familyPizzaCheckBox1.CheckedChanged += new System.EventHandler(this.familyPizzaCheckBox1_CheckedChanged);
+            this.familyPizzaCheckBox1.CheckedChanged += new System.EventHandler(this.pizzaCheckBoxGlobal_CheckedChanged); // global event
             // 
             // familyPizzaCheckBox2
             // 
@@ -104,7 +108,8 @@
             this.familyPizzaCheckBox2.TabIndex = 5;
             this.familyPizzaCheckBox2.Text = "checkBox1";
             this.familyPizzaCheckBox2.UseVisualStyleBackColor = true;
-            this.familyPizzaCheckBox2.CheckedChanged += new System.EventHandler(this.familyPizzaCheckBox2_CheckedChanged);
+            //this.familyPizzaCheckBox2.CheckedChanged += new System.EventHandler(this.familyPizzaCheckBox2_CheckedChanged);
+            this.familyPizzaCheckBox2.CheckedChanged += new System.EventHandler(this.pizzaCheckBoxGlobal_CheckedChanged); // global event
             // 
             // familyPizzaTextbox1
             // 
