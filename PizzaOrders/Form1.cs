@@ -17,6 +17,8 @@ namespace PizzaOrders
             InitializeComponent();
         }
 
+
+
         private void checkBox1_CheckedChanged(object sender, EventArgs e)
         {
             if (almPizzaCheckBox1.Checked == true)
@@ -34,5 +36,7 @@ namespace PizzaOrders
             }
 
         }
+
+ 
     }
 }

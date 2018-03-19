@@ -37,12 +37,14 @@
             this.familyPizzaTextbox1 = new System.Windows.Forms.TextBox();
             this.almPizzaTextbox2 = new System.Windows.Forms.TextBox();
             this.familyPizzaTextbox2 = new System.Windows.Forms.TextBox();
+            this.rejerMedTunGroupBox1 = new System.Windows.Forms.GroupBox();
+            this.rejerMedTunGroupBox1.SuspendLayout();
             this.SuspendLayout();
             // 
             // almPizzaCheckBox1
             // 
             this.almPizzaCheckBox1.AutoSize = true;
-            this.almPizzaCheckBox1.Location = new System.Drawing.Point(69, 73);
+            this.almPizzaCheckBox1.Location = new System.Drawing.Point(9, 22);
             this.almPizzaCheckBox1.Name = "almPizzaCheckBox1";
             this.almPizzaCheckBox1.Size = new System.Drawing.Size(73, 17);
             this.almPizzaCheckBox1.TabIndex = 0;
@@ -53,7 +55,7 @@
             // RejerTunAntalLabel
             // 
             this.RejerTunAntalLabel.AutoSize = true;
-            this.RejerTunAntalLabel.Location = new System.Drawing.Point(174, 74);
+            this.RejerTunAntalLabel.Location = new System.Drawing.Point(138, 22);
             this.RejerTunAntalLabel.Name = "RejerTunAntalLabel";
             this.RejerTunAntalLabel.Size = new System.Drawing.Size(34, 13);
             this.RejerTunAntalLabel.TabIndex = 1;
@@ -62,7 +64,7 @@
             // almPizzaTextbox1
             // 
             this.almPizzaTextbox1.Enabled = false;
-            this.almPizzaTextbox1.Location = new System.Drawing.Point(243, 70);
+            this.almPizzaTextbox1.Location = new System.Drawing.Point(201, 19);
             this.almPizzaTextbox1.Name = "almPizzaTextbox1";
             this.almPizzaTextbox1.Size = new System.Drawing.Size(34, 20);
             this.almPizzaTextbox1.TabIndex = 2;
@@ -80,7 +82,7 @@
             // familyPizzaCheckBox1
             // 
             this.familyPizzaCheckBox1.AutoSize = true;
-            this.familyPizzaCheckBox1.Location = new System.Drawing.Point(69, 100);
+            this.familyPizzaCheckBox1.Location = new System.Drawing.Point(9, 45);
             this.familyPizzaCheckBox1.Name = "familyPizzaCheckBox1";
             this.familyPizzaCheckBox1.Size = new System.Drawing.Size(55, 17);
             this.familyPizzaCheckBox1.TabIndex = 4;
@@ -99,7 +101,7 @@
             // 
             // familyPizzaTextbox1
             // 
-            this.familyPizzaTextbox1.Location = new System.Drawing.Point(243, 97);
+            this.familyPizzaTextbox1.Location = new System.Drawing.Point(201, 45);
             this.familyPizzaTextbox1.Name = "familyPizzaTextbox1";
             this.familyPizzaTextbox1.Size = new System.Drawing.Size(34, 20);
             this.familyPizzaTextbox1.TabIndex = 6;
@@ -118,22 +120,34 @@
             this.familyPizzaTextbox2.Size = new System.Drawing.Size(34, 20);
             this.familyPizzaTextbox2.TabIndex = 8;
             // 
+            // rejerMedTunGroupBox1
+            // 
+            this.rejerMedTunGroupBox1.Controls.Add(this.familyPizzaTextbox1);
+            this.rejerMedTunGroupBox1.Controls.Add(this.almPizzaTextbox1);
+            this.rejerMedTunGroupBox1.Controls.Add(this.RejerTunAntalLabel);
+            this.rejerMedTunGroupBox1.Controls.Add(this.almPizzaCheckBox1);
+            this.rejerMedTunGroupBox1.Controls.Add(this.familyPizzaCheckBox1);
+            this.rejerMedTunGroupBox1.Location = new System.Drawing.Point(69, 70);
+            this.rejerMedTunGroupBox1.Name = "rejerMedTunGroupBox1";
+            this.rejerMedTunGroupBox1.Size = new System.Drawing.Size(263, 100);
+            this.rejerMedTunGroupBox1.TabIndex = 9;
+            this.rejerMedTunGroupBox1.TabStop = false;
+            this.rejerMedTunGroupBox1.Text = "Rejer med Tun     64 kr.";
+            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(884, 492);
+            this.Controls.Add(this.rejerMedTunGroupBox1);
             this.Controls.Add(this.familyPizzaTextbox2);
             this.Controls.Add(this.almPizzaTextbox2);
-            this.Controls.Add(this.familyPizzaTextbox1);
             this.Controls.Add(this.familyPizzaCheckBox2);
-            this.Controls.Add(this.familyPizzaCheckBox1);
             this.Controls.Add(this.almPizzaCheckBox2);
-            this.Controls.Add(this.almPizzaTextbox1);
-            this.Controls.Add(this.RejerTunAntalLabel);
-            this.Controls.Add(this.almPizzaCheckBox1);
             this.Name = "Form1";
             this.Text = "Form1";
+            this.rejerMedTunGroupBox1.ResumeLayout(false);
+            this.rejerMedTunGroupBox1.PerformLayout();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -150,6 +164,7 @@
         private System.Windows.Forms.TextBox familyPizzaTextbox1;
         private System.Windows.Forms.TextBox almPizzaTextbox2;
         private System.Windows.Forms.TextBox familyPizzaTextbox2;
+        private System.Windows.Forms.GroupBox rejerMedTunGroupBox1;
     }
 }
 
