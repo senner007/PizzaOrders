@@ -38,6 +38,7 @@
             this.almPizzaTextbox2 = new System.Windows.Forms.TextBox();
             this.familyPizzaTextbox2 = new System.Windows.Forms.TextBox();
             this.rejerMedTunGroupBox1 = new System.Windows.Forms.GroupBox();
+            this.beregnButton1 = new System.Windows.Forms.Button();
             this.rejerMedTunGroupBox1.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -134,11 +135,22 @@
             this.rejerMedTunGroupBox1.TabStop = false;
             this.rejerMedTunGroupBox1.Text = "Rejer med Tun     64 kr.";
             // 
+            // beregnButton1
+            // 
+            this.beregnButton1.Location = new System.Drawing.Point(475, 352);
+            this.beregnButton1.Name = "beregnButton1";
+            this.beregnButton1.Size = new System.Drawing.Size(75, 23);
+            this.beregnButton1.TabIndex = 10;
+            this.beregnButton1.Text = "Beregn";
+            this.beregnButton1.UseVisualStyleBackColor = true;
+            this.beregnButton1.Click += new System.EventHandler(this.beregnButton1_Click);
+            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(884, 492);
+            this.Controls.Add(this.beregnButton1);
             this.Controls.Add(this.rejerMedTunGroupBox1);
             this.Controls.Add(this.familyPizzaTextbox2);
             this.Controls.Add(this.almPizzaTextbox2);
@@ -165,6 +177,7 @@
         private System.Windows.Forms.TextBox almPizzaTextbox2;
         private System.Windows.Forms.TextBox familyPizzaTextbox2;
         private System.Windows.Forms.GroupBox rejerMedTunGroupBox1;
+        private System.Windows.Forms.Button beregnButton1;
     }
 }
 
