@@ -42,14 +42,39 @@
             this.pepperoniGroupBox = new System.Windows.Forms.GroupBox();
             this.PepperoniAntalLabel = new System.Windows.Forms.Label();
             this.PIZZA1 = new System.Windows.Forms.Panel();
+            this.rejerMedTunSubTotalLabel = new System.Windows.Forms.Label();
+            this.rejerTunKaloriGroupBox = new System.Windows.Forms.GroupBox();
+            this.rejerTunKaloriPrSkiveLabel = new System.Windows.Forms.Label();
+            this.rejerTunKaloriLabel = new System.Windows.Forms.Label();
+            this.rejerTunKaloriTextBox = new System.Windows.Forms.TextBox();
             this.rejerTunAddGroupBox = new System.Windows.Forms.GroupBox();
             this.fontDialog1 = new System.Windows.Forms.FontDialog();
             this.PIZZA2 = new System.Windows.Forms.Panel();
+            this.pepperoniSubTotalLabel = new System.Windows.Forms.Label();
             this.pepperoniAddGroupBox = new System.Windows.Forms.GroupBox();
+            this.pepperoniKaloriGropuBox = new System.Windows.Forms.GroupBox();
+            this.pepperoniKaloriPrSkiveLabel = new System.Windows.Forms.Label();
+            this.pepperoniKaloriLabel = new System.Windows.Forms.Label();
+            this.pepperoniKaloriTextBox = new System.Windows.Forms.TextBox();
+            this.bestilButton = new System.Windows.Forms.Button();
+            this.cancelButton = new System.Windows.Forms.Button();
+            this.totalLabel = new System.Windows.Forms.Label();
+            this.bestillingsNummerLabel = new System.Windows.Forms.Label();
+            this.forventetLabel = new System.Windows.Forms.Label();
+            this.rejerTunLøgAddCheckBox1 = new System.Windows.Forms.CheckBox();
+            this.rejerTunRejerAddCheckBox2 = new System.Windows.Forms.CheckBox();
+            this.rejerTunTunAddCheckBox3 = new System.Windows.Forms.CheckBox();
+            this.pepperoniPepperoniAddCheckBox1 = new System.Windows.Forms.CheckBox();
+            this.pepperoniChampignonAddCheckBox2 = new System.Windows.Forms.CheckBox();
+            this.pepperoniOstAddCheckBox3 = new System.Windows.Forms.CheckBox();
             this.rejerTunGroupBox.SuspendLayout();
             this.pepperoniGroupBox.SuspendLayout();
             this.PIZZA1.SuspendLayout();
+            this.rejerTunKaloriGroupBox.SuspendLayout();
+            this.rejerTunAddGroupBox.SuspendLayout();
             this.PIZZA2.SuspendLayout();
+            this.pepperoniAddGroupBox.SuspendLayout();
+            this.pepperoniKaloriGropuBox.SuspendLayout();
             this.SuspendLayout();
             // 
             // almPizzaCheckBox1
@@ -153,7 +178,7 @@
             // 
             // beregnButton1
             // 
-            this.beregnButton1.Location = new System.Drawing.Point(460, 406);
+            this.beregnButton1.Location = new System.Drawing.Point(487, 390);
             this.beregnButton1.Name = "beregnButton1";
             this.beregnButton1.Size = new System.Drawing.Size(75, 23);
             this.beregnButton1.TabIndex = 10;
@@ -170,7 +195,7 @@
             this.pepperoniGroupBox.Controls.Add(this.almPizzaTextbox2);
             this.pepperoniGroupBox.Location = new System.Drawing.Point(14, 16);
             this.pepperoniGroupBox.Name = "pepperoniGroupBox";
-            this.pepperoniGroupBox.Size = new System.Drawing.Size(263, 90);
+            this.pepperoniGroupBox.Size = new System.Drawing.Size(263, 94);
             this.pepperoniGroupBox.TabIndex = 11;
             this.pepperoniGroupBox.TabStop = false;
             this.pepperoniGroupBox.Text = "Pepperoni    59 kr.";
@@ -186,6 +211,8 @@
             // 
             // PIZZA1
             // 
+            this.PIZZA1.Controls.Add(this.rejerMedTunSubTotalLabel);
+            this.PIZZA1.Controls.Add(this.rejerTunKaloriGroupBox);
             this.PIZZA1.Controls.Add(this.rejerTunAddGroupBox);
             this.PIZZA1.Controls.Add(this.rejerTunGroupBox);
             this.PIZZA1.Location = new System.Drawing.Point(60, 60);
@@ -193,8 +220,57 @@
             this.PIZZA1.Size = new System.Drawing.Size(744, 128);
             this.PIZZA1.TabIndex = 12;
             // 
+            // rejerMedTunSubTotalLabel
+            // 
+            this.rejerMedTunSubTotalLabel.AutoSize = true;
+            this.rejerMedTunSubTotalLabel.Location = new System.Drawing.Point(532, 97);
+            this.rejerMedTunSubTotalLabel.Name = "rejerMedTunSubTotalLabel";
+            this.rejerMedTunSubTotalLabel.Size = new System.Drawing.Size(52, 13);
+            this.rejerMedTunSubTotalLabel.TabIndex = 12;
+            this.rejerMedTunSubTotalLabel.Text = "Sub total:";
+            // 
+            // rejerTunKaloriGroupBox
+            // 
+            this.rejerTunKaloriGroupBox.Controls.Add(this.rejerTunKaloriPrSkiveLabel);
+            this.rejerTunKaloriGroupBox.Controls.Add(this.rejerTunKaloriLabel);
+            this.rejerTunKaloriGroupBox.Controls.Add(this.rejerTunKaloriTextBox);
+            this.rejerTunKaloriGroupBox.Location = new System.Drawing.Point(532, 16);
+            this.rejerTunKaloriGroupBox.Name = "rejerTunKaloriGroupBox";
+            this.rejerTunKaloriGroupBox.Size = new System.Drawing.Size(200, 62);
+            this.rejerTunKaloriGroupBox.TabIndex = 11;
+            this.rejerTunKaloriGroupBox.TabStop = false;
+            this.rejerTunKaloriGroupBox.Text = "Kalori";
+            // 
+            // rejerTunKaloriPrSkiveLabel
+            // 
+            this.rejerTunKaloriPrSkiveLabel.AutoSize = true;
+            this.rejerTunKaloriPrSkiveLabel.Location = new System.Drawing.Point(20, 38);
+            this.rejerTunKaloriPrSkiveLabel.Name = "rejerTunKaloriPrSkiveLabel";
+            this.rejerTunKaloriPrSkiveLabel.Size = new System.Drawing.Size(85, 13);
+            this.rejerTunKaloriPrSkiveLabel.TabIndex = 2;
+            this.rejerTunKaloriPrSkiveLabel.Text = "Kalori pr. skive =";
+            // 
+            // rejerTunKaloriLabel
+            // 
+            this.rejerTunKaloriLabel.AutoSize = true;
+            this.rejerTunKaloriLabel.Location = new System.Drawing.Point(17, 21);
+            this.rejerTunKaloriLabel.Name = "rejerTunKaloriLabel";
+            this.rejerTunKaloriLabel.Size = new System.Drawing.Size(72, 13);
+            this.rejerTunKaloriLabel.TabIndex = 1;
+            this.rejerTunKaloriLabel.Text = "Skær i skiver:";
+            // 
+            // rejerTunKaloriTextBox
+            // 
+            this.rejerTunKaloriTextBox.Location = new System.Drawing.Point(107, 19);
+            this.rejerTunKaloriTextBox.Name = "rejerTunKaloriTextBox";
+            this.rejerTunKaloriTextBox.Size = new System.Drawing.Size(40, 20);
+            this.rejerTunKaloriTextBox.TabIndex = 0;
+            // 
             // rejerTunAddGroupBox
             // 
+            this.rejerTunAddGroupBox.Controls.Add(this.rejerTunTunAddCheckBox3);
+            this.rejerTunAddGroupBox.Controls.Add(this.rejerTunRejerAddCheckBox2);
+            this.rejerTunAddGroupBox.Controls.Add(this.rejerTunLøgAddCheckBox1);
             this.rejerTunAddGroupBox.Location = new System.Drawing.Point(302, 16);
             this.rejerTunAddGroupBox.Name = "rejerTunAddGroupBox";
             this.rejerTunAddGroupBox.Size = new System.Drawing.Size(200, 95);
@@ -204,27 +280,190 @@
             // 
             // PIZZA2
             // 
+            this.PIZZA2.Controls.Add(this.pepperoniSubTotalLabel);
             this.PIZZA2.Controls.Add(this.pepperoniAddGroupBox);
+            this.PIZZA2.Controls.Add(this.pepperoniKaloriGropuBox);
             this.PIZZA2.Controls.Add(this.pepperoniGroupBox);
             this.PIZZA2.Location = new System.Drawing.Point(60, 218);
             this.PIZZA2.Name = "PIZZA2";
-            this.PIZZA2.Size = new System.Drawing.Size(744, 128);
+            this.PIZZA2.Size = new System.Drawing.Size(744, 133);
             this.PIZZA2.TabIndex = 10;
+            this.PIZZA2.Paint += new System.Windows.Forms.PaintEventHandler(this.PIZZA2_Paint);
+            // 
+            // pepperoniSubTotalLabel
+            // 
+            this.pepperoniSubTotalLabel.AutoSize = true;
+            this.pepperoniSubTotalLabel.Location = new System.Drawing.Point(532, 97);
+            this.pepperoniSubTotalLabel.Name = "pepperoniSubTotalLabel";
+            this.pepperoniSubTotalLabel.Size = new System.Drawing.Size(49, 13);
+            this.pepperoniSubTotalLabel.TabIndex = 14;
+            this.pepperoniSubTotalLabel.Text = "Sub total";
             // 
             // pepperoniAddGroupBox
             // 
+            this.pepperoniAddGroupBox.Controls.Add(this.pepperoniOstAddCheckBox3);
+            this.pepperoniAddGroupBox.Controls.Add(this.pepperoniChampignonAddCheckBox2);
+            this.pepperoniAddGroupBox.Controls.Add(this.pepperoniPepperoniAddCheckBox1);
             this.pepperoniAddGroupBox.Location = new System.Drawing.Point(302, 16);
             this.pepperoniAddGroupBox.Name = "pepperoniAddGroupBox";
-            this.pepperoniAddGroupBox.Size = new System.Drawing.Size(200, 90);
+            this.pepperoniAddGroupBox.Size = new System.Drawing.Size(200, 94);
             this.pepperoniAddGroupBox.TabIndex = 12;
             this.pepperoniAddGroupBox.TabStop = false;
             this.pepperoniAddGroupBox.Text = "Ekstras";
+            // 
+            // pepperoniKaloriGropuBox
+            // 
+            this.pepperoniKaloriGropuBox.Controls.Add(this.pepperoniKaloriPrSkiveLabel);
+            this.pepperoniKaloriGropuBox.Controls.Add(this.pepperoniKaloriLabel);
+            this.pepperoniKaloriGropuBox.Controls.Add(this.pepperoniKaloriTextBox);
+            this.pepperoniKaloriGropuBox.Location = new System.Drawing.Point(532, 16);
+            this.pepperoniKaloriGropuBox.Name = "pepperoniKaloriGropuBox";
+            this.pepperoniKaloriGropuBox.Size = new System.Drawing.Size(200, 62);
+            this.pepperoniKaloriGropuBox.TabIndex = 13;
+            this.pepperoniKaloriGropuBox.TabStop = false;
+            this.pepperoniKaloriGropuBox.Text = "Kalori";
+            // 
+            // pepperoniKaloriPrSkiveLabel
+            // 
+            this.pepperoniKaloriPrSkiveLabel.AutoSize = true;
+            this.pepperoniKaloriPrSkiveLabel.Location = new System.Drawing.Point(20, 38);
+            this.pepperoniKaloriPrSkiveLabel.Name = "pepperoniKaloriPrSkiveLabel";
+            this.pepperoniKaloriPrSkiveLabel.Size = new System.Drawing.Size(85, 13);
+            this.pepperoniKaloriPrSkiveLabel.TabIndex = 2;
+            this.pepperoniKaloriPrSkiveLabel.Text = "Kalori pr. skive =";
+            // 
+            // pepperoniKaloriLabel
+            // 
+            this.pepperoniKaloriLabel.AutoSize = true;
+            this.pepperoniKaloriLabel.Location = new System.Drawing.Point(17, 21);
+            this.pepperoniKaloriLabel.Name = "pepperoniKaloriLabel";
+            this.pepperoniKaloriLabel.Size = new System.Drawing.Size(72, 13);
+            this.pepperoniKaloriLabel.TabIndex = 1;
+            this.pepperoniKaloriLabel.Text = "Skær i skiver:";
+            // 
+            // pepperoniKaloriTextBox
+            // 
+            this.pepperoniKaloriTextBox.Location = new System.Drawing.Point(107, 19);
+            this.pepperoniKaloriTextBox.Name = "pepperoniKaloriTextBox";
+            this.pepperoniKaloriTextBox.Size = new System.Drawing.Size(40, 20);
+            this.pepperoniKaloriTextBox.TabIndex = 0;
+            // 
+            // bestilButton
+            // 
+            this.bestilButton.Location = new System.Drawing.Point(60, 460);
+            this.bestilButton.Name = "bestilButton";
+            this.bestilButton.Size = new System.Drawing.Size(75, 23);
+            this.bestilButton.TabIndex = 13;
+            this.bestilButton.Text = "Bestil";
+            this.bestilButton.UseVisualStyleBackColor = true;
+            // 
+            // cancelButton
+            // 
+            this.cancelButton.Location = new System.Drawing.Point(156, 460);
+            this.cancelButton.Name = "cancelButton";
+            this.cancelButton.Size = new System.Drawing.Size(75, 23);
+            this.cancelButton.TabIndex = 14;
+            this.cancelButton.Text = "Cancel";
+            this.cancelButton.UseVisualStyleBackColor = true;
+            this.cancelButton.Click += new System.EventHandler(this.button1_Click);
+            // 
+            // totalLabel
+            // 
+            this.totalLabel.AutoSize = true;
+            this.totalLabel.Location = new System.Drawing.Point(612, 395);
+            this.totalLabel.Name = "totalLabel";
+            this.totalLabel.Size = new System.Drawing.Size(34, 13);
+            this.totalLabel.TabIndex = 15;
+            this.totalLabel.Text = "Total:";
+            // 
+            // bestillingsNummerLabel
+            // 
+            this.bestillingsNummerLabel.AutoSize = true;
+            this.bestillingsNummerLabel.Location = new System.Drawing.Point(484, 460);
+            this.bestillingsNummerLabel.Name = "bestillingsNummerLabel";
+            this.bestillingsNummerLabel.Size = new System.Drawing.Size(108, 13);
+            this.bestillingsNummerLabel.TabIndex = 16;
+            this.bestillingsNummerLabel.Text = "Dit bestillingsnummer:";
+            // 
+            // forventetLabel
+            // 
+            this.forventetLabel.AutoSize = true;
+            this.forventetLabel.Location = new System.Drawing.Point(484, 492);
+            this.forventetLabel.Name = "forventetLabel";
+            this.forventetLabel.Size = new System.Drawing.Size(88, 13);
+            this.forventetLabel.TabIndex = 17;
+            this.forventetLabel.Text = "Forventet færdig:";
+            // 
+            // rejerTunLøgAddCheckBox1
+            // 
+            this.rejerTunLøgAddCheckBox1.AutoSize = true;
+            this.rejerTunLøgAddCheckBox1.Location = new System.Drawing.Point(7, 22);
+            this.rejerTunLøgAddCheckBox1.Name = "rejerTunLøgAddCheckBox1";
+            this.rejerTunLøgAddCheckBox1.Size = new System.Drawing.Size(113, 17);
+            this.rejerTunLøgAddCheckBox1.TabIndex = 0;
+            this.rejerTunLøgAddCheckBox1.Text = "Løg                5 kr.";
+            this.rejerTunLøgAddCheckBox1.UseVisualStyleBackColor = true;
+            // 
+            // rejerTunRejerAddCheckBox2
+            // 
+            this.rejerTunRejerAddCheckBox2.AutoSize = true;
+            this.rejerTunRejerAddCheckBox2.Location = new System.Drawing.Point(7, 45);
+            this.rejerTunRejerAddCheckBox2.Name = "rejerTunRejerAddCheckBox2";
+            this.rejerTunRejerAddCheckBox2.Size = new System.Drawing.Size(114, 17);
+            this.rejerTunRejerAddCheckBox2.TabIndex = 1;
+            this.rejerTunRejerAddCheckBox2.Text = "Rejer            10 kr.";
+            this.rejerTunRejerAddCheckBox2.UseVisualStyleBackColor = true;
+            // 
+            // rejerTunTunAddCheckBox3
+            // 
+            this.rejerTunTunAddCheckBox3.AutoSize = true;
+            this.rejerTunTunAddCheckBox3.Location = new System.Drawing.Point(7, 68);
+            this.rejerTunTunAddCheckBox3.Name = "rejerTunTunAddCheckBox3";
+            this.rejerTunTunAddCheckBox3.Size = new System.Drawing.Size(114, 17);
+            this.rejerTunTunAddCheckBox3.TabIndex = 2;
+            this.rejerTunTunAddCheckBox3.Text = "Tun                7 kr.";
+            this.rejerTunTunAddCheckBox3.UseVisualStyleBackColor = true;
+            // 
+            // pepperoniPepperoniAddCheckBox1
+            // 
+            this.pepperoniPepperoniAddCheckBox1.AutoSize = true;
+            this.pepperoniPepperoniAddCheckBox1.Location = new System.Drawing.Point(7, 17);
+            this.pepperoniPepperoniAddCheckBox1.Name = "pepperoniPepperoniAddCheckBox1";
+            this.pepperoniPepperoniAddCheckBox1.Size = new System.Drawing.Size(119, 17);
+            this.pepperoniPepperoniAddCheckBox1.TabIndex = 0;
+            this.pepperoniPepperoniAddCheckBox1.Text = "Pepperoni        8 kr.";
+            this.pepperoniPepperoniAddCheckBox1.UseVisualStyleBackColor = true;
+            // 
+            // pepperoniChampignonAddCheckBox2
+            // 
+            this.pepperoniChampignonAddCheckBox2.AutoSize = true;
+            this.pepperoniChampignonAddCheckBox2.Location = new System.Drawing.Point(7, 38);
+            this.pepperoniChampignonAddCheckBox2.Name = "pepperoniChampignonAddCheckBox2";
+            this.pepperoniChampignonAddCheckBox2.Size = new System.Drawing.Size(118, 17);
+            this.pepperoniChampignonAddCheckBox2.TabIndex = 1;
+            this.pepperoniChampignonAddCheckBox2.Text = "Champignon  11 kr.";
+            this.pepperoniChampignonAddCheckBox2.UseVisualStyleBackColor = true;
+            // 
+            // pepperoniOstAddCheckBox3
+            // 
+            this.pepperoniOstAddCheckBox3.AutoSize = true;
+            this.pepperoniOstAddCheckBox3.Location = new System.Drawing.Point(7, 61);
+            this.pepperoniOstAddCheckBox3.Name = "pepperoniOstAddCheckBox3";
+            this.pepperoniOstAddCheckBox3.Size = new System.Drawing.Size(117, 17);
+            this.pepperoniOstAddCheckBox3.TabIndex = 2;
+            this.pepperoniOstAddCheckBox3.Text = "Ost                  6 kr.";
+            this.pepperoniOstAddCheckBox3.UseVisualStyleBackColor = true;
             // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(884, 527);
+            this.Controls.Add(this.forventetLabel);
+            this.Controls.Add(this.bestillingsNummerLabel);
+            this.Controls.Add(this.totalLabel);
+            this.Controls.Add(this.cancelButton);
+            this.Controls.Add(this.bestilButton);
             this.Controls.Add(this.PIZZA2);
             this.Controls.Add(this.PIZZA1);
             this.Controls.Add(this.beregnButton1);
@@ -235,8 +474,19 @@
             this.pepperoniGroupBox.ResumeLayout(false);
             this.pepperoniGroupBox.PerformLayout();
             this.PIZZA1.ResumeLayout(false);
+            this.PIZZA1.PerformLayout();
+            this.rejerTunKaloriGroupBox.ResumeLayout(false);
+            this.rejerTunKaloriGroupBox.PerformLayout();
+            this.rejerTunAddGroupBox.ResumeLayout(false);
+            this.rejerTunAddGroupBox.PerformLayout();
             this.PIZZA2.ResumeLayout(false);
+            this.PIZZA2.PerformLayout();
+            this.pepperoniAddGroupBox.ResumeLayout(false);
+            this.pepperoniAddGroupBox.PerformLayout();
+            this.pepperoniKaloriGropuBox.ResumeLayout(false);
+            this.pepperoniKaloriGropuBox.PerformLayout();
             this.ResumeLayout(false);
+            this.PerformLayout();
 
         }
 
@@ -262,9 +512,34 @@
         private System.Windows.Forms.Panel PIZZA2;
 
         private System.Windows.Forms.GroupBox rejerTunGroupBox;
-        private System.Windows.Forms.GroupBox pepperoniGroupBox;
         private System.Windows.Forms.GroupBox rejerTunAddGroupBox;
+        private System.Windows.Forms.GroupBox rejerTunKaloriGroupBox;
+
+        private System.Windows.Forms.GroupBox pepperoniGroupBox;     
         private System.Windows.Forms.GroupBox pepperoniAddGroupBox;
+        private System.Windows.Forms.GroupBox pepperoniKaloriGropuBox;
+
+        private System.Windows.Forms.Label rejerMedTunSubTotalLabel;     
+        private System.Windows.Forms.Label rejerTunKaloriPrSkiveLabel;
+        private System.Windows.Forms.Label rejerTunKaloriLabel;
+        private System.Windows.Forms.TextBox rejerTunKaloriTextBox;
+
+
+        private System.Windows.Forms.Label pepperoniSubTotalLabel;       
+        private System.Windows.Forms.Label pepperoniKaloriPrSkiveLabel;
+        private System.Windows.Forms.Label pepperoniKaloriLabel;
+        private System.Windows.Forms.TextBox pepperoniKaloriTextBox;
+        private System.Windows.Forms.Button bestilButton;
+        private System.Windows.Forms.Button cancelButton;
+        private System.Windows.Forms.Label totalLabel;
+        private System.Windows.Forms.Label bestillingsNummerLabel;
+        private System.Windows.Forms.Label forventetLabel;
+        private System.Windows.Forms.CheckBox rejerTunTunAddCheckBox3;
+        private System.Windows.Forms.CheckBox rejerTunRejerAddCheckBox2;
+        private System.Windows.Forms.CheckBox rejerTunLøgAddCheckBox1;
+        private System.Windows.Forms.CheckBox pepperoniOstAddCheckBox3;
+        private System.Windows.Forms.CheckBox pepperoniChampignonAddCheckBox2;
+        private System.Windows.Forms.CheckBox pepperoniPepperoniAddCheckBox1;
     }
 }
 
