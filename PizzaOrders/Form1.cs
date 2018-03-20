@@ -20,7 +20,7 @@ namespace PizzaOrders
         {
             InitializeComponent();
             AllocConsole();
-            rejerMedTunGroupBox.Tag = "PIZZA1";
+            rejerTunGroupBox.Tag = "PIZZA1";
             pepperoniGroupBox.Tag = "PIZZA2";
         }
 
@@ -41,7 +41,7 @@ namespace PizzaOrders
 
             ArrayList order = new ArrayList();
 
-            var myGrpBoxes = pizzasPanel.Controls
+            var myGrpBoxes = PIZZA1.Controls
                         .OfType<GroupBox>()
                         .Where(x => x.Name.ToLower().EndsWith("groupbox"));
 

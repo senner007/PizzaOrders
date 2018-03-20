@@ -37,14 +37,19 @@
             this.familyPizzaTextbox1 = new System.Windows.Forms.TextBox();
             this.almPizzaTextbox2 = new System.Windows.Forms.TextBox();
             this.familyPizzaTextbox2 = new System.Windows.Forms.TextBox();
-            this.rejerMedTunGroupBox = new System.Windows.Forms.GroupBox();
+            this.rejerTunGroupBox = new System.Windows.Forms.GroupBox();
             this.beregnButton1 = new System.Windows.Forms.Button();
             this.pepperoniGroupBox = new System.Windows.Forms.GroupBox();
             this.PepperoniAntalLabel = new System.Windows.Forms.Label();
-            this.pizzasPanel = new System.Windows.Forms.Panel();
-            this.rejerMedTunGroupBox.SuspendLayout();
+            this.PIZZA1 = new System.Windows.Forms.Panel();
+            this.rejerTunAddGroupBox = new System.Windows.Forms.GroupBox();
+            this.fontDialog1 = new System.Windows.Forms.FontDialog();
+            this.PIZZA2 = new System.Windows.Forms.Panel();
+            this.pepperoniAddGroupBox = new System.Windows.Forms.GroupBox();
+            this.rejerTunGroupBox.SuspendLayout();
             this.pepperoniGroupBox.SuspendLayout();
-            this.pizzasPanel.SuspendLayout();
+            this.PIZZA1.SuspendLayout();
+            this.PIZZA2.SuspendLayout();
             this.SuspendLayout();
             // 
             // almPizzaCheckBox1
@@ -132,23 +137,23 @@
             this.familyPizzaTextbox2.Size = new System.Drawing.Size(34, 20);
             this.familyPizzaTextbox2.TabIndex = 8;
             // 
-            // rejerMedTunGroupBox
+            // rejerTunGroupBox
             // 
-            this.rejerMedTunGroupBox.Controls.Add(this.familyPizzaTextbox1);
-            this.rejerMedTunGroupBox.Controls.Add(this.almPizzaTextbox1);
-            this.rejerMedTunGroupBox.Controls.Add(this.RejerTunAntalLabel);
-            this.rejerMedTunGroupBox.Controls.Add(this.almPizzaCheckBox1);
-            this.rejerMedTunGroupBox.Controls.Add(this.familyPizzaCheckBox1);
-            this.rejerMedTunGroupBox.Location = new System.Drawing.Point(14, 16);
-            this.rejerMedTunGroupBox.Name = "rejerMedTunGroupBox";
-            this.rejerMedTunGroupBox.Size = new System.Drawing.Size(263, 95);
-            this.rejerMedTunGroupBox.TabIndex = 9;
-            this.rejerMedTunGroupBox.TabStop = false;
-            this.rejerMedTunGroupBox.Text = "Rejer med Tun     64 kr.";
+            this.rejerTunGroupBox.Controls.Add(this.familyPizzaTextbox1);
+            this.rejerTunGroupBox.Controls.Add(this.almPizzaTextbox1);
+            this.rejerTunGroupBox.Controls.Add(this.RejerTunAntalLabel);
+            this.rejerTunGroupBox.Controls.Add(this.almPizzaCheckBox1);
+            this.rejerTunGroupBox.Controls.Add(this.familyPizzaCheckBox1);
+            this.rejerTunGroupBox.Location = new System.Drawing.Point(14, 16);
+            this.rejerTunGroupBox.Name = "rejerTunGroupBox";
+            this.rejerTunGroupBox.Size = new System.Drawing.Size(263, 95);
+            this.rejerTunGroupBox.TabIndex = 9;
+            this.rejerTunGroupBox.TabStop = false;
+            this.rejerTunGroupBox.Text = "Rejer med Tun     64 kr.";
             // 
             // beregnButton1
             // 
-            this.beregnButton1.Location = new System.Drawing.Point(475, 352);
+            this.beregnButton1.Location = new System.Drawing.Point(460, 406);
             this.beregnButton1.Name = "beregnButton1";
             this.beregnButton1.Size = new System.Drawing.Size(75, 23);
             this.beregnButton1.TabIndex = 10;
@@ -163,7 +168,7 @@
             this.pepperoniGroupBox.Controls.Add(this.familyPizzaCheckBox2);
             this.pepperoniGroupBox.Controls.Add(this.familyPizzaTextbox2);
             this.pepperoniGroupBox.Controls.Add(this.almPizzaTextbox2);
-            this.pepperoniGroupBox.Location = new System.Drawing.Point(14, 129);
+            this.pepperoniGroupBox.Location = new System.Drawing.Point(14, 16);
             this.pepperoniGroupBox.Name = "pepperoniGroupBox";
             this.pepperoniGroupBox.Size = new System.Drawing.Size(263, 90);
             this.pepperoniGroupBox.TabIndex = 11;
@@ -179,29 +184,58 @@
             this.PepperoniAntalLabel.TabIndex = 9;
             this.PepperoniAntalLabel.Text = "Antal:";
             // 
-            // pizzasPanel
+            // PIZZA1
             // 
-            this.pizzasPanel.Controls.Add(this.rejerMedTunGroupBox);
-            this.pizzasPanel.Controls.Add(this.pepperoniGroupBox);
-            this.pizzasPanel.Location = new System.Drawing.Point(60, 60);
-            this.pizzasPanel.Name = "pizzasPanel";
-            this.pizzasPanel.Size = new System.Drawing.Size(373, 260);
-            this.pizzasPanel.TabIndex = 12;
+            this.PIZZA1.Controls.Add(this.rejerTunAddGroupBox);
+            this.PIZZA1.Controls.Add(this.rejerTunGroupBox);
+            this.PIZZA1.Location = new System.Drawing.Point(60, 60);
+            this.PIZZA1.Name = "PIZZA1";
+            this.PIZZA1.Size = new System.Drawing.Size(744, 128);
+            this.PIZZA1.TabIndex = 12;
+            // 
+            // rejerTunAddGroupBox
+            // 
+            this.rejerTunAddGroupBox.Location = new System.Drawing.Point(302, 16);
+            this.rejerTunAddGroupBox.Name = "rejerTunAddGroupBox";
+            this.rejerTunAddGroupBox.Size = new System.Drawing.Size(200, 95);
+            this.rejerTunAddGroupBox.TabIndex = 10;
+            this.rejerTunAddGroupBox.TabStop = false;
+            this.rejerTunAddGroupBox.Text = "Ekstras";
+            // 
+            // PIZZA2
+            // 
+            this.PIZZA2.Controls.Add(this.pepperoniAddGroupBox);
+            this.PIZZA2.Controls.Add(this.pepperoniGroupBox);
+            this.PIZZA2.Location = new System.Drawing.Point(60, 218);
+            this.PIZZA2.Name = "PIZZA2";
+            this.PIZZA2.Size = new System.Drawing.Size(744, 128);
+            this.PIZZA2.TabIndex = 10;
+            // 
+            // pepperoniAddGroupBox
+            // 
+            this.pepperoniAddGroupBox.Location = new System.Drawing.Point(302, 16);
+            this.pepperoniAddGroupBox.Name = "pepperoniAddGroupBox";
+            this.pepperoniAddGroupBox.Size = new System.Drawing.Size(200, 90);
+            this.pepperoniAddGroupBox.TabIndex = 12;
+            this.pepperoniAddGroupBox.TabStop = false;
+            this.pepperoniAddGroupBox.Text = "Ekstras";
             // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(884, 492);
-            this.Controls.Add(this.pizzasPanel);
+            this.ClientSize = new System.Drawing.Size(884, 527);
+            this.Controls.Add(this.PIZZA2);
+            this.Controls.Add(this.PIZZA1);
             this.Controls.Add(this.beregnButton1);
             this.Name = "Form1";
             this.Text = "Form1";
-            this.rejerMedTunGroupBox.ResumeLayout(false);
-            this.rejerMedTunGroupBox.PerformLayout();
+            this.rejerTunGroupBox.ResumeLayout(false);
+            this.rejerTunGroupBox.PerformLayout();
             this.pepperoniGroupBox.ResumeLayout(false);
             this.pepperoniGroupBox.PerformLayout();
-            this.pizzasPanel.ResumeLayout(false);
+            this.PIZZA1.ResumeLayout(false);
+            this.PIZZA2.ResumeLayout(false);
             this.ResumeLayout(false);
 
         }
@@ -219,11 +253,18 @@
         private System.Windows.Forms.TextBox familyPizzaTextbox2;       
         private System.Windows.Forms.Button beregnButton1;
 
-        private System.Windows.Forms.GroupBox rejerMedTunGroupBox;
-        private System.Windows.Forms.GroupBox pepperoniGroupBox;
+     
 
         private System.Windows.Forms.Label PepperoniAntalLabel;
-        private System.Windows.Forms.Panel pizzasPanel;
+        private System.Windows.Forms.Panel PIZZA1;
+
+        private System.Windows.Forms.FontDialog fontDialog1;
+        private System.Windows.Forms.Panel PIZZA2;
+
+        private System.Windows.Forms.GroupBox rejerTunGroupBox;
+        private System.Windows.Forms.GroupBox pepperoniGroupBox;
+        private System.Windows.Forms.GroupBox rejerTunAddGroupBox;
+        private System.Windows.Forms.GroupBox pepperoniAddGroupBox;
     }
 }
 
