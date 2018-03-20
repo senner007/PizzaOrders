@@ -41,10 +41,22 @@
             this.beregnButton1 = new System.Windows.Forms.Button();
             this.pepperoniGroupBox = new System.Windows.Forms.GroupBox();
             this.PepperoniAntalLabel = new System.Windows.Forms.Label();
+            this.pizzasPanel = new System.Windows.Forms.Panel();
             this.rejerMedTunGroupBox.SuspendLayout();
             this.pepperoniGroupBox.SuspendLayout();
+            this.pizzasPanel.SuspendLayout();
             this.SuspendLayout();
-           
+            // 
+            // almPizzaCheckBox1
+            // 
+            this.almPizzaCheckBox1.AutoSize = true;
+            this.almPizzaCheckBox1.Location = new System.Drawing.Point(9, 22);
+            this.almPizzaCheckBox1.Name = "almPizzaCheckBox1";
+            this.almPizzaCheckBox1.Size = new System.Drawing.Size(73, 17);
+            this.almPizzaCheckBox1.TabIndex = 0;
+            this.almPizzaCheckBox1.Text = "Almindelig";
+            this.almPizzaCheckBox1.UseVisualStyleBackColor = true;
+            this.almPizzaCheckBox1.CheckedChanged += new System.EventHandler(this.pizzaCheckBoxGlobal_CheckedChanged);
             // 
             // RejerTunAntalLabel
             // 
@@ -63,18 +75,6 @@
             this.almPizzaTextbox1.Size = new System.Drawing.Size(34, 20);
             this.almPizzaTextbox1.TabIndex = 2;
             // 
-            // almPizzaCheckBox1
-            // 
-            this.almPizzaCheckBox1.AutoSize = true;
-            this.almPizzaCheckBox1.Location = new System.Drawing.Point(9, 22);
-            this.almPizzaCheckBox1.Name = "almPizzaCheckBox1";
-            this.almPizzaCheckBox1.Size = new System.Drawing.Size(73, 17);
-            this.almPizzaCheckBox1.TabIndex = 0;
-            this.almPizzaCheckBox1.Text = "Almindelig";
-            this.almPizzaCheckBox1.UseVisualStyleBackColor = true;
-            //this.almPizzaCheckBox1.CheckedChanged += new System.EventHandler(this.AlmPizzaCheckBox1_CheckedChanged);
-            this.almPizzaCheckBox1.CheckedChanged += new System.EventHandler(this.pizzaCheckBoxGlobal_CheckedChanged); // global event
-            // 
             // almPizzaCheckBox2
             // 
             this.almPizzaCheckBox2.AutoSize = true;
@@ -84,8 +84,7 @@
             this.almPizzaCheckBox2.TabIndex = 3;
             this.almPizzaCheckBox2.Text = "Almindelig";
             this.almPizzaCheckBox2.UseVisualStyleBackColor = true;
-            //this.almPizzaCheckBox2.CheckedChanged += new System.EventHandler(this.almPizzaCheckBox2_CheckedChanged);
-            this.almPizzaCheckBox2.CheckedChanged += new System.EventHandler(this.pizzaCheckBoxGlobal_CheckedChanged); // global event
+            this.almPizzaCheckBox2.CheckedChanged += new System.EventHandler(this.pizzaCheckBoxGlobal_CheckedChanged);
             // 
             // familyPizzaCheckBox1
             // 
@@ -96,20 +95,18 @@
             this.familyPizzaCheckBox1.TabIndex = 4;
             this.familyPizzaCheckBox1.Text = "Family";
             this.familyPizzaCheckBox1.UseVisualStyleBackColor = true;
-            //this.familyPizzaCheckBox1.CheckedChanged += new System.EventHandler(this.familyPizzaCheckBox1_CheckedChanged);
-            this.familyPizzaCheckBox1.CheckedChanged += new System.EventHandler(this.pizzaCheckBoxGlobal_CheckedChanged); // global event
+            this.familyPizzaCheckBox1.CheckedChanged += new System.EventHandler(this.pizzaCheckBoxGlobal_CheckedChanged);
             // 
             // familyPizzaCheckBox2
             // 
             this.familyPizzaCheckBox2.AutoSize = true;
             this.familyPizzaCheckBox2.Location = new System.Drawing.Point(9, 42);
             this.familyPizzaCheckBox2.Name = "familyPizzaCheckBox2";
-            this.familyPizzaCheckBox2.Size = new System.Drawing.Size(80, 17);
+            this.familyPizzaCheckBox2.Size = new System.Drawing.Size(55, 17);
             this.familyPizzaCheckBox2.TabIndex = 5;
-            this.familyPizzaCheckBox2.Text = "checkBox1";
+            this.familyPizzaCheckBox2.Text = "Family";
             this.familyPizzaCheckBox2.UseVisualStyleBackColor = true;
-            //this.familyPizzaCheckBox2.CheckedChanged += new System.EventHandler(this.familyPizzaCheckBox2_CheckedChanged);
-            this.familyPizzaCheckBox2.CheckedChanged += new System.EventHandler(this.pizzaCheckBoxGlobal_CheckedChanged); // global event
+            this.familyPizzaCheckBox2.CheckedChanged += new System.EventHandler(this.pizzaCheckBoxGlobal_CheckedChanged);
             // 
             // familyPizzaTextbox1
             // 
@@ -142,7 +139,7 @@
             this.rejerMedTunGroupBox.Controls.Add(this.RejerTunAntalLabel);
             this.rejerMedTunGroupBox.Controls.Add(this.almPizzaCheckBox1);
             this.rejerMedTunGroupBox.Controls.Add(this.familyPizzaCheckBox1);
-            this.rejerMedTunGroupBox.Location = new System.Drawing.Point(69, 70);
+            this.rejerMedTunGroupBox.Location = new System.Drawing.Point(14, 16);
             this.rejerMedTunGroupBox.Name = "rejerMedTunGroupBox";
             this.rejerMedTunGroupBox.Size = new System.Drawing.Size(263, 95);
             this.rejerMedTunGroupBox.TabIndex = 9;
@@ -166,7 +163,7 @@
             this.pepperoniGroupBox.Controls.Add(this.familyPizzaCheckBox2);
             this.pepperoniGroupBox.Controls.Add(this.familyPizzaTextbox2);
             this.pepperoniGroupBox.Controls.Add(this.almPizzaTextbox2);
-            this.pepperoniGroupBox.Location = new System.Drawing.Point(69, 200);
+            this.pepperoniGroupBox.Location = new System.Drawing.Point(14, 129);
             this.pepperoniGroupBox.Name = "pepperoniGroupBox";
             this.pepperoniGroupBox.Size = new System.Drawing.Size(263, 90);
             this.pepperoniGroupBox.TabIndex = 11;
@@ -182,20 +179,29 @@
             this.PepperoniAntalLabel.TabIndex = 9;
             this.PepperoniAntalLabel.Text = "Antal:";
             // 
+            // pizzasPanel
+            // 
+            this.pizzasPanel.Controls.Add(this.rejerMedTunGroupBox);
+            this.pizzasPanel.Controls.Add(this.pepperoniGroupBox);
+            this.pizzasPanel.Location = new System.Drawing.Point(60, 60);
+            this.pizzasPanel.Name = "pizzasPanel";
+            this.pizzasPanel.Size = new System.Drawing.Size(373, 260);
+            this.pizzasPanel.TabIndex = 12;
+            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(884, 492);
-            this.Controls.Add(this.pepperoniGroupBox);
+            this.Controls.Add(this.pizzasPanel);
             this.Controls.Add(this.beregnButton1);
-            this.Controls.Add(this.rejerMedTunGroupBox);
             this.Name = "Form1";
             this.Text = "Form1";
             this.rejerMedTunGroupBox.ResumeLayout(false);
             this.rejerMedTunGroupBox.PerformLayout();
             this.pepperoniGroupBox.ResumeLayout(false);
             this.pepperoniGroupBox.PerformLayout();
+            this.pizzasPanel.ResumeLayout(false);
             this.ResumeLayout(false);
 
         }
@@ -210,11 +216,14 @@
         private System.Windows.Forms.CheckBox familyPizzaCheckBox2;
         private System.Windows.Forms.TextBox familyPizzaTextbox1;
         private System.Windows.Forms.TextBox almPizzaTextbox2;
-        private System.Windows.Forms.TextBox familyPizzaTextbox2;
-        private System.Windows.Forms.GroupBox rejerMedTunGroupBox;
+        private System.Windows.Forms.TextBox familyPizzaTextbox2;       
         private System.Windows.Forms.Button beregnButton1;
+
+        private System.Windows.Forms.GroupBox rejerMedTunGroupBox;
         private System.Windows.Forms.GroupBox pepperoniGroupBox;
+
         private System.Windows.Forms.Label PepperoniAntalLabel;
+        private System.Windows.Forms.Panel pizzasPanel;
     }
 }
 
