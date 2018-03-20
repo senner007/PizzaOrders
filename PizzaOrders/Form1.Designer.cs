@@ -67,15 +67,7 @@
             this.totalLabel = new System.Windows.Forms.Label();
             this.bestillingsNummerLabel = new System.Windows.Forms.Label();
             this.forventetLabel = new System.Windows.Forms.Label();
-            this.rejerTunPizzaGroupBox.SuspendLayout();
-            this.pepperoniPizzaGroupBox.SuspendLayout();
-            this.PIZZA1.SuspendLayout();
-            this.rejerTunKaloriGroupBox.SuspendLayout();
-            this.rejerTunAddGroupBox.SuspendLayout();
-            this.PIZZA2.SuspendLayout();
-            this.pepperoniAddGroupBox.SuspendLayout();
-            this.pepperoniKaloriGropuBox.SuspendLayout();
-            this.SuspendLayout();
+     
             // 
             // almPizzaCheckBox1
             // 
@@ -467,24 +459,7 @@
             this.Controls.Add(this.beregnButton1);
             this.Name = "Form1";
             this.Text = "Form1";
-            this.rejerTunPizzaGroupBox.ResumeLayout(false);
-            this.rejerTunPizzaGroupBox.PerformLayout();
-            this.pepperoniPizzaGroupBox.ResumeLayout(false);
-            this.pepperoniPizzaGroupBox.PerformLayout();
-            this.PIZZA1.ResumeLayout(false);
-            this.PIZZA1.PerformLayout();
-            this.rejerTunKaloriGroupBox.ResumeLayout(false);
-            this.rejerTunKaloriGroupBox.PerformLayout();
-            this.rejerTunAddGroupBox.ResumeLayout(false);
-            this.rejerTunAddGroupBox.PerformLayout();
-            this.PIZZA2.ResumeLayout(false);
-            this.PIZZA2.PerformLayout();
-            this.pepperoniAddGroupBox.ResumeLayout(false);
-            this.pepperoniAddGroupBox.PerformLayout();
-            this.pepperoniKaloriGropuBox.ResumeLayout(false);
-            this.pepperoniKaloriGropuBox.PerformLayout();
-            this.ResumeLayout(false);
-            this.PerformLayout();
+
 
         }
 
