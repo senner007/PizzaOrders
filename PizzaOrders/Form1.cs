@@ -48,53 +48,35 @@ namespace PizzaOrders
             
             foreach (GroupBox grpBox in myGrpBoxes)
             {
-                var myTextBoxes = grpBox.Controls
-                        .OfType<TextBox>();
-
-               
+                var myTextBoxes = grpBox.Controls.OfType<TextBox>();
+              
                 foreach (TextBox tBox in myTextBoxes)
                 {
-                    int value;
+                  
                     ArrayList _temp = new ArrayList();
-
-                    string s = tBox.Name.StartsWith("family") ? "family" : "almindelig";
-                   
-
-                    if (int.TryParse(tBox.Text, out value))
+                    string s = tBox.Name.StartsWith("family") ? "family" : "almindelig";                  
+                    if (int.TryParse(tBox.Text, out int value) && value > 0)
                     {
-                       
-                      //  Console.WriteLine(tBox.Text);
                         _temp.Add(grpBox.Tag + s);
                         _temp.Add(value);
-
                     }
-                    else
+                    else if (tBox.Enabled)
                     {
-                        Console.WriteLine(tBox.Name);
-                        Console.WriteLine(tBox.Enabled);
-                        Console.WriteLine("You must enter a number");
+                        System.Windows.Forms.MessageBox.Show("Indtast 1 eller flere antal pizzaer eller fravælg pågældende pizza");
+                        return;
                     }
-                    order.Add(_temp);
-
+                    if (tBox.Enabled) order.Add(_temp);
                 }
-
-                //( Console.WriteLine(grpBox.Tag);
             }
 
             //  order.ToList().ForEach(n => Console.WriteLine("order key: " + n.Key + " order antal: " + n.Value));
 
             foreach (ArrayList orderline in order)
             {
-                if (orderline.Count > 0)
-                {
-                    Console.WriteLine("[{0}]", string.Join(", ", orderline.ToArray()));
-                }
+                Console.WriteLine("[{0}]", string.Join(", ", orderline.ToArray()));
+            }     
 
-             }
-
-
-
-            }
+        }
     }
     static class Constants
     {
