@@ -25,12 +25,8 @@ namespace PizzaOrders
 
             // TODO : name ui elements according to constants
 
-            
-
-
         }
       
-
         [DllImport("kernel32.dll", SetLastError = true)]
         [return: MarshalAs(UnmanagedType.Bool)]
         static extern bool AllocConsole();
@@ -66,6 +62,13 @@ namespace PizzaOrders
         private int ValidateTBox (string tBoxText)
         {
             return int.TryParse(tBoxText, out int parsed) ? parsed : 0;     
+        }
+        private string IncrementCounter ()
+        {
+            PizzaCounter pizzaCounter = new PizzaCounter();
+            pizzaCounter.IncrementCounter();
+            string bestilling = "Dit bestillingsnummer er: ";
+            return bestilling + " " + pizzaCounter.GetCounter();
         }
 
         private void BeregnButton1_Click(object sender, EventArgs e)
@@ -106,14 +109,57 @@ namespace PizzaOrders
                 panel.Controls.OfType<Label>().FirstOrDefault(l => l.Name.EndsWith(panel.Name + "SubLabel")).Text = pizzaOrder.DisplayPizzaSubTotal(panel.Name);
             }
 
+            this.Controls["totalLabel"].Text = pizzaOrder.total.ToString();
+
+            if (pizzaOrder.total > 0)
+            {
+                PizzaCounter pizzaCounter = new PizzaCounter();
+                this.Controls["bestillingsNummerLabel"].Text = "Dit bestillingsnummer er: " + pizzaCounter.GetCounter();
+                this.Controls["bestilButton"].Enabled = true;
+            }
+            
+
         }
 
-        private void Form1_Load(object sender, EventArgs e)
+        private void bestilButton_Click(object sender, EventArgs e)
+        {
+            this.Controls["bestillingsNummerLabel"].Text = "Dit bestillingsnummer er: ";
+
+            PizzaCounter pizzaCounter = new PizzaCounter();
+            pizzaCounter.IncrementCounter();
+            ClearThem(this);
+            this.Controls["bestilButton"].Enabled = false;
+
+        }
+        void ClearThem(Control ctrl)
+        {
+            if (ctrl is GroupBox) {
+                foreach (CheckBox chkBox in ctrl.Controls.OfType<CheckBox>())
+                {
+                    chkBox.Checked = false;
+                }
+            }
+            if (ctrl is TextBox) ctrl.Text = "";
+            foreach (Control childCtrl in ctrl.Controls) ClearThem(childCtrl);
+        }
+
+    }
+    class PizzaCounter
+    {
+        public static int Counter { get; private set; } = 1;
+        public PizzaCounter()
         {
 
         }
+        public void IncrementCounter ()
+        {
+            Counter++;
+        }
+        public string GetCounter ()
+        {
+            return Counter.ToString();
+        }
     }
-
     class PizzaOrder
     {
         public PizzaOrder(ArrayList arr)
@@ -133,6 +179,7 @@ namespace PizzaOrders
         }
         public Dictionary<string, int> PizzaList = new Dictionary<string,int>();
         public Dictionary<string, decimal> PizzaSum = new Dictionary<string, decimal>();
+        public decimal total { get; private set; } = 0;
 
         public string CollectAdded(ArrayList arr)
         {
@@ -165,15 +212,16 @@ namespace PizzaOrders
             {
                 decimal sizeModifier = (size == Constants.PIZZA_LARGE) ? 1.5M : 1;
                 string key = id;
-                // Console.WriteLine((int)field.GetRawConstantValue());
+                decimal subtotal = ( (int)field.GetRawConstantValue() * antal * sizeModifier ) + added; 
                 if (PizzaSum.ContainsKey(key))
                 {
-                    PizzaSum[key] +=( (int)field.GetRawConstantValue() * antal * sizeModifier ) + added;
-                 //   Console.WriteLine(value);
+                    PizzaSum[key] += subtotal;
+                    total += subtotal;
                 } else
                 {
-                    PizzaSum.Add( key, ( (int)field.GetRawConstantValue() * antal * sizeModifier)  + added  );
-                }         
+                    PizzaSum.Add( key, subtotal);
+                }
+                total += subtotal;
             }
             // PizzaSum.ToList().ForEach(Console.WriteLine);          
         }
@@ -201,16 +249,6 @@ namespace PizzaOrders
         }
         public string DisplayPizzaSubTotal(string s )
         {
-           // Console.WriteLine(s);
-            //if (PizzaSum.ContainsKey(s))
-            //{
-            //    return PizzaSum[s].ToString();
-            
-            //} else
-            //{
-            //    return "";
-            //}
-
             return (PizzaSum.ContainsKey(s)) ? PizzaSum[s].ToString() : "";
         }
     }
@@ -227,6 +265,7 @@ namespace PizzaOrders
         public const int PIZZA1AddCheckBox1 = 5,
                          PIZZA1AddCheckBox2 = 10,
                          PIZZA1AddCheckBox3 = 7;
+
         public const float PIZZA1_KCAL = 42.2F;
 
         public const string PIZZA2_NAME = "PEPPERONI";

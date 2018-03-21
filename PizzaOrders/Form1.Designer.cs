@@ -409,12 +409,14 @@
             // 
             // bestilButton
             // 
+            this.bestilButton.Enabled = false;
             this.bestilButton.Location = new System.Drawing.Point(60, 460);
             this.bestilButton.Name = "bestilButton";
             this.bestilButton.Size = new System.Drawing.Size(75, 23);
             this.bestilButton.TabIndex = 13;
             this.bestilButton.Text = "Bestil";
             this.bestilButton.UseVisualStyleBackColor = true;
+            this.bestilButton.Click += new System.EventHandler(this.bestilButton_Click);
             // 
             // cancelButton
             // 
@@ -467,7 +469,6 @@
             this.Controls.Add(this.beregnButton1);
             this.Name = "Form1";
             this.Text = "Form1";
-            this.Load += new System.EventHandler(this.Form1_Load);
             this.PIZZA1GroupBox1.ResumeLayout(false);
             this.PIZZA1GroupBox1.PerformLayout();
             this.PIZZA2GroupBox1.ResumeLayout(false);
