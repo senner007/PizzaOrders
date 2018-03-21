@@ -13,7 +13,7 @@ using System.Collections;
 
 namespace PizzaOrders
 {
-   
+    
     public partial class Form1 : Form
     {
         public Form1()
@@ -25,14 +25,11 @@ namespace PizzaOrders
 
             // TODO : name ui elements according to constants
 
-            foreach (Panel panel in this.Controls.OfType<Panel>())
-            {
-              
-
-            }
+            
 
 
         }
+      
 
         [DllImport("kernel32.dll", SetLastError = true)]
         [return: MarshalAs(UnmanagedType.Bool)]
@@ -45,7 +42,7 @@ namespace PizzaOrders
             familyPizzaTextbox1.Enabled = familyPizzaCheckBox1.Checked == true ? true : false;
             familyPizzaTextbox2.Enabled = familyPizzaCheckBox2.Checked == true ? true : false;
         }
-        private ArrayList OrderLine(TextBox tBox, string grpBoxTag, out bool abort)
+        private ArrayList OrderLine(TextBox tBox, string pizzaId, string pizzaText, out bool abort)
         {
             ArrayList _temp = new ArrayList();
             string s = tBox.Name.StartsWith(Constants.PIZZA_LARGE) ? Constants.PIZZA_LARGE : Constants.PIZZA_SMALL;
@@ -53,9 +50,11 @@ namespace PizzaOrders
             int validation = ValidateTBox(tBox.Text);
             if (validation > 0)
             {
-                _temp.Add(grpBoxTag);
+                _temp.Add(pizzaId);
+                _temp.Add(pizzaText);
                 _temp.Add(s);
                 _temp.Add(validation);
+                
             } else if (tBox.Enabled)
             {
                 abort = true;
@@ -68,88 +67,85 @@ namespace PizzaOrders
         {
             return int.TryParse(tBoxText, out int parsed) ? parsed : 0;     
         }
-        private void SetSubTotalLabel (PizzaOrder pizzaOrder)
-        {
-            foreach (Panel panel in this.Controls.OfType<Panel>())
-            {
-                Label subtotal = panel.Controls.OfType<Label>().FirstOrDefault(l => l.Name.EndsWith("SubTotalLabel"));
-             //   Console.WriteLine(panel.Name);
-                subtotal.Text = pizzaOrder.DisplayPizzaSubTotal(panel.Name);
-            }
-        }
 
         private void BeregnButton1_Click(object sender, EventArgs e)
         {
 
             ArrayList order = new ArrayList();
+            var panels = this.Controls.OfType<Panel>();
 
-            foreach (Panel panel in this.Controls.OfType<Panel>())
+
+            foreach (Panel panel in panels)
             {
-                    GroupBox pizza =  panel.Controls.OfType<GroupBox>().FirstOrDefault(l => l.Name.EndsWith("PizzaGroupBox"));
+                    GroupBox panelGrpBox1 =  panel.Controls.OfType<GroupBox>().FirstOrDefault(l => l.Name.EndsWith(panel.Name + "GroupBox1"));
+                    GroupBox panelGrpBox2 = panel.Controls.OfType<GroupBox>().FirstOrDefault(l => l.Name.EndsWith(panel.Name + "GroupBox2"));
 
-                    foreach (TextBox tBox in pizza.Controls.OfType<TextBox>())
-                    {
-                        ArrayList newTemp = OrderLine(tBox, (string)panel.Name, out bool abort);
-                        if (abort) return;
-                        if (tBox.Enabled && newTemp.Count > 0) order.Add(newTemp);
-                    }
-              
+                foreach (TextBox tBox in panelGrpBox1.Controls.OfType<TextBox>())
+                {
+                     ArrayList orderline = OrderLine(tBox, (string)panel.Name, panelGrpBox1.Text, out bool abort );
+                     if (abort) return;
+                     ArrayList added = new ArrayList();
+
+                     foreach (CheckBox chkBox in panelGrpBox2.Controls.OfType<CheckBox>())
+                     { 
+                        if (chkBox.Checked) added.Add(chkBox.Name);
+                     }
+                     orderline.Add(added);
+
+                     if (tBox.Enabled && orderline.Count > 0) order.Add(orderline);
+
+                }
+
             }
-
-          //  order.ToList().ForEach(n => Console.WriteLine("order key: " + n.Key + " order antal: " + n.Value));
 
             PizzaOrder pizzaOrder = new PizzaOrder(order);
             Console.WriteLine(  pizzaOrder.DisplayPizzaOrder() );
 
-            SetSubTotalLabel(pizzaOrder); // TODO : improve me!
+            foreach (Panel panel in panels) // add to subtotal
+            {
+                panel.Controls.OfType<Label>().FirstOrDefault(l => l.Name.EndsWith(panel.Name + "SubLabel")).Text = pizzaOrder.DisplayPizzaSubTotal(panel.Name);
+            }
 
         }
 
+        private void Form1_Load(object sender, EventArgs e)
+        {
+
+        }
     }
-    static class Constants
-    {
-        public const string PIZZA_LARGE= "family";
-        public const string PIZZA_SMALL = "almindelig";
 
-        public const string PIZZA1_NAME = "REJER MED OST";
-        public const int PIZZA1_PRICE = 64;
-        public const string PIZZA1_ADD1_NAME = "LØG";
-        public const string PIZZA1_ADD2_NAME = "REJER";
-        public const string PIZZA1_ADD3_NAME = "TUN";
-        public const int PIZZA1_ADD1_PRICE = 5,
-                         PIZZA1_ADD2_PRICE = 10,
-                         PIZZA1_ADD3_PRICE = 7;
-        public const float PIZZA1_KCAL = 42.2F;
-
-        public const string PIZZA2_NAME = "PEPPERONI";
-        public const int PIZZA2_PRICE = 59;
-        public const string PIZZA2_ADD1_NAME = "PEPPERONI";
-        public const string PIZZA2_ADD2_NAME = "CHAMPIGNON";
-        public const string PIZZA2_ADD3_NAME = "OST";
-        public const int PIZZA2_ADD1_PRICE = 8,
-                         PIZZA2_ADD2_PRICE = 11,
-                         PIZZA2_ADD3_PRICE = 6;
-        public const float PIZZA1_KCA2 = 31.6F;
-
-    }
     class PizzaOrder
     {
         public PizzaOrder(ArrayList arr)
         {
             foreach (ArrayList orderline in arr)
             {
-                //   Console.WriteLine("[{0}]", string.Join(", ", orderline.ToArray()));
-         
-                CollectPizzas((string)orderline[0], (string)orderline[1], (int)orderline[2]);
-                CalculatePizzas((string)orderline[0], (string)orderline[1], (int)orderline[2]);
+                 Console.WriteLine("[{0}]", string.Join(", ", orderline.ToArray()));
 
+            //    string added = (string)orderline[3] + (string)orderline[4] + (string)orderline[5];
+             //   var props = typeof(Constants).GetField((string)orderline[3]).GetValue(null);
+              
+
+                CollectPizzas((string)orderline[0], (string)orderline[1], (string)orderline[2], (int)orderline[3], CollectAdded((ArrayList)orderline[4]));
+
+                CalculatePizzas((string)orderline[0], (string)orderline[1], (string)orderline[2], (int)orderline[3]);
             }
-
         }
         public Dictionary<string, int> PizzaList = new Dictionary<string,int>();
         public Dictionary<string, decimal> PizzaSum = new Dictionary<string, decimal>();
-      
-        public void CalculatePizzas(string navn, string size, int antal)
+
+        public string CollectAdded(ArrayList arr)
+        {
+            string s = "";
+            foreach (string added in arr)
+            {
+                string[] tokens = added.Split('_');
+                s += tokens[1] + " ";
+            }
+            
+            return s.Trim();
+        }
+        public void CalculatePizzas(string id, string navn, string size, int antal)
         {
             foreach (FieldInfo field in typeof(Constants).GetFields().Where(f => f.Name.StartsWith(navn + "_PRICE")))
             {
@@ -166,22 +162,18 @@ namespace PizzaOrders
             }
             // PizzaSum.ToList().ForEach(Console.WriteLine);          
         }
-        public void CollectPizzas (string navn, string size, int antal)
+        public void CollectPizzas (string id, string navn, string size, int antal, string added)
         {
-           // Console.WriteLine(s);
-            foreach (FieldInfo field in typeof(Constants).GetFields().Where(f => f.Name.StartsWith(navn + "_NAME")))
-            {
-                if (PizzaList.ContainsKey(navn + " " + size))
+                string key = navn + " " + size + " " + added;
+                if (PizzaList.ContainsKey(key))
                 {
-                    PizzaList[navn + " " + size] =  antal;
+                    PizzaList[key] =  antal;
                 } else
                 {
-                   // Console.WriteLine(size);
-                    PizzaList.Add(field.GetRawConstantValue().ToString() + " " + size, antal);
+                    PizzaList.Add(key, antal);
                 }
-               
-            }        
-        }
+                   
+        }     
         public string DisplayPizzaOrder ()
         {
             string s = "";
@@ -190,6 +182,7 @@ namespace PizzaOrders
             
                s += kvp.Key + " " + kvp.Value + "\n";
             }
+         
             return s;
         }
         public string DisplayPizzaSubTotal(string s )
@@ -206,7 +199,33 @@ namespace PizzaOrders
             return this.ToString();
         }
     }
-    
+    static class Constants
+    {
+        public const string PIZZA_LARGE = "family";
+        public const string PIZZA_SMALL = "almindelig";
+
+        public const string PIZZA1_NAME = "REJER MED OST";
+        public const int PIZZA1_PRICE = 64;
+        public const string PIZZA1AddCheckBox1 = "LØG";
+        public const string PIZZA1AddCheckBox2 = "REJER";
+        public const string PIZZA1AddCheckBox3 = "TUN";
+        public const int PIZZA1_ADD1_PRICE = 5,
+                         PIZZA1_ADD2_PRICE = 10,
+                         PIZZA1_ADD3_PRICE = 7;
+        public const float PIZZA1_KCAL = 42.2F;
+
+        public const string PIZZA2_NAME = "PEPPERONI";
+        public const int PIZZA2_PRICE = 59;
+        public const string PIZZA2AddCheckBox1 = "PEPPERONI";
+        public const string PIZZA2AddCheckBox2 = "CHAMPIGNON";
+        public const string PIZZA2AddCheckBox3 = "OST";
+        public const int PIZZA2_ADD1_PRICE = 8,
+                         PIZZA2_ADD2_PRICE = 11,
+                         PIZZA2_ADD3_PRICE = 6;
+        public const float PIZZA1_KCA2 = 31.6F;
+
+    }
+
 
 }
       

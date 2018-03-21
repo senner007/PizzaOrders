@@ -37,27 +37,27 @@
             this.familyPizzaTextbox1 = new System.Windows.Forms.TextBox();
             this.almPizzaTextbox2 = new System.Windows.Forms.TextBox();
             this.familyPizzaTextbox2 = new System.Windows.Forms.TextBox();
-            this.rejerTunPizzaGroupBox = new System.Windows.Forms.GroupBox();
+            this.PIZZA1GroupBox1 = new System.Windows.Forms.GroupBox();
             this.beregnButton1 = new System.Windows.Forms.Button();
-            this.pepperoniPizzaGroupBox = new System.Windows.Forms.GroupBox();
+            this.PIZZA2GroupBox1 = new System.Windows.Forms.GroupBox();
             this.PepperoniAntalLabel = new System.Windows.Forms.Label();
             this.PIZZA1 = new System.Windows.Forms.Panel();
-            this.rejerMedTunSubTotalLabel = new System.Windows.Forms.Label();
+            this.PIZZA1SubLabel = new System.Windows.Forms.Label();
             this.rejerTunKaloriGroupBox = new System.Windows.Forms.GroupBox();
             this.rejerTunKaloriPrSkiveLabel = new System.Windows.Forms.Label();
             this.rejerTunKaloriLabel = new System.Windows.Forms.Label();
             this.rejerTunKaloriTextBox = new System.Windows.Forms.TextBox();
-            this.rejerTunAddGroupBox = new System.Windows.Forms.GroupBox();
-            this.rejerTunTunAddCheckBox3 = new System.Windows.Forms.CheckBox();
-            this.rejerTunRejerAddCheckBox2 = new System.Windows.Forms.CheckBox();
-            this.rejerTunLøgAddCheckBox1 = new System.Windows.Forms.CheckBox();
+            this.PIZZA1GroupBox2 = new System.Windows.Forms.GroupBox();
+            this.PIZZA1AddCheckBox3_tun = new System.Windows.Forms.CheckBox();
+            this.PIZZA1AddCheckBox2_rejer = new System.Windows.Forms.CheckBox();
+            this.PIZZA1AddCheckBox1_løg = new System.Windows.Forms.CheckBox();
             this.fontDialog1 = new System.Windows.Forms.FontDialog();
             this.PIZZA2 = new System.Windows.Forms.Panel();
-            this.pepperoniSubTotalLabel = new System.Windows.Forms.Label();
-            this.pepperoniAddGroupBox = new System.Windows.Forms.GroupBox();
-            this.pepperoniOstAddCheckBox3 = new System.Windows.Forms.CheckBox();
-            this.pepperoniChampignonAddCheckBox2 = new System.Windows.Forms.CheckBox();
-            this.pepperoniPepperoniAddCheckBox1 = new System.Windows.Forms.CheckBox();
+            this.PIZZA2SubLabel = new System.Windows.Forms.Label();
+            this.PIZZA2GroupBox2 = new System.Windows.Forms.GroupBox();
+            this.PIZZA2AddCheckBox3_ost = new System.Windows.Forms.CheckBox();
+            this.PIZZA2AddCheckBox2_champignon = new System.Windows.Forms.CheckBox();
+            this.PIZZA2AddCheckBox1_pepperoni = new System.Windows.Forms.CheckBox();
             this.pepperoniKaloriGropuBox = new System.Windows.Forms.GroupBox();
             this.pepperoniKaloriPrSkiveLabel = new System.Windows.Forms.Label();
             this.pepperoniKaloriLabel = new System.Windows.Forms.Label();
@@ -67,7 +67,15 @@
             this.totalLabel = new System.Windows.Forms.Label();
             this.bestillingsNummerLabel = new System.Windows.Forms.Label();
             this.forventetLabel = new System.Windows.Forms.Label();
-     
+            this.PIZZA1GroupBox1.SuspendLayout();
+            this.PIZZA2GroupBox1.SuspendLayout();
+            this.PIZZA1.SuspendLayout();
+            this.rejerTunKaloriGroupBox.SuspendLayout();
+            this.PIZZA1GroupBox2.SuspendLayout();
+            this.PIZZA2.SuspendLayout();
+            this.PIZZA2GroupBox2.SuspendLayout();
+            this.pepperoniKaloriGropuBox.SuspendLayout();
+            this.SuspendLayout();
             // 
             // almPizzaCheckBox1
             // 
@@ -154,19 +162,19 @@
             this.familyPizzaTextbox2.Size = new System.Drawing.Size(34, 20);
             this.familyPizzaTextbox2.TabIndex = 8;
             // 
-            // rejerTunPizzaGroupBox
+            // PIZZA1GroupBox1
             // 
-            this.rejerTunPizzaGroupBox.Controls.Add(this.familyPizzaTextbox1);
-            this.rejerTunPizzaGroupBox.Controls.Add(this.almPizzaTextbox1);
-            this.rejerTunPizzaGroupBox.Controls.Add(this.RejerTunAntalLabel);
-            this.rejerTunPizzaGroupBox.Controls.Add(this.almPizzaCheckBox1);
-            this.rejerTunPizzaGroupBox.Controls.Add(this.familyPizzaCheckBox1);
-            this.rejerTunPizzaGroupBox.Location = new System.Drawing.Point(14, 16);
-            this.rejerTunPizzaGroupBox.Name = "rejerTunPizzaGroupBox";
-            this.rejerTunPizzaGroupBox.Size = new System.Drawing.Size(263, 95);
-            this.rejerTunPizzaGroupBox.TabIndex = 9;
-            this.rejerTunPizzaGroupBox.TabStop = false;
-            this.rejerTunPizzaGroupBox.Text = "Rejer med Tun     64 kr.";
+            this.PIZZA1GroupBox1.Controls.Add(this.familyPizzaTextbox1);
+            this.PIZZA1GroupBox1.Controls.Add(this.almPizzaTextbox1);
+            this.PIZZA1GroupBox1.Controls.Add(this.RejerTunAntalLabel);
+            this.PIZZA1GroupBox1.Controls.Add(this.almPizzaCheckBox1);
+            this.PIZZA1GroupBox1.Controls.Add(this.familyPizzaCheckBox1);
+            this.PIZZA1GroupBox1.Location = new System.Drawing.Point(14, 16);
+            this.PIZZA1GroupBox1.Name = "PIZZA1GroupBox1";
+            this.PIZZA1GroupBox1.Size = new System.Drawing.Size(263, 95);
+            this.PIZZA1GroupBox1.TabIndex = 9;
+            this.PIZZA1GroupBox1.TabStop = false;
+            this.PIZZA1GroupBox1.Text = "Rejer med Tun     64 kr.";
             // 
             // beregnButton1
             // 
@@ -178,19 +186,19 @@
             this.beregnButton1.UseVisualStyleBackColor = true;
             this.beregnButton1.Click += new System.EventHandler(this.BeregnButton1_Click);
             // 
-            // pepperoniPizzaGroupBox
+            // PIZZA2GroupBox1
             // 
-            this.pepperoniPizzaGroupBox.Controls.Add(this.PepperoniAntalLabel);
-            this.pepperoniPizzaGroupBox.Controls.Add(this.almPizzaCheckBox2);
-            this.pepperoniPizzaGroupBox.Controls.Add(this.familyPizzaCheckBox2);
-            this.pepperoniPizzaGroupBox.Controls.Add(this.familyPizzaTextbox2);
-            this.pepperoniPizzaGroupBox.Controls.Add(this.almPizzaTextbox2);
-            this.pepperoniPizzaGroupBox.Location = new System.Drawing.Point(14, 16);
-            this.pepperoniPizzaGroupBox.Name = "pepperoniPizzaGroupBox";
-            this.pepperoniPizzaGroupBox.Size = new System.Drawing.Size(263, 94);
-            this.pepperoniPizzaGroupBox.TabIndex = 11;
-            this.pepperoniPizzaGroupBox.TabStop = false;
-            this.pepperoniPizzaGroupBox.Text = "Pepperoni    59 kr.";
+            this.PIZZA2GroupBox1.Controls.Add(this.PepperoniAntalLabel);
+            this.PIZZA2GroupBox1.Controls.Add(this.almPizzaCheckBox2);
+            this.PIZZA2GroupBox1.Controls.Add(this.familyPizzaCheckBox2);
+            this.PIZZA2GroupBox1.Controls.Add(this.familyPizzaTextbox2);
+            this.PIZZA2GroupBox1.Controls.Add(this.almPizzaTextbox2);
+            this.PIZZA2GroupBox1.Location = new System.Drawing.Point(14, 16);
+            this.PIZZA2GroupBox1.Name = "PIZZA2GroupBox1";
+            this.PIZZA2GroupBox1.Size = new System.Drawing.Size(263, 94);
+            this.PIZZA2GroupBox1.TabIndex = 11;
+            this.PIZZA2GroupBox1.TabStop = false;
+            this.PIZZA2GroupBox1.Text = "Pepperoni    59 kr.";
             // 
             // PepperoniAntalLabel
             // 
@@ -203,23 +211,23 @@
             // 
             // PIZZA1
             // 
-            this.PIZZA1.Controls.Add(this.rejerMedTunSubTotalLabel);
+            this.PIZZA1.Controls.Add(this.PIZZA1SubLabel);
             this.PIZZA1.Controls.Add(this.rejerTunKaloriGroupBox);
-            this.PIZZA1.Controls.Add(this.rejerTunAddGroupBox);
-            this.PIZZA1.Controls.Add(this.rejerTunPizzaGroupBox);
+            this.PIZZA1.Controls.Add(this.PIZZA1GroupBox2);
+            this.PIZZA1.Controls.Add(this.PIZZA1GroupBox1);
             this.PIZZA1.Location = new System.Drawing.Point(60, 60);
             this.PIZZA1.Name = "PIZZA1";
             this.PIZZA1.Size = new System.Drawing.Size(744, 128);
             this.PIZZA1.TabIndex = 12;
             // 
-            // rejerMedTunSubTotalLabel
+            // PIZZA1SubLabel
             // 
-            this.rejerMedTunSubTotalLabel.AutoSize = true;
-            this.rejerMedTunSubTotalLabel.Location = new System.Drawing.Point(532, 97);
-            this.rejerMedTunSubTotalLabel.Name = "rejerMedTunSubTotalLabel";
-            this.rejerMedTunSubTotalLabel.Size = new System.Drawing.Size(52, 13);
-            this.rejerMedTunSubTotalLabel.TabIndex = 12;
-            this.rejerMedTunSubTotalLabel.Text = "Sub total:";
+            this.PIZZA1SubLabel.AutoSize = true;
+            this.PIZZA1SubLabel.Location = new System.Drawing.Point(532, 97);
+            this.PIZZA1SubLabel.Name = "PIZZA1SubLabel";
+            this.PIZZA1SubLabel.Size = new System.Drawing.Size(52, 13);
+            this.PIZZA1SubLabel.TabIndex = 12;
+            this.PIZZA1SubLabel.Text = "Sub total:";
             // 
             // rejerTunKaloriGroupBox
             // 
@@ -258,109 +266,109 @@
             this.rejerTunKaloriTextBox.Size = new System.Drawing.Size(40, 20);
             this.rejerTunKaloriTextBox.TabIndex = 0;
             // 
-            // rejerTunAddGroupBox
+            // PIZZA1GroupBox2
             // 
-            this.rejerTunAddGroupBox.Controls.Add(this.rejerTunTunAddCheckBox3);
-            this.rejerTunAddGroupBox.Controls.Add(this.rejerTunRejerAddCheckBox2);
-            this.rejerTunAddGroupBox.Controls.Add(this.rejerTunLøgAddCheckBox1);
-            this.rejerTunAddGroupBox.Location = new System.Drawing.Point(302, 16);
-            this.rejerTunAddGroupBox.Name = "rejerTunAddGroupBox";
-            this.rejerTunAddGroupBox.Size = new System.Drawing.Size(200, 95);
-            this.rejerTunAddGroupBox.TabIndex = 10;
-            this.rejerTunAddGroupBox.TabStop = false;
-            this.rejerTunAddGroupBox.Text = "Ekstras";
+            this.PIZZA1GroupBox2.Controls.Add(this.PIZZA1AddCheckBox3_tun);
+            this.PIZZA1GroupBox2.Controls.Add(this.PIZZA1AddCheckBox2_rejer);
+            this.PIZZA1GroupBox2.Controls.Add(this.PIZZA1AddCheckBox1_løg);
+            this.PIZZA1GroupBox2.Location = new System.Drawing.Point(302, 16);
+            this.PIZZA1GroupBox2.Name = "PIZZA1GroupBox2";
+            this.PIZZA1GroupBox2.Size = new System.Drawing.Size(200, 95);
+            this.PIZZA1GroupBox2.TabIndex = 10;
+            this.PIZZA1GroupBox2.TabStop = false;
+            this.PIZZA1GroupBox2.Text = "Ekstras";
             // 
-            // rejerTunTunAddCheckBox3
+            // PIZZA1AddCheckBox3_tun
             // 
-            this.rejerTunTunAddCheckBox3.AutoSize = true;
-            this.rejerTunTunAddCheckBox3.Location = new System.Drawing.Point(7, 68);
-            this.rejerTunTunAddCheckBox3.Name = "rejerTunTunAddCheckBox3";
-            this.rejerTunTunAddCheckBox3.Size = new System.Drawing.Size(114, 17);
-            this.rejerTunTunAddCheckBox3.TabIndex = 2;
-            this.rejerTunTunAddCheckBox3.Text = "Tun                7 kr.";
-            this.rejerTunTunAddCheckBox3.UseVisualStyleBackColor = true;
+            this.PIZZA1AddCheckBox3_tun.AutoSize = true;
+            this.PIZZA1AddCheckBox3_tun.Location = new System.Drawing.Point(7, 68);
+            this.PIZZA1AddCheckBox3_tun.Name = "PIZZA1AddCheckBox3_tun";
+            this.PIZZA1AddCheckBox3_tun.Size = new System.Drawing.Size(114, 17);
+            this.PIZZA1AddCheckBox3_tun.TabIndex = 2;
+            this.PIZZA1AddCheckBox3_tun.Text = "Tun                7 kr.";
+            this.PIZZA1AddCheckBox3_tun.UseVisualStyleBackColor = true;
             // 
-            // rejerTunRejerAddCheckBox2
+            // PIZZA1AddCheckBox2_rejer
             // 
-            this.rejerTunRejerAddCheckBox2.AutoSize = true;
-            this.rejerTunRejerAddCheckBox2.Location = new System.Drawing.Point(7, 45);
-            this.rejerTunRejerAddCheckBox2.Name = "rejerTunRejerAddCheckBox2";
-            this.rejerTunRejerAddCheckBox2.Size = new System.Drawing.Size(114, 17);
-            this.rejerTunRejerAddCheckBox2.TabIndex = 1;
-            this.rejerTunRejerAddCheckBox2.Text = "Rejer            10 kr.";
-            this.rejerTunRejerAddCheckBox2.UseVisualStyleBackColor = true;
+            this.PIZZA1AddCheckBox2_rejer.AutoSize = true;
+            this.PIZZA1AddCheckBox2_rejer.Location = new System.Drawing.Point(7, 45);
+            this.PIZZA1AddCheckBox2_rejer.Name = "PIZZA1AddCheckBox2_rejer";
+            this.PIZZA1AddCheckBox2_rejer.Size = new System.Drawing.Size(114, 17);
+            this.PIZZA1AddCheckBox2_rejer.TabIndex = 1;
+            this.PIZZA1AddCheckBox2_rejer.Text = "Rejer            10 kr.";
+            this.PIZZA1AddCheckBox2_rejer.UseVisualStyleBackColor = true;
             // 
-            // rejerTunLøgAddCheckBox1
+            // PIZZA1AddCheckBox1_løg
             // 
-            this.rejerTunLøgAddCheckBox1.AutoSize = true;
-            this.rejerTunLøgAddCheckBox1.Location = new System.Drawing.Point(7, 22);
-            this.rejerTunLøgAddCheckBox1.Name = "rejerTunLøgAddCheckBox1";
-            this.rejerTunLøgAddCheckBox1.Size = new System.Drawing.Size(113, 17);
-            this.rejerTunLøgAddCheckBox1.TabIndex = 0;
-            this.rejerTunLøgAddCheckBox1.Text = "Løg                5 kr.";
-            this.rejerTunLøgAddCheckBox1.UseVisualStyleBackColor = true;
+            this.PIZZA1AddCheckBox1_løg.AutoSize = true;
+            this.PIZZA1AddCheckBox1_løg.Location = new System.Drawing.Point(7, 22);
+            this.PIZZA1AddCheckBox1_løg.Name = "PIZZA1AddCheckBox1_løg";
+            this.PIZZA1AddCheckBox1_løg.Size = new System.Drawing.Size(113, 17);
+            this.PIZZA1AddCheckBox1_løg.TabIndex = 0;
+            this.PIZZA1AddCheckBox1_løg.Text = "Løg                5 kr.";
+            this.PIZZA1AddCheckBox1_løg.UseVisualStyleBackColor = true;
             // 
             // PIZZA2
             // 
-            this.PIZZA2.Controls.Add(this.pepperoniSubTotalLabel);
-            this.PIZZA2.Controls.Add(this.pepperoniAddGroupBox);
+            this.PIZZA2.Controls.Add(this.PIZZA2SubLabel);
+            this.PIZZA2.Controls.Add(this.PIZZA2GroupBox2);
             this.PIZZA2.Controls.Add(this.pepperoniKaloriGropuBox);
-            this.PIZZA2.Controls.Add(this.pepperoniPizzaGroupBox);
+            this.PIZZA2.Controls.Add(this.PIZZA2GroupBox1);
             this.PIZZA2.Location = new System.Drawing.Point(60, 218);
             this.PIZZA2.Name = "PIZZA2";
             this.PIZZA2.Size = new System.Drawing.Size(744, 133);
             this.PIZZA2.TabIndex = 10;
             // 
-            // pepperoniSubTotalLabel
+            // PIZZA2SubLabel
             // 
-            this.pepperoniSubTotalLabel.AutoSize = true;
-            this.pepperoniSubTotalLabel.Location = new System.Drawing.Point(532, 97);
-            this.pepperoniSubTotalLabel.Name = "pepperoniSubTotalLabel";
-            this.pepperoniSubTotalLabel.Size = new System.Drawing.Size(49, 13);
-            this.pepperoniSubTotalLabel.TabIndex = 14;
-            this.pepperoniSubTotalLabel.Text = "Sub total";
+            this.PIZZA2SubLabel.AutoSize = true;
+            this.PIZZA2SubLabel.Location = new System.Drawing.Point(532, 97);
+            this.PIZZA2SubLabel.Name = "PIZZA2SubLabel";
+            this.PIZZA2SubLabel.Size = new System.Drawing.Size(49, 13);
+            this.PIZZA2SubLabel.TabIndex = 14;
+            this.PIZZA2SubLabel.Text = "Sub total";
             // 
-            // pepperoniAddGroupBox
+            // PIZZA2GroupBox2
             // 
-            this.pepperoniAddGroupBox.Controls.Add(this.pepperoniOstAddCheckBox3);
-            this.pepperoniAddGroupBox.Controls.Add(this.pepperoniChampignonAddCheckBox2);
-            this.pepperoniAddGroupBox.Controls.Add(this.pepperoniPepperoniAddCheckBox1);
-            this.pepperoniAddGroupBox.Location = new System.Drawing.Point(302, 16);
-            this.pepperoniAddGroupBox.Name = "pepperoniAddGroupBox";
-            this.pepperoniAddGroupBox.Size = new System.Drawing.Size(200, 94);
-            this.pepperoniAddGroupBox.TabIndex = 12;
-            this.pepperoniAddGroupBox.TabStop = false;
-            this.pepperoniAddGroupBox.Text = "Ekstras";
+            this.PIZZA2GroupBox2.Controls.Add(this.PIZZA2AddCheckBox3_ost);
+            this.PIZZA2GroupBox2.Controls.Add(this.PIZZA2AddCheckBox2_champignon);
+            this.PIZZA2GroupBox2.Controls.Add(this.PIZZA2AddCheckBox1_pepperoni);
+            this.PIZZA2GroupBox2.Location = new System.Drawing.Point(302, 16);
+            this.PIZZA2GroupBox2.Name = "PIZZA2GroupBox2";
+            this.PIZZA2GroupBox2.Size = new System.Drawing.Size(200, 94);
+            this.PIZZA2GroupBox2.TabIndex = 12;
+            this.PIZZA2GroupBox2.TabStop = false;
+            this.PIZZA2GroupBox2.Text = "Ekstras";
             // 
-            // pepperoniOstAddCheckBox3
+            // PIZZA2AddCheckBox3_ost
             // 
-            this.pepperoniOstAddCheckBox3.AutoSize = true;
-            this.pepperoniOstAddCheckBox3.Location = new System.Drawing.Point(7, 61);
-            this.pepperoniOstAddCheckBox3.Name = "pepperoniOstAddCheckBox3";
-            this.pepperoniOstAddCheckBox3.Size = new System.Drawing.Size(117, 17);
-            this.pepperoniOstAddCheckBox3.TabIndex = 2;
-            this.pepperoniOstAddCheckBox3.Text = "Ost                  6 kr.";
-            this.pepperoniOstAddCheckBox3.UseVisualStyleBackColor = true;
+            this.PIZZA2AddCheckBox3_ost.AutoSize = true;
+            this.PIZZA2AddCheckBox3_ost.Location = new System.Drawing.Point(7, 61);
+            this.PIZZA2AddCheckBox3_ost.Name = "PIZZA2AddCheckBox3_ost";
+            this.PIZZA2AddCheckBox3_ost.Size = new System.Drawing.Size(117, 17);
+            this.PIZZA2AddCheckBox3_ost.TabIndex = 2;
+            this.PIZZA2AddCheckBox3_ost.Text = "Ost                  6 kr.";
+            this.PIZZA2AddCheckBox3_ost.UseVisualStyleBackColor = true;
             // 
-            // pepperoniChampignonAddCheckBox2
+            // PIZZA2AddCheckBox2_champignon
             // 
-            this.pepperoniChampignonAddCheckBox2.AutoSize = true;
-            this.pepperoniChampignonAddCheckBox2.Location = new System.Drawing.Point(7, 38);
-            this.pepperoniChampignonAddCheckBox2.Name = "pepperoniChampignonAddCheckBox2";
-            this.pepperoniChampignonAddCheckBox2.Size = new System.Drawing.Size(118, 17);
-            this.pepperoniChampignonAddCheckBox2.TabIndex = 1;
-            this.pepperoniChampignonAddCheckBox2.Text = "Champignon  11 kr.";
-            this.pepperoniChampignonAddCheckBox2.UseVisualStyleBackColor = true;
+            this.PIZZA2AddCheckBox2_champignon.AutoSize = true;
+            this.PIZZA2AddCheckBox2_champignon.Location = new System.Drawing.Point(7, 38);
+            this.PIZZA2AddCheckBox2_champignon.Name = "PIZZA2AddCheckBox2_champignon";
+            this.PIZZA2AddCheckBox2_champignon.Size = new System.Drawing.Size(118, 17);
+            this.PIZZA2AddCheckBox2_champignon.TabIndex = 1;
+            this.PIZZA2AddCheckBox2_champignon.Text = "Champignon  11 kr.";
+            this.PIZZA2AddCheckBox2_champignon.UseVisualStyleBackColor = true;
             // 
-            // pepperoniPepperoniAddCheckBox1
+            // PIZZA2AddCheckBox1_pepperoni
             // 
-            this.pepperoniPepperoniAddCheckBox1.AutoSize = true;
-            this.pepperoniPepperoniAddCheckBox1.Location = new System.Drawing.Point(7, 17);
-            this.pepperoniPepperoniAddCheckBox1.Name = "pepperoniPepperoniAddCheckBox1";
-            this.pepperoniPepperoniAddCheckBox1.Size = new System.Drawing.Size(119, 17);
-            this.pepperoniPepperoniAddCheckBox1.TabIndex = 0;
-            this.pepperoniPepperoniAddCheckBox1.Text = "Pepperoni        8 kr.";
-            this.pepperoniPepperoniAddCheckBox1.UseVisualStyleBackColor = true;
+            this.PIZZA2AddCheckBox1_pepperoni.AutoSize = true;
+            this.PIZZA2AddCheckBox1_pepperoni.Location = new System.Drawing.Point(7, 17);
+            this.PIZZA2AddCheckBox1_pepperoni.Name = "PIZZA2AddCheckBox1_pepperoni";
+            this.PIZZA2AddCheckBox1_pepperoni.Size = new System.Drawing.Size(119, 17);
+            this.PIZZA2AddCheckBox1_pepperoni.TabIndex = 0;
+            this.PIZZA2AddCheckBox1_pepperoni.Text = "Pepperoni        8 kr.";
+            this.PIZZA2AddCheckBox1_pepperoni.UseVisualStyleBackColor = true;
             // 
             // pepperoniKaloriGropuBox
             // 
@@ -459,7 +467,25 @@
             this.Controls.Add(this.beregnButton1);
             this.Name = "Form1";
             this.Text = "Form1";
-
+            this.Load += new System.EventHandler(this.Form1_Load);
+            this.PIZZA1GroupBox1.ResumeLayout(false);
+            this.PIZZA1GroupBox1.PerformLayout();
+            this.PIZZA2GroupBox1.ResumeLayout(false);
+            this.PIZZA2GroupBox1.PerformLayout();
+            this.PIZZA1.ResumeLayout(false);
+            this.PIZZA1.PerformLayout();
+            this.rejerTunKaloriGroupBox.ResumeLayout(false);
+            this.rejerTunKaloriGroupBox.PerformLayout();
+            this.PIZZA1GroupBox2.ResumeLayout(false);
+            this.PIZZA1GroupBox2.PerformLayout();
+            this.PIZZA2.ResumeLayout(false);
+            this.PIZZA2.PerformLayout();
+            this.PIZZA2GroupBox2.ResumeLayout(false);
+            this.PIZZA2GroupBox2.PerformLayout();
+            this.pepperoniKaloriGropuBox.ResumeLayout(false);
+            this.pepperoniKaloriGropuBox.PerformLayout();
+            this.ResumeLayout(false);
+            this.PerformLayout();
 
         }
 
@@ -484,21 +510,21 @@
         private System.Windows.Forms.FontDialog fontDialog1;
         private System.Windows.Forms.Panel PIZZA2;
 
-        private System.Windows.Forms.GroupBox rejerTunPizzaGroupBox;
-        private System.Windows.Forms.GroupBox rejerTunAddGroupBox;
+        private System.Windows.Forms.GroupBox PIZZA1GroupBox1;
+        private System.Windows.Forms.GroupBox PIZZA1GroupBox2;
         private System.Windows.Forms.GroupBox rejerTunKaloriGroupBox;
 
-        private System.Windows.Forms.GroupBox pepperoniPizzaGroupBox;     
-        private System.Windows.Forms.GroupBox pepperoniAddGroupBox;
+        private System.Windows.Forms.GroupBox PIZZA2GroupBox1;     
+        private System.Windows.Forms.GroupBox PIZZA2GroupBox2;
         private System.Windows.Forms.GroupBox pepperoniKaloriGropuBox;
 
-        private System.Windows.Forms.Label rejerMedTunSubTotalLabel;     
+        private System.Windows.Forms.Label PIZZA1SubLabel;     
         private System.Windows.Forms.Label rejerTunKaloriPrSkiveLabel;
         private System.Windows.Forms.Label rejerTunKaloriLabel;
         private System.Windows.Forms.TextBox rejerTunKaloriTextBox;
 
 
-        private System.Windows.Forms.Label pepperoniSubTotalLabel;       
+        private System.Windows.Forms.Label PIZZA2SubLabel;       
         private System.Windows.Forms.Label pepperoniKaloriPrSkiveLabel;
         private System.Windows.Forms.Label pepperoniKaloriLabel;
         private System.Windows.Forms.TextBox pepperoniKaloriTextBox;
@@ -507,12 +533,12 @@
         private System.Windows.Forms.Label totalLabel;
         private System.Windows.Forms.Label bestillingsNummerLabel;
         private System.Windows.Forms.Label forventetLabel;
-        private System.Windows.Forms.CheckBox rejerTunTunAddCheckBox3;
-        private System.Windows.Forms.CheckBox rejerTunRejerAddCheckBox2;
-        private System.Windows.Forms.CheckBox rejerTunLøgAddCheckBox1;
-        private System.Windows.Forms.CheckBox pepperoniOstAddCheckBox3;
-        private System.Windows.Forms.CheckBox pepperoniChampignonAddCheckBox2;
-        private System.Windows.Forms.CheckBox pepperoniPepperoniAddCheckBox1;
+        private System.Windows.Forms.CheckBox PIZZA1AddCheckBox3_tun;
+        private System.Windows.Forms.CheckBox PIZZA1AddCheckBox2_rejer;
+        private System.Windows.Forms.CheckBox PIZZA1AddCheckBox1_løg;
+        private System.Windows.Forms.CheckBox PIZZA2AddCheckBox3_ost;
+        private System.Windows.Forms.CheckBox PIZZA2AddCheckBox2_champignon;
+        private System.Windows.Forms.CheckBox PIZZA2AddCheckBox1_pepperoni;
     }
 }
 
