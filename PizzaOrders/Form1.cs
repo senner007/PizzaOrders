@@ -120,7 +120,7 @@ namespace PizzaOrders
         {
             foreach (ArrayList orderline in arr)
             {
-                 Console.WriteLine("[{0}]", string.Join(", ", orderline.ToArray()));
+               //  Console.WriteLine("[{0}]", string.Join(", ", orderline.ToArray()));
 
             //    string added = (string)orderline[3] + (string)orderline[4] + (string)orderline[5];
              //   var props = typeof(Constants).GetField((string)orderline[3]).GetValue(null);
@@ -128,7 +128,7 @@ namespace PizzaOrders
 
                 CollectPizzas((string)orderline[0], (string)orderline[1], (string)orderline[2], (int)orderline[3], CollectAdded((ArrayList)orderline[4]));
 
-                CalculatePizzas((string)orderline[0], (string)orderline[1], (string)orderline[2], (int)orderline[3]);
+                CalculatePizzas((string)orderline[0], (string)orderline[1], (string)orderline[2], (int)orderline[3], CalculateAdded((ArrayList)orderline[4]));
             }
         }
         public Dictionary<string, int> PizzaList = new Dictionary<string,int>();
@@ -145,19 +145,34 @@ namespace PizzaOrders
             
             return s.Trim();
         }
-        public void CalculatePizzas(string id, string navn, string size, int antal)
+        public int CalculateAdded(ArrayList arr)
         {
-            foreach (FieldInfo field in typeof(Constants).GetFields().Where(f => f.Name.StartsWith(navn + "_PRICE")))
+         
+            List<int> list = new List<int>();
+            foreach (string added in arr)
+            {
+                string[] tokens = added.Split('_');
+                var props = typeof(Constants).GetField(tokens[0]).GetValue(null);
+               
+                list.Add((int)props);
+            }
+            Console.WriteLine(list.Sum());
+            return list.Sum();
+        }
+        public void CalculatePizzas(string id, string navn, string size, int antal, int added)
+        {
+            foreach (FieldInfo field in typeof(Constants).GetFields().Where(f => f.Name.StartsWith(id + "_PRICE")))
             {
                 decimal sizeModifier = (size == Constants.PIZZA_LARGE) ? 1.5M : 1;
-               // Console.WriteLine((int)field.GetRawConstantValue());
-                if (PizzaSum.ContainsKey(navn))
+                string key = id;
+                // Console.WriteLine((int)field.GetRawConstantValue());
+                if (PizzaSum.ContainsKey(key))
                 {
-                    PizzaSum[navn] += (int)field.GetRawConstantValue() * antal * sizeModifier;
+                    PizzaSum[key] +=( (int)field.GetRawConstantValue() * antal * sizeModifier ) + added;
                  //   Console.WriteLine(value);
                 } else
                 {
-                    PizzaSum.Add(navn, (int)field.GetRawConstantValue() * antal * sizeModifier);
+                    PizzaSum.Add( key, ( (int)field.GetRawConstantValue() * antal * sizeModifier)  + added  );
                 }         
             }
             // PizzaSum.ToList().ForEach(Console.WriteLine);          
@@ -171,8 +186,7 @@ namespace PizzaOrders
                 } else
                 {
                     PizzaList.Add(key, antal);
-                }
-                   
+                }                 
         }     
         public string DisplayPizzaOrder ()
         {
@@ -187,16 +201,17 @@ namespace PizzaOrders
         }
         public string DisplayPizzaSubTotal(string s )
         {
-            if (PizzaSum.ContainsKey(s))
-            {
-                return PizzaSum[s].ToString();
+           // Console.WriteLine(s);
+            //if (PizzaSum.ContainsKey(s))
+            //{
+            //    return PizzaSum[s].ToString();
             
-            } else { return ""; }
-            
-        }
-        public string GetInfo ()
-        {
-            return this.ToString();
+            //} else
+            //{
+            //    return "";
+            //}
+
+            return (PizzaSum.ContainsKey(s)) ? PizzaSum[s].ToString() : "";
         }
     }
     static class Constants
@@ -206,22 +221,22 @@ namespace PizzaOrders
 
         public const string PIZZA1_NAME = "REJER MED OST";
         public const int PIZZA1_PRICE = 64;
-        public const string PIZZA1AddCheckBox1 = "LØG";
-        public const string PIZZA1AddCheckBox2 = "REJER";
-        public const string PIZZA1AddCheckBox3 = "TUN";
-        public const int PIZZA1_ADD1_PRICE = 5,
-                         PIZZA1_ADD2_PRICE = 10,
-                         PIZZA1_ADD3_PRICE = 7;
+        //public const string PIZZA1AddCheckBox1 = "LØG";
+        //public const string PIZZA1AddCheckBox2 = "REJER";
+        //public const string PIZZA1AddCheckBox3 = "TUN";
+        public const int PIZZA1AddCheckBox1 = 5,
+                         PIZZA1AddCheckBox2 = 10,
+                         PIZZA1AddCheckBox3 = 7;
         public const float PIZZA1_KCAL = 42.2F;
 
         public const string PIZZA2_NAME = "PEPPERONI";
         public const int PIZZA2_PRICE = 59;
-        public const string PIZZA2AddCheckBox1 = "PEPPERONI";
-        public const string PIZZA2AddCheckBox2 = "CHAMPIGNON";
-        public const string PIZZA2AddCheckBox3 = "OST";
-        public const int PIZZA2_ADD1_PRICE = 8,
-                         PIZZA2_ADD2_PRICE = 11,
-                         PIZZA2_ADD3_PRICE = 6;
+        //public const string PIZZA2AddCheckBox1 = "PEPPERONI";
+        //public const string PIZZA2AddCheckBox2 = "CHAMPIGNON";
+        //public const string PIZZA2AddCheckBox3 = "OST";
+        public const int PIZZA2AddCheckBox1 = 8,
+                         PIZZA2AddCheckBox2 = 11,
+                         PIZZA2AddCheckBox3 = 6;
         public const float PIZZA1_KCA2 = 31.6F;
 
     }
