@@ -241,7 +241,7 @@
             // PIZZA1KaloriLabel
             // 
             this.PIZZA1KaloriLabel.AutoSize = true;
-            this.PIZZA1KaloriLabel.Location = new System.Drawing.Point(16, 22);
+            this.PIZZA1KaloriLabel.Location = new System.Drawing.Point(6, 19);
             this.PIZZA1KaloriLabel.Name = "PIZZA1KaloriLabel";
             this.PIZZA1KaloriLabel.Size = new System.Drawing.Size(85, 13);
             this.PIZZA1KaloriLabel.TabIndex = 2;
@@ -249,7 +249,7 @@
             // 
             // P1_KCAL
             // 
-            this.P1_KCAL.Location = new System.Drawing.Point(154, 19);
+            this.P1_KCAL.Location = new System.Drawing.Point(154, 15);
             this.P1_KCAL.Name = "P1_KCAL";
             this.P1_KCAL.Size = new System.Drawing.Size(40, 20);
             this.P1_KCAL.TabIndex = 0;
@@ -372,7 +372,7 @@
             // PIZZA2KaloriLabel
             // 
             this.PIZZA2KaloriLabel.AutoSize = true;
-            this.PIZZA2KaloriLabel.Location = new System.Drawing.Point(16, 23);
+            this.PIZZA2KaloriLabel.Location = new System.Drawing.Point(6, 18);
             this.PIZZA2KaloriLabel.Name = "PIZZA2KaloriLabel";
             this.PIZZA2KaloriLabel.Size = new System.Drawing.Size(85, 13);
             this.PIZZA2KaloriLabel.TabIndex = 2;
@@ -380,7 +380,7 @@
             // 
             // P2_KCAL
             // 
-            this.P2_KCAL.Location = new System.Drawing.Point(154, 19);
+            this.P2_KCAL.Location = new System.Drawing.Point(154, 13);
             this.P2_KCAL.Name = "P2_KCAL";
             this.P2_KCAL.Size = new System.Drawing.Size(40, 20);
             this.P2_KCAL.TabIndex = 0;

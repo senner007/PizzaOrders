@@ -156,7 +156,8 @@ namespace PizzaOrders
                             if (value != 0)
                             {
                                 if (label.Text == Constants.KCAL_SLICE_TEXT) 
-                                 label.Text = Constants.KCAL_SLICE_TEXT + (value2 = i / value).ToString("##.##");
+                                 label.Text = Constants.KCAL_SLICE_TEXT + (i / value).ToString("##.##") + "KCal\n" +
+                                 " Kalorier (family): " + ((i / value) * 1.5M).ToString("##.##") + "KCal";
 
 
                             }
@@ -226,6 +227,7 @@ namespace PizzaOrders
             if (ctrl is Label && ctrl.Name.EndsWith("SubLabel")) ctrl.Text = "Sub Total:";
             if (ctrl is Label && ctrl.Name.EndsWith("totalLabel")) ctrl.Text = "Total: ";
             if (ctrl is Label && ctrl.Name.EndsWith("bestillingsNummerLabel")) ctrl.Text = "Dit bestillingsnummer er: ";
+            if (ctrl is Label && ctrl.Text.StartsWith("Skær i skiver")) ctrl.Text = Constants.KCAL_SLICE_TEXT;
 
             foreach (Control childCtrl in ctrl.Controls) Clear(childCtrl);
         }
