@@ -23,6 +23,29 @@ namespace PizzaOrders
             //rejerTunPizzaGroupBox.Tag = "PIZZA1";
             //pepperoniPizzaGroupBox.Tag = "PIZZA2";
 
+            PIZZA1.Name = Constants_New.P1_NAME;
+            PIZZA1.Text = Constants_New.P1_TEXT;
+
+
+            PIZZA2.Name = Constants_New.P2_NAME;
+            PIZZA2.Text = Constants_New.P2_TEXT;
+
+            PIZZA1AddCheckBox1.Name = Constants_New.P1_CHK1_NAME;
+            PIZZA1AddCheckBox2.Name = Constants_New.P1_CHK2_NAME;
+            PIZZA1AddCheckBox3.Name = Constants_New.P1_CHK3_NAME;
+
+            PIZZA1AddCheckBox1.Tag = Constants_New.P1_CHK1_TAG;
+            PIZZA1AddCheckBox2.Tag = Constants_New.P1_CHK2_TAG;
+            PIZZA1AddCheckBox3.Tag = Constants_New.P1_CHK3_TAG;
+
+            PIZZA2AddCheckBox1.Name = Constants_New.P2_CHK1_NAME;
+            PIZZA2AddCheckBox2.Name = Constants_New.P2_CHK2_NAME;
+            PIZZA2AddCheckBox3.Name = Constants_New.P2_CHK3_NAME;
+
+            PIZZA2AddCheckBox1.Tag = Constants_New.P2_CHK1_TAG;
+            PIZZA2AddCheckBox2.Tag = Constants_New.P2_CHK2_TAG;
+            PIZZA2AddCheckBox3.Tag = Constants_New.P2_CHK3_TAG;
+
             // TODO : name ui elements according to constants
 
         }
@@ -91,7 +114,7 @@ namespace PizzaOrders
 
                      foreach (CheckBox chkBox in panelGrpBox2.Controls.OfType<CheckBox>())
                      { 
-                        if (chkBox.Checked) added.Add(chkBox.Name);
+                        if (chkBox.Checked) added.Add(chkBox.Name + "-" + chkBox.Tag);
                      }
                      orderline.Add(added);
 
@@ -194,35 +217,37 @@ namespace PizzaOrders
         }
         public int CalculateAdded(ArrayList arr)
         {
-         
+           
             List<int> list = new List<int>();
             foreach (string added in arr)
             {
-                string[] tokens = added.Split('_');
-                var props = typeof(Constants).GetField(tokens[0]).GetValue(null);
                
-                list.Add((int)props);
+                string[] tokens = added.Split('-');
+                Console.WriteLine(tokens[0]);
+                int addPrice = PriceCatalog.GetValue(tokens[0]);
+                // var props = typeof(Constants).GetField(tokens[0]).GetValue(null);
+
+                list.Add(addPrice);
             }
             Console.WriteLine(list.Sum());
             return list.Sum();
         }
         public void CalculatePizzas(string id, string navn, string size, int antal, int added)
         {
-            foreach (FieldInfo field in typeof(Constants).GetFields().Where(f => f.Name.StartsWith(id + "_PRICE")))
+            int idPrice = PriceCatalog.GetValue(id);           
+            decimal sizeModifier = (size == Constants.PIZZA_LARGE) ? 1.5M : 1;
+            string key = id;
+            decimal subtotal = (idPrice * antal * sizeModifier ) + (added * antal); 
+            if (PizzaSum.ContainsKey(key))
             {
-                decimal sizeModifier = (size == Constants.PIZZA_LARGE) ? 1.5M : 1;
-                string key = id;
-                decimal subtotal = ( (int)field.GetRawConstantValue() * antal * sizeModifier ) + added; 
-                if (PizzaSum.ContainsKey(key))
-                {
-                    PizzaSum[key] += subtotal;
-                    total += subtotal;
-                } else
-                {
-                    PizzaSum.Add( key, subtotal);
-                }
+                PizzaSum[key] += subtotal;
                 total += subtotal;
+            } else
+            {
+                PizzaSum.Add( key, subtotal);
             }
+            total += subtotal;
+           
             // PizzaSum.ToList().ForEach(Console.WriteLine);          
         }
         public void CollectPizzas (string id, string navn, string size, int antal, string added)
@@ -252,6 +277,26 @@ namespace PizzaOrders
             return (PizzaSum.ContainsKey(s)) ? PizzaSum[s].ToString() : "";
         }
     }
+    static class PriceCatalog
+    {
+        static private Dictionary<string, int> dict = new Dictionary<string, int>
+        {
+            { Constants_New.P1_NAME, Constants_New.P1_TAG }, // pizza1
+            { Constants_New.P2_NAME, Constants_New.P2_TAG },  // pizza2
+
+            { Constants_New.P1_CHK1_NAME, Constants_New.P1_CHK1_TAG },
+            { Constants_New.P1_CHK2_NAME, Constants_New.P1_CHK2_TAG },
+            { Constants_New.P1_CHK3_NAME, Constants_New.P1_CHK3_TAG },
+
+            { Constants_New.P2_CHK1_NAME, Constants_New.P2_CHK1_TAG },
+            { Constants_New.P2_CHK2_NAME, Constants_New.P2_CHK2_TAG },
+            { Constants_New.P2_CHK3_NAME, Constants_New.P2_CHK3_TAG }
+        };
+        public static int GetValue(string s)
+        {
+            return dict[s];
+        }
+    }
     static class Constants
     {
         public const string PIZZA_LARGE = "family";
@@ -277,6 +322,70 @@ namespace PizzaOrders
                          PIZZA2AddCheckBox2 = 11,
                          PIZZA2AddCheckBox3 = 6;
         public const float PIZZA1_KCA2 = 31.6F;
+
+    }
+    public static class Constants_New
+    {
+
+        public const string P1_NAME = "PIZZA1";
+        public const string P1_TEXT = "Rejer med ost";
+        public const int P1_TAG = 64;
+
+        public const string P1_TB1_NAME = "P1_TB1";
+        public const string P1_TB1_TAG = "Almindelig";
+
+        public const string P1_TB2_NAME = "P1_TB2";
+        public const string P1_TB2_TAG = "Family";
+
+        public const string P1_CHK1_NAME = "P1_CHK1";
+        public const string P1_CHK1_TEXT = "Løg";
+        public const int P1_CHK1_TAG = 5;
+
+        public const string P1_CHK2_NAME = "P1_CHK2";
+        public const string P1_CHK2_TEXT = "Rejer";
+        public const int P1_CHK2_TAG = 10;
+
+        public const string P1_CHK3_NAME = "P1_CHK3";
+        public const string P1_CHK3_TEXT = "Tun";
+        public const int P1_CHK3_TAG = 7;
+
+
+        public const string P1_KCAL_NAME = "P1_KCAL";
+        public const int P1_KCAL_TAG = 231;
+
+
+
+
+
+
+        public const string P2_NAME = "PIZZA2";
+        public const string P2_TEXT = "Pepperoni";
+        public const int P2_TAG = 59;
+
+        public const string P2_TB1_NAME = "P2_TB1";
+        public const string P2_TB1_TAG = "Almindelig";
+
+        public const string P2_TB2_NAME = "P2_TB2";
+        public const string P2_TB2_TAG = "Family";
+
+
+        public const string P2_CHK1_NAME = "P2_CHK1";
+        public const string P2_CHK1_TEXT = "Pepperoni";
+        public const int P2_CHK1_TAG = 8;
+
+        public const string P2_CHK2_NAME = "P2_CHK2";
+        public const string P2_CHK2_TEXT = "Champignon";
+        public const int P2_CHK2_TAG = 11;
+
+        public const string P2_CHK3_NAME = "P2_CHK3";
+        public const string P2_CHK3_TEXT = "Ost";
+        public const int P2_CHK3_TAG = 6;
+
+        public const string P2_KCAL_NAME = "P2_KCAL";
+        public const int P2_KCAL_TAG = 253;
+
+
+
 
     }
 
