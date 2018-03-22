@@ -10,13 +10,14 @@ namespace PizzaOrders
     {
         public PizzaOrder(ArrayList arr)
         {
+            orderLines.Add(arr);
             foreach (ArrayList orderline in arr)
             {
                 //  Console.WriteLine("[{0}]", string.Join(", ", orderline.ToArray()));
 
                 //    string added = (string)orderline[3] + (string)orderline[4] + (string)orderline[5];
                 //   var props = typeof(Constants).GetField((string)orderline[3]).GetValue(null);
-
+                
 
                 CollectPizzas(
                     (string)orderline[0], 
@@ -37,6 +38,7 @@ namespace PizzaOrders
         }
         public Dictionary<string, int> PizzaList = new Dictionary<string, int>();
         public Dictionary<string, decimal> PizzaSum = new Dictionary<string, decimal>();
+        private ArrayList orderLines = new ArrayList();
         public decimal total { get; private set; } = 0;
 
         public string CollectAdded(ArrayList arr)

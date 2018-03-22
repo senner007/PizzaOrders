@@ -55,14 +55,19 @@ namespace PizzaOrders
             P1_KCAL.Name = Constants.P1_KCAL_NAME; // kalorietekstbox 1 -2
             P2_KCAL.Name = Constants.P2_KCAL_NAME;
 
-            PIZZA1KaloriLabel.Name = Constants.P1_KCAL_SLICE_NAME;
-            PIZZA2KaloriLabel.Name = Constants.P2_KCAL_SLICE_NAME;
+            PIZZA1KaloriLabel.Name = Constants.KCAL_SLICE_NAME;
+            PIZZA2KaloriLabel.Name = Constants.KCAL_SLICE_NAME;
 
 
             PIZZA1KaloriLabel.Text = Constants.KCAL_SLICE_TEXT;
             PIZZA2KaloriLabel.Text = Constants.KCAL_SLICE_TEXT;
 
+            PIZZA1SubLabel.Text = Constants.SUBTOTAL_TEXT;
+            PIZZA2SubLabel.Text = Constants.SUBTOTAL_TEXT;
 
+            PIZZA1SubLabel.Name = Constants.SUBTOTAL_NAME; // p1 sublabel
+
+            PIZZA2SubLabel.Name = Constants.SUBTOTAL_NAME; // p2 sublabel
             // TODO : name ui elements according to constants
 
         }
@@ -144,7 +149,7 @@ namespace PizzaOrders
 
                     foreach (Label label in panelGrpBox3.Controls.OfType<Label>())
                     {
-                        label.Text = Constants.KCAL_SLICE_TEXT;
+
                         Console.WriteLine((string)tBox.Text);
                         int value;
 
@@ -155,7 +160,7 @@ namespace PizzaOrders
                             decimal value2 = 0;
                             if (value != 0)
                             {
-                                if (label.Text == Constants.KCAL_SLICE_TEXT) 
+                                if (label.Name == Constants.KCAL_SLICE_NAME) 
                                  label.Text = Constants.KCAL_SLICE_TEXT + (i / value).ToString("##.##") + "KCal\n" +
                                  " Kalorier (family): " + ((i / value) * 1.5M).ToString("##.##") + "KCal";
 
@@ -183,8 +188,8 @@ namespace PizzaOrders
             Console.WriteLine(  pizzaOrder.DisplayPizzaOrder() );
 
             foreach (Panel panel in panels) // add to subtotal
-            {
-                panel.Controls.OfType<Label>().FirstOrDefault(l => l.Name.EndsWith(panel.Name + "SubLabel")).Text = "Sub total: " + pizzaOrder.DisplayPizzaSubTotal(panel.Name);
+            {            
+                panel.Controls.OfType<Label>().FirstOrDefault(l => l.Name.EndsWith(Constants.SUBTOTAL_NAME)).Text = Constants.SUBTOTAL_TEXT + pizzaOrder.DisplayPizzaSubTotal(panel.Name);
             }
 
             this.Controls["totalLabel"].Text = "Total: " + pizzaOrder.total.ToString();
