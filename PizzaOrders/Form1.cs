@@ -200,6 +200,8 @@ namespace PizzaOrders
                 this.Controls["bestillingsNummerLabel"].Text = "Dit bestillingsnummer er: " + pizzaCounter.GetCounter();
                 this.Controls["bestilButton"].Enabled = true;
             }
+
+            // TODO : Tilføj klokkeslet
             
         }
 

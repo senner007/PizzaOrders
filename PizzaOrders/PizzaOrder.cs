@@ -73,7 +73,7 @@ namespace PizzaOrders
             decimal sizeModifier = (size == "family") ? 1.5M : 1;
             string key = id;
             decimal subtotal = (idPrice * antal * sizeModifier) + (added * antal);
-            if (PizzaSum.ContainsKey(key))
+            if (PizzaSum.ContainsKey(key)) // TODO : make unnessecasry
             {
                 PizzaSum[key] += subtotal;
               //  total += subtotal;
