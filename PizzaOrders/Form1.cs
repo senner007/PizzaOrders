@@ -105,7 +105,7 @@ namespace PizzaOrders
         }
         private string IncrementCounter ()
         {
-            PizzaCounter pizzaCounter = new PizzaCounter();
+            PendingOrder pizzaCounter = new PendingOrder();
             pizzaCounter.IncrementCounter();
             string bestilling = "Dit bestillingsnummer er: ";
             return bestilling + " " + pizzaCounter.GetCounter();
@@ -191,19 +191,21 @@ namespace PizzaOrders
 
             if (pizzaOrder.total > 0)
             {
-                PizzaCounter pizzaCounter = new PizzaCounter();
+                PendingOrder pizzaCounter = new PendingOrder(pizzaOrder.DisplayPizzaOrder());
                 this.Controls["bestillingsNummerLabel"].Text = "Dit bestillingsnummer er: " + pizzaCounter.GetCounter();
                 this.Controls["bestilButton"].Enabled = true;
             }
             
         }
 
+
         private void bestilButton_Click(object sender, EventArgs e)
         {
-          
 
-            PizzaCounter pizzaCounter = new PizzaCounter();
+
+            PendingOrder pizzaCounter = new PendingOrder();
             pizzaCounter.IncrementCounter();
+            System.Windows.Forms.MessageBox.Show(pizzaCounter.GetOrder());
             Clear(this);
             this.Controls["bestilButton"].Enabled = false;
 
@@ -232,12 +234,14 @@ namespace PizzaOrders
             foreach (Control childCtrl in ctrl.Controls) Clear(childCtrl);
         }
     }
-    class PizzaCounter
+    class PendingOrder
     {
         public static int Counter { get; private set; } = 1;
-        public PizzaCounter()
+        public static string Pending { get; private set; }
+        public PendingOrder() {}
+        public PendingOrder(string pending)
         {
-
+            Pending = pending;
         }
         public void IncrementCounter ()
         {
@@ -246,6 +250,10 @@ namespace PizzaOrders
         public string GetCounter ()
         {
             return Counter.ToString();
+        }
+        public string GetOrder()
+        {
+            return Pending.ToString();
         }
     }
    

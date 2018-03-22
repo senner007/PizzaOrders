@@ -84,7 +84,7 @@ namespace PizzaOrders
             PizzaList.Add(key, antal);
             // }                 
         }
-        public string DisplayPizzaOrder()
+        public string DisplayPizzaOrder() // TODO : Improve!
         {
             string s = "";
             foreach (KeyValuePair<string, int> kvp in PizzaList)
