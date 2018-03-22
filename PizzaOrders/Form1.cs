@@ -23,6 +23,8 @@ namespace PizzaOrders
             //rejerTunPizzaGroupBox.Tag = "PIZZA1";
             //pepperoniPizzaGroupBox.Tag = "PIZZA2";
 
+            // TODO : Name groupBox text + tag
+
             PIZZA1.Name = Constants_New.P1_NAME;
             PIZZA1.Text = Constants_New.P1_TEXT;
 
@@ -34,17 +36,17 @@ namespace PizzaOrders
             PIZZA1AddCheckBox2.Name = Constants_New.P1_CHK2_NAME;
             PIZZA1AddCheckBox3.Name = Constants_New.P1_CHK3_NAME;
 
-            PIZZA1AddCheckBox1.Tag = Constants_New.P1_CHK1_TAG;
-            PIZZA1AddCheckBox2.Tag = Constants_New.P1_CHK2_TAG;
-            PIZZA1AddCheckBox3.Tag = Constants_New.P1_CHK3_TAG;
+            PIZZA1AddCheckBox1.Text = Constants_New.P1_CHK1_TEXT + " " + Constants_New.P1_CHK1_TAG + " kr.";
+            PIZZA1AddCheckBox2.Text = Constants_New.P1_CHK2_TEXT + " " + Constants_New.P1_CHK2_TAG + " kr.";
+            PIZZA1AddCheckBox3.Text = Constants_New.P1_CHK3_TEXT + " " + Constants_New.P1_CHK3_TAG + " kr.";
 
             PIZZA2AddCheckBox1.Name = Constants_New.P2_CHK1_NAME;
             PIZZA2AddCheckBox2.Name = Constants_New.P2_CHK2_NAME;
             PIZZA2AddCheckBox3.Name = Constants_New.P2_CHK3_NAME;
 
-            PIZZA2AddCheckBox1.Tag = Constants_New.P2_CHK1_TAG;
-            PIZZA2AddCheckBox2.Tag = Constants_New.P2_CHK2_TAG;
-            PIZZA2AddCheckBox3.Tag = Constants_New.P2_CHK3_TAG;
+            PIZZA2AddCheckBox1.Text = Constants_New.P2_CHK1_TEXT + " " + Constants_New.P2_CHK1_TAG + " kr.";
+            PIZZA2AddCheckBox2.Text = Constants_New.P2_CHK2_TEXT + " " + Constants_New.P2_CHK2_TAG + " kr.";
+            PIZZA2AddCheckBox3.Text = Constants_New.P2_CHK3_TEXT + " " + Constants_New.P2_CHK3_TAG + " kr.";
 
             // TODO : name ui elements according to constants
 
@@ -114,7 +116,7 @@ namespace PizzaOrders
 
                      foreach (CheckBox chkBox in panelGrpBox2.Controls.OfType<CheckBox>())
                      { 
-                        if (chkBox.Checked) added.Add(chkBox.Name + "-" + chkBox.Tag);
+                        if (chkBox.Checked) added.Add(chkBox.Name + "-" + chkBox.Text);
                      }
                      orderline.Add(added);
 
@@ -209,7 +211,7 @@ namespace PizzaOrders
             string s = "";
             foreach (string added in arr)
             {
-                string[] tokens = added.Split('_');
+                string[] tokens = added.Split('-');              
                 s += tokens[1] + " ";
             }
             
@@ -223,9 +225,7 @@ namespace PizzaOrders
             {
                
                 string[] tokens = added.Split('-');
-                Console.WriteLine(tokens[0]);
                 int addPrice = PriceCatalog.GetValue(tokens[0]);
-                // var props = typeof(Constants).GetField(tokens[0]).GetValue(null);
 
                 list.Add(addPrice);
             }
