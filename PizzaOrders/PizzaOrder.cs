@@ -18,9 +18,21 @@ namespace PizzaOrders
                 //   var props = typeof(Constants).GetField((string)orderline[3]).GetValue(null);
 
 
-                CollectPizzas((string)orderline[0], (string)orderline[1], (string)orderline[2], (int)orderline[3], CollectAdded((ArrayList)orderline[4]));
+                CollectPizzas(
+                    (string)orderline[0], 
+                    (string)orderline[1], 
+                    (string)orderline[2], 
+                    (int)orderline[3], 
+                    CollectAdded((ArrayList)orderline[4])
+                );
 
-                CalculatePizzas((string)orderline[0], (string)orderline[1], (string)orderline[2], (int)orderline[3], CalculateAdded((ArrayList)orderline[4]));
+                CalculatePizzas(
+                    (string)orderline[0], 
+                    (string)orderline[1], 
+                    (string)orderline[2], 
+                    (int)orderline[3], 
+                    CalculateAdded((ArrayList)orderline[4], (string)orderline[2])
+                );
             }
         }
         public Dictionary<string, int> PizzaList = new Dictionary<string, int>();
@@ -38,22 +50,22 @@ namespace PizzaOrders
 
             return s.Trim();
         }
-        public int CalculateAdded(ArrayList arr)
+        public decimal CalculateAdded(ArrayList arr, string size)
         {
-
-            List<int> list = new List<int>();
+            decimal sizeModifier = (size == "family") ? 1.5M : 1;
+            List<decimal> list = new List<decimal>();
             foreach (string added in arr)
             {
 
                 string[] tokens = added.Split('-');
-                int addPrice = PriceCatalog.GetValue(tokens[0]);
+                decimal addPrice = PriceCatalog.GetValue(tokens[0]) * sizeModifier;
 
                 list.Add(addPrice);
             }
             Console.WriteLine(list.Sum());
             return list.Sum();
         }
-        public void CalculatePizzas(string id, string navn, string size, int antal, int added)
+        public void CalculatePizzas(string id, string navn, string size, int antal, decimal added)
         {
             int idPrice = PriceCatalog.GetValue(id);
             decimal sizeModifier = (size == "family") ? 1.5M : 1;
@@ -62,7 +74,7 @@ namespace PizzaOrders
             if (PizzaSum.ContainsKey(key))
             {
                 PizzaSum[key] += subtotal;
-                total += subtotal;
+              //  total += subtotal;
             }
             else
             {
