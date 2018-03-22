@@ -19,7 +19,12 @@ namespace PizzaOrders
 
             { Constants.P2_CHK1_NAME, Constants.P2_CHK1_TAG }, // pizza 2 checkbox 1 -3
             { Constants.P2_CHK2_NAME, Constants.P2_CHK2_TAG },
-            { Constants.P2_CHK3_NAME, Constants.P2_CHK3_TAG }
+            { Constants.P2_CHK3_NAME, Constants.P2_CHK3_TAG },
+
+            { Constants.P1_KCAL_NAME, Constants.P1_KCAL_TAG }, // pizza 1 kalorier
+
+            { Constants.P2_KCAL_NAME, Constants.P2_KCAL_TAG }  // pizza 2 kalorier
+
         };
         public static int GetValue(string s)
         {

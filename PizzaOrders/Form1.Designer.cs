@@ -43,10 +43,9 @@
             this.PepperoniAntalLabel = new System.Windows.Forms.Label();
             this.PIZZA1 = new System.Windows.Forms.Panel();
             this.PIZZA1SubLabel = new System.Windows.Forms.Label();
-            this.rejerTunKaloriGroupBox = new System.Windows.Forms.GroupBox();
-            this.rejerTunKaloriPrSkiveLabel = new System.Windows.Forms.Label();
-            this.rejerTunKaloriLabel = new System.Windows.Forms.Label();
-            this.rejerTunKaloriTextBox = new System.Windows.Forms.TextBox();
+            this.PIZZA1GroupBox3 = new System.Windows.Forms.GroupBox();
+            this.PIZZA1KaloriLabel = new System.Windows.Forms.Label();
+            this.P1_KCAL = new System.Windows.Forms.TextBox();
             this.PIZZA1GroupBox2 = new System.Windows.Forms.GroupBox();
             this.PIZZA1AddCheckBox3 = new System.Windows.Forms.CheckBox();
             this.PIZZA1AddCheckBox2 = new System.Windows.Forms.CheckBox();
@@ -58,10 +57,9 @@
             this.PIZZA2AddCheckBox3 = new System.Windows.Forms.CheckBox();
             this.PIZZA2AddCheckBox2 = new System.Windows.Forms.CheckBox();
             this.PIZZA2AddCheckBox1 = new System.Windows.Forms.CheckBox();
-            this.pepperoniKaloriGropuBox = new System.Windows.Forms.GroupBox();
-            this.pepperoniKaloriPrSkiveLabel = new System.Windows.Forms.Label();
-            this.pepperoniKaloriLabel = new System.Windows.Forms.Label();
-            this.pepperoniKaloriTextBox = new System.Windows.Forms.TextBox();
+            this.PIZZA2GroupBox3 = new System.Windows.Forms.GroupBox();
+            this.PIZZA2KaloriLabel = new System.Windows.Forms.Label();
+            this.P2_KCAL = new System.Windows.Forms.TextBox();
             this.bestilButton = new System.Windows.Forms.Button();
             this.cancelButton = new System.Windows.Forms.Button();
             this.totalLabel = new System.Windows.Forms.Label();
@@ -70,11 +68,11 @@
             this.PIZZA1GroupBox1.SuspendLayout();
             this.PIZZA2GroupBox1.SuspendLayout();
             this.PIZZA1.SuspendLayout();
-            this.rejerTunKaloriGroupBox.SuspendLayout();
+            this.PIZZA1GroupBox3.SuspendLayout();
             this.PIZZA1GroupBox2.SuspendLayout();
             this.PIZZA2.SuspendLayout();
             this.PIZZA2GroupBox2.SuspendLayout();
-            this.pepperoniKaloriGropuBox.SuspendLayout();
+            this.PIZZA2GroupBox3.SuspendLayout();
             this.SuspendLayout();
             // 
             // almPizzaCheckBox1
@@ -212,7 +210,7 @@
             // PIZZA1
             // 
             this.PIZZA1.Controls.Add(this.PIZZA1SubLabel);
-            this.PIZZA1.Controls.Add(this.rejerTunKaloriGroupBox);
+            this.PIZZA1.Controls.Add(this.PIZZA1GroupBox3);
             this.PIZZA1.Controls.Add(this.PIZZA1GroupBox2);
             this.PIZZA1.Controls.Add(this.PIZZA1GroupBox1);
             this.PIZZA1.Location = new System.Drawing.Point(60, 60);
@@ -229,42 +227,32 @@
             this.PIZZA1SubLabel.TabIndex = 12;
             this.PIZZA1SubLabel.Text = "Sub total:";
             // 
-            // rejerTunKaloriGroupBox
+            // PIZZA1GroupBox3
             // 
-            this.rejerTunKaloriGroupBox.Controls.Add(this.rejerTunKaloriPrSkiveLabel);
-            this.rejerTunKaloriGroupBox.Controls.Add(this.rejerTunKaloriLabel);
-            this.rejerTunKaloriGroupBox.Controls.Add(this.rejerTunKaloriTextBox);
-            this.rejerTunKaloriGroupBox.Location = new System.Drawing.Point(532, 16);
-            this.rejerTunKaloriGroupBox.Name = "rejerTunKaloriGroupBox";
-            this.rejerTunKaloriGroupBox.Size = new System.Drawing.Size(200, 62);
-            this.rejerTunKaloriGroupBox.TabIndex = 11;
-            this.rejerTunKaloriGroupBox.TabStop = false;
-            this.rejerTunKaloriGroupBox.Text = "Kalori";
+            this.PIZZA1GroupBox3.Controls.Add(this.PIZZA1KaloriLabel);
+            this.PIZZA1GroupBox3.Controls.Add(this.P1_KCAL);
+            this.PIZZA1GroupBox3.Location = new System.Drawing.Point(532, 16);
+            this.PIZZA1GroupBox3.Name = "PIZZA1GroupBox3";
+            this.PIZZA1GroupBox3.Size = new System.Drawing.Size(200, 62);
+            this.PIZZA1GroupBox3.TabIndex = 11;
+            this.PIZZA1GroupBox3.TabStop = false;
+            this.PIZZA1GroupBox3.Text = "Kalori";
             // 
-            // rejerTunKaloriPrSkiveLabel
+            // PIZZA1KaloriLabel
             // 
-            this.rejerTunKaloriPrSkiveLabel.AutoSize = true;
-            this.rejerTunKaloriPrSkiveLabel.Location = new System.Drawing.Point(20, 38);
-            this.rejerTunKaloriPrSkiveLabel.Name = "rejerTunKaloriPrSkiveLabel";
-            this.rejerTunKaloriPrSkiveLabel.Size = new System.Drawing.Size(85, 13);
-            this.rejerTunKaloriPrSkiveLabel.TabIndex = 2;
-            this.rejerTunKaloriPrSkiveLabel.Text = "Kalori pr. skive =";
+            this.PIZZA1KaloriLabel.AutoSize = true;
+            this.PIZZA1KaloriLabel.Location = new System.Drawing.Point(16, 22);
+            this.PIZZA1KaloriLabel.Name = "PIZZA1KaloriLabel";
+            this.PIZZA1KaloriLabel.Size = new System.Drawing.Size(85, 13);
+            this.PIZZA1KaloriLabel.TabIndex = 2;
+            this.PIZZA1KaloriLabel.Text = "Kalori pr. skive =";
             // 
-            // rejerTunKaloriLabel
+            // P1_KCAL
             // 
-            this.rejerTunKaloriLabel.AutoSize = true;
-            this.rejerTunKaloriLabel.Location = new System.Drawing.Point(17, 21);
-            this.rejerTunKaloriLabel.Name = "rejerTunKaloriLabel";
-            this.rejerTunKaloriLabel.Size = new System.Drawing.Size(72, 13);
-            this.rejerTunKaloriLabel.TabIndex = 1;
-            this.rejerTunKaloriLabel.Text = "Skær i skiver:";
-            // 
-            // rejerTunKaloriTextBox
-            // 
-            this.rejerTunKaloriTextBox.Location = new System.Drawing.Point(107, 19);
-            this.rejerTunKaloriTextBox.Name = "rejerTunKaloriTextBox";
-            this.rejerTunKaloriTextBox.Size = new System.Drawing.Size(40, 20);
-            this.rejerTunKaloriTextBox.TabIndex = 0;
+            this.P1_KCAL.Location = new System.Drawing.Point(154, 19);
+            this.P1_KCAL.Name = "P1_KCAL";
+            this.P1_KCAL.Size = new System.Drawing.Size(40, 20);
+            this.P1_KCAL.TabIndex = 0;
             // 
             // PIZZA1GroupBox2
             // 
@@ -312,7 +300,7 @@
             // 
             this.PIZZA2.Controls.Add(this.PIZZA2SubLabel);
             this.PIZZA2.Controls.Add(this.PIZZA2GroupBox2);
-            this.PIZZA2.Controls.Add(this.pepperoniKaloriGropuBox);
+            this.PIZZA2.Controls.Add(this.PIZZA2GroupBox3);
             this.PIZZA2.Controls.Add(this.PIZZA2GroupBox1);
             this.PIZZA2.Location = new System.Drawing.Point(60, 218);
             this.PIZZA2.Name = "PIZZA2";
@@ -370,42 +358,32 @@
             this.PIZZA2AddCheckBox1.Text = "Pepperoni        8 kr.";
             this.PIZZA2AddCheckBox1.UseVisualStyleBackColor = true;
             // 
-            // pepperoniKaloriGropuBox
+            // PIZZA2GroupBox3
             // 
-            this.pepperoniKaloriGropuBox.Controls.Add(this.pepperoniKaloriPrSkiveLabel);
-            this.pepperoniKaloriGropuBox.Controls.Add(this.pepperoniKaloriLabel);
-            this.pepperoniKaloriGropuBox.Controls.Add(this.pepperoniKaloriTextBox);
-            this.pepperoniKaloriGropuBox.Location = new System.Drawing.Point(532, 16);
-            this.pepperoniKaloriGropuBox.Name = "pepperoniKaloriGropuBox";
-            this.pepperoniKaloriGropuBox.Size = new System.Drawing.Size(200, 62);
-            this.pepperoniKaloriGropuBox.TabIndex = 13;
-            this.pepperoniKaloriGropuBox.TabStop = false;
-            this.pepperoniKaloriGropuBox.Text = "Kalori";
+            this.PIZZA2GroupBox3.Controls.Add(this.PIZZA2KaloriLabel);
+            this.PIZZA2GroupBox3.Controls.Add(this.P2_KCAL);
+            this.PIZZA2GroupBox3.Location = new System.Drawing.Point(532, 16);
+            this.PIZZA2GroupBox3.Name = "PIZZA2GroupBox3";
+            this.PIZZA2GroupBox3.Size = new System.Drawing.Size(200, 62);
+            this.PIZZA2GroupBox3.TabIndex = 13;
+            this.PIZZA2GroupBox3.TabStop = false;
+            this.PIZZA2GroupBox3.Text = "Kalori";
             // 
-            // pepperoniKaloriPrSkiveLabel
+            // PIZZA2KaloriLabel
             // 
-            this.pepperoniKaloriPrSkiveLabel.AutoSize = true;
-            this.pepperoniKaloriPrSkiveLabel.Location = new System.Drawing.Point(20, 38);
-            this.pepperoniKaloriPrSkiveLabel.Name = "pepperoniKaloriPrSkiveLabel";
-            this.pepperoniKaloriPrSkiveLabel.Size = new System.Drawing.Size(85, 13);
-            this.pepperoniKaloriPrSkiveLabel.TabIndex = 2;
-            this.pepperoniKaloriPrSkiveLabel.Text = "Kalori pr. skive =";
+            this.PIZZA2KaloriLabel.AutoSize = true;
+            this.PIZZA2KaloriLabel.Location = new System.Drawing.Point(16, 23);
+            this.PIZZA2KaloriLabel.Name = "PIZZA2KaloriLabel";
+            this.PIZZA2KaloriLabel.Size = new System.Drawing.Size(85, 13);
+            this.PIZZA2KaloriLabel.TabIndex = 2;
+            this.PIZZA2KaloriLabel.Text = "Kalori pr. skive =";
             // 
-            // pepperoniKaloriLabel
+            // P2_KCAL
             // 
-            this.pepperoniKaloriLabel.AutoSize = true;
-            this.pepperoniKaloriLabel.Location = new System.Drawing.Point(17, 21);
-            this.pepperoniKaloriLabel.Name = "pepperoniKaloriLabel";
-            this.pepperoniKaloriLabel.Size = new System.Drawing.Size(72, 13);
-            this.pepperoniKaloriLabel.TabIndex = 1;
-            this.pepperoniKaloriLabel.Text = "Skær i skiver:";
-            // 
-            // pepperoniKaloriTextBox
-            // 
-            this.pepperoniKaloriTextBox.Location = new System.Drawing.Point(107, 19);
-            this.pepperoniKaloriTextBox.Name = "pepperoniKaloriTextBox";
-            this.pepperoniKaloriTextBox.Size = new System.Drawing.Size(40, 20);
-            this.pepperoniKaloriTextBox.TabIndex = 0;
+            this.P2_KCAL.Location = new System.Drawing.Point(154, 19);
+            this.P2_KCAL.Name = "P2_KCAL";
+            this.P2_KCAL.Size = new System.Drawing.Size(40, 20);
+            this.P2_KCAL.TabIndex = 0;
             // 
             // bestilButton
             // 
@@ -426,6 +404,7 @@
             this.cancelButton.TabIndex = 14;
             this.cancelButton.Text = "Cancel";
             this.cancelButton.UseVisualStyleBackColor = true;
+            this.cancelButton.Click += new System.EventHandler(this.cancelButton_Click);
             // 
             // totalLabel
             // 
@@ -475,16 +454,16 @@
             this.PIZZA2GroupBox1.PerformLayout();
             this.PIZZA1.ResumeLayout(false);
             this.PIZZA1.PerformLayout();
-            this.rejerTunKaloriGroupBox.ResumeLayout(false);
-            this.rejerTunKaloriGroupBox.PerformLayout();
+            this.PIZZA1GroupBox3.ResumeLayout(false);
+            this.PIZZA1GroupBox3.PerformLayout();
             this.PIZZA1GroupBox2.ResumeLayout(false);
             this.PIZZA1GroupBox2.PerformLayout();
             this.PIZZA2.ResumeLayout(false);
             this.PIZZA2.PerformLayout();
             this.PIZZA2GroupBox2.ResumeLayout(false);
             this.PIZZA2GroupBox2.PerformLayout();
-            this.pepperoniKaloriGropuBox.ResumeLayout(false);
-            this.pepperoniKaloriGropuBox.PerformLayout();
+            this.PIZZA2GroupBox3.ResumeLayout(false);
+            this.PIZZA2GroupBox3.PerformLayout();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -513,22 +492,20 @@
 
         private System.Windows.Forms.GroupBox PIZZA1GroupBox1;
         private System.Windows.Forms.GroupBox PIZZA1GroupBox2;
-        private System.Windows.Forms.GroupBox rejerTunKaloriGroupBox;
+        private System.Windows.Forms.GroupBox PIZZA1GroupBox3;
 
         private System.Windows.Forms.GroupBox PIZZA2GroupBox1;     
         private System.Windows.Forms.GroupBox PIZZA2GroupBox2;
-        private System.Windows.Forms.GroupBox pepperoniKaloriGropuBox;
+        private System.Windows.Forms.GroupBox PIZZA2GroupBox3;
 
         private System.Windows.Forms.Label PIZZA1SubLabel;     
-        private System.Windows.Forms.Label rejerTunKaloriPrSkiveLabel;
-        private System.Windows.Forms.Label rejerTunKaloriLabel;
-        private System.Windows.Forms.TextBox rejerTunKaloriTextBox;
+        private System.Windows.Forms.Label PIZZA1KaloriLabel;
+        private System.Windows.Forms.TextBox P1_KCAL;
 
 
         private System.Windows.Forms.Label PIZZA2SubLabel;       
-        private System.Windows.Forms.Label pepperoniKaloriPrSkiveLabel;
-        private System.Windows.Forms.Label pepperoniKaloriLabel;
-        private System.Windows.Forms.TextBox pepperoniKaloriTextBox;
+        private System.Windows.Forms.Label PIZZA2KaloriLabel;
+        private System.Windows.Forms.TextBox P2_KCAL;
         private System.Windows.Forms.Button bestilButton;
         private System.Windows.Forms.Button cancelButton;
         private System.Windows.Forms.Label totalLabel;

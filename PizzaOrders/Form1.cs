@@ -25,32 +25,42 @@ namespace PizzaOrders
 
             // TODO : Name groupBox text + tag
 
-            PIZZA1.Name = Constants.P1_NAME;
+            PIZZA1.Name = Constants.P1_NAME; // pizza 1
             PIZZA1.Text = Constants.P1_TEXT;
 
 
-            PIZZA2.Name = Constants.P2_NAME;
+            PIZZA2.Name = Constants.P2_NAME; // pizza 2
             PIZZA2.Text = Constants.P2_TEXT;
 
-            PIZZA1AddCheckBox1.Name = Constants.P1_CHK1_NAME;
+            PIZZA1AddCheckBox1.Name = Constants.P1_CHK1_NAME; //pizza 1 checkboxes 1-3
             PIZZA1AddCheckBox2.Name = Constants.P1_CHK2_NAME;
             PIZZA1AddCheckBox3.Name = Constants.P1_CHK3_NAME;
 
-            PIZZA1AddCheckBox1.Text = Constants.P1_CHK1_TEXT + " " + Constants.P1_CHK1_TAG + " kr.";
+            PIZZA1AddCheckBox1.Text = Constants.P1_CHK1_TEXT + " " + Constants.P1_CHK1_TAG + " kr."; 
             PIZZA1AddCheckBox2.Text = Constants.P1_CHK2_TEXT + " " + Constants.P1_CHK2_TAG + " kr.";
             PIZZA1AddCheckBox3.Text = Constants.P1_CHK3_TEXT + " " + Constants.P1_CHK3_TAG + " kr.";
 
-            PIZZA2AddCheckBox1.Name = Constants.P2_CHK1_NAME;
+            PIZZA2AddCheckBox1.Name = Constants.P2_CHK1_NAME;    //pizza 2 checkboxes 1-3
             PIZZA2AddCheckBox2.Name = Constants.P2_CHK2_NAME;
             PIZZA2AddCheckBox3.Name = Constants.P2_CHK3_NAME;
 
-            PIZZA2AddCheckBox1.Text = Constants.P2_CHK1_TEXT + " " + Constants.P2_CHK1_TAG + " kr.";
+            PIZZA2AddCheckBox1.Text = Constants.P2_CHK1_TEXT + " " + Constants.P2_CHK1_TAG + " kr."; 
             PIZZA2AddCheckBox2.Text = Constants.P2_CHK2_TEXT + " " + Constants.P2_CHK2_TAG + " kr.";
             PIZZA2AddCheckBox3.Text = Constants.P2_CHK3_TEXT + " " + Constants.P2_CHK3_TAG + " kr.";
 
 
             PIZZA1GroupBox1.Text = Constants.P1_GRP1_TEXT + " " + Constants.P1_GRP1_TAG + " kr.";
             PIZZA2GroupBox1.Text = Constants.P2_GRP1_TEXT + " " + Constants.P2_GRP1_TAG + " kr.";
+
+            P1_KCAL.Name = Constants.P1_KCAL_NAME; // kalorietekstbox 1 -2
+            P2_KCAL.Name = Constants.P2_KCAL_NAME;
+
+            PIZZA1KaloriLabel.Name = Constants.P1_KCAL_SLICE_NAME;
+            PIZZA2KaloriLabel.Name = Constants.P2_KCAL_SLICE_NAME;
+
+
+            PIZZA1KaloriLabel.Text = Constants.KCAL_SLICE_TEXT;
+            PIZZA2KaloriLabel.Text = Constants.KCAL_SLICE_TEXT;
 
 
             // TODO : name ui elements according to constants
@@ -110,8 +120,9 @@ namespace PizzaOrders
 
             foreach (Panel panel in panels)
             {
-                    GroupBox panelGrpBox1 =  panel.Controls.OfType<GroupBox>().FirstOrDefault(l => l.Name.EndsWith(panel.Name + "GroupBox1"));
-                    GroupBox panelGrpBox2 = panel.Controls.OfType<GroupBox>().FirstOrDefault(l => l.Name.EndsWith(panel.Name + "GroupBox2"));
+                GroupBox panelGrpBox1 =  panel.Controls.OfType<GroupBox>().FirstOrDefault(l => l.Name.EndsWith(panel.Name + "GroupBox1"));
+                GroupBox panelGrpBox2 = panel.Controls.OfType<GroupBox>().FirstOrDefault(l => l.Name.EndsWith(panel.Name + "GroupBox2"));
+                GroupBox panelGrpBox3 = panel.Controls.OfType<GroupBox>().FirstOrDefault(l => l.Name.EndsWith(panel.Name + "GroupBox3"));
 
                 foreach (TextBox tBox in panelGrpBox1.Controls.OfType<TextBox>())
                 {
@@ -126,9 +137,45 @@ namespace PizzaOrders
                      orderline.Add(added);
 
                      if (tBox.Enabled && orderline.Count > 0) order.Add(orderline);
-
                 }
+                foreach (TextBox tBox in panelGrpBox3.Controls.OfType<TextBox>())
+                {
 
+
+                    foreach (Label label in panelGrpBox3.Controls.OfType<Label>())
+                    {
+                        label.Text = Constants.KCAL_SLICE_TEXT;
+                        Console.WriteLine((string)tBox.Text);
+                        int value;
+
+                        if (int.TryParse(tBox.Text, out value) && value > 1 && value  < 11)
+                        {
+                            decimal i = PriceCatalog.GetValue(tBox.Name);
+                            Console.WriteLine(i);
+                            decimal value2 = 0;
+                            if (value != 0)
+                            {
+                                if (label.Text == Constants.KCAL_SLICE_TEXT) 
+                                 label.Text = Constants.KCAL_SLICE_TEXT + (value2 = i / value).ToString("##.##");
+
+
+                            }
+                            else if (tBox.Text != "")
+                            {
+                                System.Windows.Forms.MessageBox.Show("Indtast 2 til 10 antal skiver");
+                                return;
+                            }
+                            Console.WriteLine(value2);
+                        }
+                        else if (tBox.Text != "")
+                        {
+                            System.Windows.Forms.MessageBox.Show("Indtast 2 til 10 antal skiver");
+                            return;
+                        }
+
+
+                    }
+                }
             }
 
             PizzaOrder pizzaOrder = new PizzaOrder(order);
@@ -136,10 +183,10 @@ namespace PizzaOrders
 
             foreach (Panel panel in panels) // add to subtotal
             {
-                panel.Controls.OfType<Label>().FirstOrDefault(l => l.Name.EndsWith(panel.Name + "SubLabel")).Text = pizzaOrder.DisplayPizzaSubTotal(panel.Name);
+                panel.Controls.OfType<Label>().FirstOrDefault(l => l.Name.EndsWith(panel.Name + "SubLabel")).Text = "Sub total: " + pizzaOrder.DisplayPizzaSubTotal(panel.Name);
             }
 
-            this.Controls["totalLabel"].Text = pizzaOrder.total.ToString();
+            this.Controls["totalLabel"].Text = "Total: " + pizzaOrder.total.ToString();
 
             if (pizzaOrder.total > 0)
             {
@@ -148,31 +195,40 @@ namespace PizzaOrders
                 this.Controls["bestilButton"].Enabled = true;
             }
             
-
         }
 
         private void bestilButton_Click(object sender, EventArgs e)
         {
-            this.Controls["bestillingsNummerLabel"].Text = "Dit bestillingsnummer er: ";
+          
 
             PizzaCounter pizzaCounter = new PizzaCounter();
             pizzaCounter.IncrementCounter();
-            ClearThem(this);
+            Clear(this);
             this.Controls["bestilButton"].Enabled = false;
 
         }
-        void ClearThem(Control ctrl)
+       
+
+        private void cancelButton_Click(object sender, EventArgs e)
         {
-            if (ctrl is GroupBox) {
+            Clear(this);
+        }
+        void Clear(Control ctrl)
+        {
+            if (ctrl is GroupBox)
+            {
                 foreach (CheckBox chkBox in ctrl.Controls.OfType<CheckBox>())
                 {
                     chkBox.Checked = false;
                 }
             }
             if (ctrl is TextBox) ctrl.Text = "";
-            foreach (Control childCtrl in ctrl.Controls) ClearThem(childCtrl);
-        }
+            if (ctrl is Label && ctrl.Name.EndsWith("SubLabel")) ctrl.Text = "Sub Total:";
+            if (ctrl is Label && ctrl.Name.EndsWith("totalLabel")) ctrl.Text = "Total: ";
+            if (ctrl is Label && ctrl.Name.EndsWith("bestillingsNummerLabel")) ctrl.Text = "Dit bestillingsnummer er: ";
 
+            foreach (Control childCtrl in ctrl.Controls) Clear(childCtrl);
+        }
     }
     class PizzaCounter
     {
@@ -190,98 +246,7 @@ namespace PizzaOrders
             return Counter.ToString();
         }
     }
-    class PizzaOrder
-    {
-        public PizzaOrder(ArrayList arr)
-        {
-            foreach (ArrayList orderline in arr)
-            {
-               //  Console.WriteLine("[{0}]", string.Join(", ", orderline.ToArray()));
-
-            //    string added = (string)orderline[3] + (string)orderline[4] + (string)orderline[5];
-             //   var props = typeof(Constants).GetField((string)orderline[3]).GetValue(null);
-              
-
-                CollectPizzas((string)orderline[0], (string)orderline[1], (string)orderline[2], (int)orderline[3], CollectAdded((ArrayList)orderline[4]));
-
-                CalculatePizzas((string)orderline[0], (string)orderline[1], (string)orderline[2], (int)orderline[3], CalculateAdded((ArrayList)orderline[4]));
-            }
-        }
-        public Dictionary<string, int> PizzaList = new Dictionary<string,int>();
-        public Dictionary<string, decimal> PizzaSum = new Dictionary<string, decimal>();
-        public decimal total { get; private set; } = 0;
-
-        public string CollectAdded(ArrayList arr)
-        {
-            string s = "";
-            foreach (string added in arr)
-            {
-                string[] tokens = added.Split('-');              
-                s += tokens[1] + " ";
-            }
-            
-            return s.Trim();
-        }
-        public int CalculateAdded(ArrayList arr)
-        {
-           
-            List<int> list = new List<int>();
-            foreach (string added in arr)
-            {
-               
-                string[] tokens = added.Split('-');
-                int addPrice = PriceCatalog.GetValue(tokens[0]);
-
-                list.Add(addPrice);
-            }
-            Console.WriteLine(list.Sum());
-            return list.Sum();
-        }
-        public void CalculatePizzas(string id, string navn, string size, int antal, int added)
-        {
-            int idPrice = PriceCatalog.GetValue(id);           
-            decimal sizeModifier = (size == "family") ? 1.5M : 1;
-            string key = id;
-            decimal subtotal = (idPrice * antal * sizeModifier ) + (added * antal); 
-            if (PizzaSum.ContainsKey(key))
-            {
-                PizzaSum[key] += subtotal;
-                total += subtotal;
-            } else
-            {
-                PizzaSum.Add( key, subtotal);
-            }
-            total += subtotal;
-           
-            // PizzaSum.ToList().ForEach(Console.WriteLine);          
-        }
-        public void CollectPizzas (string id, string navn, string size, int antal, string added)
-        {
-                string key = navn + " " + size + " " + added;
-                if (PizzaList.ContainsKey(key))
-                {
-                    PizzaList[key] =  antal;
-                } else
-                {
-                    PizzaList.Add(key, antal);
-                }                 
-        }     
-        public string DisplayPizzaOrder ()
-        {
-            string s = "";
-            foreach (KeyValuePair<string, int> kvp in PizzaList)
-            {
-            
-               s += kvp.Key + " " + kvp.Value + "\n";
-            }
-         
-            return s;
-        }
-        public string DisplayPizzaSubTotal(string s )
-        {
-            return (PizzaSum.ContainsKey(s)) ? PizzaSum[s].ToString() : "";
-        }
-    }
+   
    
     static class Constants_old
     {

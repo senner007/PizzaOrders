@@ -73,7 +73,9 @@ namespace PizzaOrders
         public const string P2_GRP1_TEXT = "Pepperoni";
         public const int P2_GRP1_TAG = 59;
 
-
+        public const string P1_KCAL_SLICE_NAME = "P1_KCAL_SLICE";
+        public const string P2_KCAL_SLICE_NAME = "P2_KCAL_SLICE";
+        public const string KCAL_SLICE_TEXT = "Skær i skiver: \n Kalorier pr skive = ";
 
 
     }
