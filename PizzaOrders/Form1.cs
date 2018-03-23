@@ -78,6 +78,21 @@ namespace PizzaOrders
             string bestilling = "Dit bestillingsnummer er: ";
             return bestilling + " " + pizzaCounter.GetCounter();
         }
+        //public static T FindParent<T>(Control ctrl)
+        //{
+        //    var curParent = ctrl.Parent;
+        //    while (curParent != null && !(curParent is T))
+        //    {
+        //        curParent = curParent.Parent;
+        //    }
+        //    return (T)(object)curParent;
+        //}
+        public static T Findall<T>(Control ctrl, string name)
+        {
+
+            return (T)(object)ctrl.Controls.OfType<GroupBox>().FirstOrDefault(l => l.Name.EndsWith(name));
+        }
+
 
         private void BeregnButton1_Click(object sender, EventArgs e)
         {
@@ -87,9 +102,18 @@ namespace PizzaOrders
 
             foreach (Panel panel in panels)
             {
-                GroupBox panelGrpBox1 =  panel.Controls.OfType<GroupBox>().FirstOrDefault(l => l.Name.EndsWith(panel.Name + "GroupBox1"));
-                GroupBox panelGrpBox2 = panel.Controls.OfType<GroupBox>().FirstOrDefault(l => l.Name.EndsWith(panel.Name + "GroupBox2"));
-                GroupBox panelGrpBox3 = panel.Controls.OfType<GroupBox>().FirstOrDefault(l => l.Name.EndsWith(panel.Name + "GroupBox3"));
+             
+
+              //  GroupBox panelGrpBox1 =  panel.Controls.OfType<GroupBox>().FirstOrDefault(l => l.Name.EndsWith(panel.Name + "GroupBox1"));
+                //GroupBox panelGrpBox2 = panel.Controls.OfType<GroupBox>().FirstOrDefault(l => l.Name.EndsWith(panel.Name + "GroupBox2"));
+                //GroupBox panelGrpBox3 = panel.Controls.OfType<GroupBox>().FirstOrDefault(l => l.Name.EndsWith(panel.Name + "GroupBox3"));
+
+              //  Tbox d = FindParent<Panel>(panelGrpBox3);
+                GroupBox panelGrpBox1 = Findall<GroupBox>(panel, panel.Name + "GroupBox1");
+                GroupBox panelGrpBox2 = Findall<GroupBox>(panel, panel.Name + "GroupBox2");
+                GroupBox panelGrpBox3 = Findall<GroupBox>(panel, panel.Name + "GroupBox3");
+
+                //  Console.WriteLine(ds.Name);
 
                 foreach (TextBox tBox in panelGrpBox1.Controls.OfType<TextBox>())
                 {
@@ -111,26 +135,16 @@ namespace PizzaOrders
                     foreach (Label label in panelGrpBox3.Controls.OfType<Label>())
                     {
 
-                        Console.WriteLine((string)tBox.Text);
-                        int value;
 
-                        if (int.TryParse(tBox.Text, out value) && value > 1 && value  < 11)
+                        if (int.TryParse(tBox.Text, out int value) && value > 1 && value  < 11)
                         {
-                          //  decimal i = PriceCatalog.GetValue(tBox.Name);
                             decimal i = GetFieldValue.Get(tBox.Name);            
-                            decimal value2 = 0;
                             if (value != 0)
                             {
-                                if (label.Name.EndsWith("KaloriLabel")) 
+
                                  label.Text = Constants.KCAL_SLICE_TEXT + (i / value).ToString("##.#") + "KCal\n" +
                                  " Kalorier (family): " + ((i / value) * 1.5M).ToString("##.#") + "KCal";
                             }
-                            else if (tBox.Text != "")
-                            {
-                                System.Windows.Forms.MessageBox.Show("Indtast 2 til 10 antal skiver");
-                                return;
-                            }
-                            Console.WriteLine(value2);
                         }
                         else if (tBox.Text != "")
                         {
@@ -138,21 +152,18 @@ namespace PizzaOrders
                             return;
                         }
 
-
                     }
                 }
             }
 
-            PizzaOrder pizzaOrder = new PizzaOrder(order);
-            // Console.WriteLine(  pizzaOrder.DisplayPizzaOrder() );
-
+            PizzaOrder pizzaOrder = new PizzaOrder(order);  // Get pizza order
 
             foreach (Panel panel in panels) // add to subtotal
             {
-                panel.Controls.OfType<Label>().FirstOrDefault(l => l.Name.EndsWith("SubTotal")).Text = "SubTotal: " + pizzaOrder.GetSubtotal(panel.Name);
+                panel.Controls.OfType<Label>().FirstOrDefault(l => l.Name.EndsWith("SubTotal")).Text = "SubTotal: " + pizzaOrder.GetSubtotal(panel.Name); // Sub total
             }
 
-            this.Controls["totalLabel"].Text = "Total: " + pizzaOrder.Total.ToString();
+            this.Controls["totalLabel"].Text = "Total: " + pizzaOrder.Total.ToString();  // Total
 
             if (pizzaOrder.Total > 0)
             {
@@ -161,8 +172,8 @@ namespace PizzaOrders
                 this.Controls["bestilButton"].Enabled = true;
             }
 
-            this.Controls["forventetLabel"].Text = "Forventet færdig: " + DateTime.Now.AddMinutes(4).ToString("T");
-            // TODO : Tilføj klokkeslet
+            this.Controls["forventetLabel"].Text = "Forventet færdig: " + DateTime.Now.AddMinutes(4).ToString("T"); // klokkeslet
+ 
 
         }
 
@@ -208,18 +219,9 @@ namespace PizzaOrders
         {
             Pending = pending;
         }
-        public void IncrementCounter ()
-        {
-            Counter++;
-        }
-        public string GetCounter ()
-        {
-            return Counter.ToString();
-        }
-        public string GetOrder()
-        {
-            return Pending.ToString();
-        }
+        public void IncrementCounter() => Counter++;    
+        public string GetCounter() => Counter.ToString();
+        public string GetOrder() => Pending.ToString();
     }
     static class GetFieldValue
     {

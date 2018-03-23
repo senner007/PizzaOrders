@@ -1,5 +1,6 @@
 ﻿namespace PizzaOrders
 {
+
     partial class Form1
     {
         /// <summary>
@@ -19,6 +20,7 @@
             }
             base.Dispose(disposing);
         }
+
 
         #region Windows Form Designer generated code
 
