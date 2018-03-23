@@ -201,7 +201,7 @@ namespace PizzaOrders
                 }
             }
             if (ctrl is TextBox) ctrl.Text = "";
-            if (ctrl is Label && ctrl.Name.EndsWith("SubLabel")) ctrl.Text = "Sub Total:";
+            if (ctrl is Label && ctrl.Name.EndsWith("SubTotal")) ctrl.Text = "Sub Total:";
             if (ctrl is Label && ctrl.Name.EndsWith("totalLabel")) ctrl.Text = "Total: ";
             if (ctrl is Label && ctrl.Name.EndsWith("bestillingsNummerLabel")) ctrl.Text = "Dit bestillingsnummer er: ";
             if (ctrl is Label && ctrl.Text.StartsWith("Skær i skiver")) ctrl.Text = Constants.KCAL_SLICE_TEXT;

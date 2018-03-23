@@ -66,11 +66,9 @@ namespace PizzaOrders
         }
         public string GetInfo ()
         {
-            string s = string.Join(";", PizzaList.Select(x => x.Key + " antal:" + x.Value + " beløb " + OrderLineSum[x.Key] + "\n").ToArray());
-            s += "Det total beløb er " + Total;
-            return s;
+           return string.Join("", PizzaList.Select(x => x.Key + " antal:" + x.Value + " beløb " + OrderLineSum[x.Key] + "\n").ToArray()) 
+                     + "\nDet total beløb er " + Total;
         }
-
     }
 }
 
