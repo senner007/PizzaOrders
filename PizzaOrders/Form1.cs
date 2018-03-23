@@ -21,20 +21,16 @@ namespace PizzaOrders
             InitializeComponent();
             AllocConsole();
 
-
-       //     PIZZA1.Name = Constants.P1_NAME; // pizza 1
             PIZZA1.Text = Constants.P1_TEXT;
 
-
-         //   PIZZA2.Name = Constants.P2_NAME; // pizza 2
             PIZZA2.Text = Constants.P2_TEXT;
 
 
-            PIZZA1KaloriLabel.Name = Constants.KCAL_SLICE_NAME;
-            PIZZA2KaloriLabel.Name = Constants.KCAL_SLICE_NAME;
+            //PIZZA1KaloriLabel.Name = Constants.KCAL_SLICE_NAME;
+            //PIZZA2KaloriLabel.Name = Constants.KCAL_SLICE_NAME;
 
-            PIZZA1KaloriLabel.Text = Constants.KCAL_SLICE_TEXT;
-            PIZZA2KaloriLabel.Text = Constants.KCAL_SLICE_TEXT;
+            //PIZZA1KaloriLabel.Text = Constants.KCAL_SLICE_TEXT;
+            //PIZZA2KaloriLabel.Text = Constants.KCAL_SLICE_TEXT;
 
 
         }
@@ -125,7 +121,7 @@ namespace PizzaOrders
                             decimal value2 = 0;
                             if (value != 0)
                             {
-                                if (label.Name == Constants.KCAL_SLICE_NAME) 
+                                if (label.Name.EndsWith("KaloriLabel")) 
                                  label.Text = Constants.KCAL_SLICE_TEXT + (i / value).ToString("##.##") + "KCal\n" +
                                  " Kalorier (family): " + ((i / value) * 1.5M).ToString("##.##") + "KCal";
                             }
@@ -148,32 +144,33 @@ namespace PizzaOrders
             }
 
             PizzaOrder pizzaOrder = new PizzaOrder(order);
-            Console.WriteLine(  pizzaOrder.DisplayPizzaOrder() );
+            // Console.WriteLine(  pizzaOrder.DisplayPizzaOrder() );
+
 
             foreach (Panel panel in panels) // add to subtotal
-            {            
-                panel.Controls.OfType<Label>().FirstOrDefault(l => l.Name.EndsWith("SubTotal")).Text = "SubTotal: " + pizzaOrder.DisplayPizzaSubTotal(panel.Name);
+            {
+                panel.Controls.OfType<Label>().FirstOrDefault(l => l.Name.EndsWith("SubTotal")).Text = "SubTotal: " + pizzaOrder.GetSubtotal(panel.Name);
             }
 
-            this.Controls["totalLabel"].Text = "Total: " + pizzaOrder.total.ToString();
+            this.Controls["totalLabel"].Text = "Total: " + pizzaOrder.Total.ToString();
 
-            if (pizzaOrder.total > 0)
+            if (pizzaOrder.Total > 0)
             {
-                PendingOrder pizzaCounter = new PendingOrder(pizzaOrder.DisplayPizzaOrder());
+                PendingOrder pizzaCounter = new PendingOrder(pizzaOrder.GetInfo());
                 this.Controls["bestillingsNummerLabel"].Text = "Dit bestillingsnummer er: " + pizzaCounter.GetCounter();
                 this.Controls["bestilButton"].Enabled = true;
             }
 
             // TODO : Tilføj klokkeslet
-            
+
         }
 
 
         private void bestilButton_Click(object sender, EventArgs e)
         {
-            PendingOrder pizzaCounter = new PendingOrder();
+            PendingOrder pizzaCounter = new PendingOrder();          
+            System.Windows.Forms.MessageBox.Show(pizzaCounter.GetOrder() + "\nDit Bestillingsnummer er " + pizzaCounter.GetCounter());
             pizzaCounter.IncrementCounter();
-            System.Windows.Forms.MessageBox.Show(pizzaCounter.GetOrder());
             Clear(this);
             this.Controls["bestilButton"].Enabled = false;
         }
