@@ -25,7 +25,7 @@ namespace PizzaOrders
                 int antal = (int)ol[3];
                 decimal pizzaSum = pizzaPrice * antal * sizeModifier;
                 string addedNames = "";
-                decimal addedSum = 0;
+                decimal addedSum = 0; // TODO : Replace with lambda
 
                 foreach (string added in (ArrayList)ol[4])
                 {
@@ -38,12 +38,10 @@ namespace PizzaOrders
                 string key = (string)ol[0];
 
                 if (!Subtotal.ContainsKey(key))
-                {
                     Subtotal.Add(key, pizzaSum + addedSum);
-                } else
-                {
+                else
                     Subtotal[key] += pizzaSum + addedSum;
-                }
+
 
                 string keyLine = ol[0] + " " + ol[1] + ol[2] + addedNames;
 

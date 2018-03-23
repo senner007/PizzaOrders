@@ -49,22 +49,16 @@ namespace PizzaOrders
         private ArrayList OrderLine(TextBox tBox, string pizzaId, string pizzaText, out bool abort)
         {
             ArrayList _temp = new ArrayList();
-            string s = tBox.Name.StartsWith("family") ? "family" : "almindelig";
+            string size = tBox.Name.StartsWith("family") ? "family" : "almindelig";
             abort = false;
-            int validation = ValidateTBox(tBox.Text);
-            if (validation > 0)
-            {
-                _temp.Add(pizzaId);
-                _temp.Add(pizzaText);
-                _temp.Add(s);
-                _temp.Add(validation);
-                
-            } else if (tBox.Enabled)
+            int validation = ValidateTBox(tBox.Text);              
+            if (tBox.Enabled && validation < 1)
             {
                 abort = true;
                 System.Windows.Forms.MessageBox.Show("Indtast 1 eller flere antal pizzaer eller fravælg pågældende pizza");
+                    return new ArrayList();
             }            
-            return _temp;
+            return new ArrayList() { pizzaId, pizzaText, size, validation };
 
         }
         private int ValidateTBox (string tBoxText)
@@ -174,9 +168,7 @@ namespace PizzaOrders
 
             this.Controls["forventetLabel"].Text = "Forventet færdig: " + DateTime.Now.AddMinutes(4).ToString("T"); // klokkeslet
  
-
         }
-
 
         private void bestilButton_Click(object sender, EventArgs e)
         {
@@ -193,12 +185,13 @@ namespace PizzaOrders
         }
         void Clear(Control ctrl)
         {
-            if (ctrl is GroupBox)
+            if (ctrl is CheckBox)
             {
                 foreach (CheckBox chkBox in ctrl.Controls.OfType<CheckBox>())
                 {
                     chkBox.Checked = false;
                 }
+              
             }
             if (ctrl is TextBox) ctrl.Text = "";
             if (ctrl is Label && ctrl.Name.EndsWith("SubTotal")) ctrl.Text = "Sub Total:";
