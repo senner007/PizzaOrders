@@ -42,7 +42,7 @@
             this.PIZZA2GroupBox1 = new System.Windows.Forms.GroupBox();
             this.PepperoniAntalLabel = new System.Windows.Forms.Label();
             this.PIZZA1 = new System.Windows.Forms.Panel();
-            this.PIZZA1SubLabel = new System.Windows.Forms.Label();
+            this.PIZZA1SubTotal = new System.Windows.Forms.Label();
             this.PIZZA1GroupBox3 = new System.Windows.Forms.GroupBox();
             this.PIZZA1KaloriLabel = new System.Windows.Forms.Label();
             this.P1_KCAL = new System.Windows.Forms.TextBox();
@@ -52,7 +52,7 @@
             this.PIZZA1AddCheckBox1 = new System.Windows.Forms.CheckBox();
             this.fontDialog1 = new System.Windows.Forms.FontDialog();
             this.PIZZA2 = new System.Windows.Forms.Panel();
-            this.PIZZA2SubLabel = new System.Windows.Forms.Label();
+            this.PIZZA2SubTotal = new System.Windows.Forms.Label();
             this.PIZZA2GroupBox2 = new System.Windows.Forms.GroupBox();
             this.PIZZA2AddCheckBox3 = new System.Windows.Forms.CheckBox();
             this.PIZZA2AddCheckBox2 = new System.Windows.Forms.CheckBox();
@@ -209,7 +209,7 @@
             // 
             // PIZZA1
             // 
-            this.PIZZA1.Controls.Add(this.PIZZA1SubLabel);
+            this.PIZZA1.Controls.Add(this.PIZZA1SubTotal);
             this.PIZZA1.Controls.Add(this.PIZZA1GroupBox3);
             this.PIZZA1.Controls.Add(this.PIZZA1GroupBox2);
             this.PIZZA1.Controls.Add(this.PIZZA1GroupBox1);
@@ -218,14 +218,14 @@
             this.PIZZA1.Size = new System.Drawing.Size(744, 128);
             this.PIZZA1.TabIndex = 12;
             // 
-            // PIZZA1SubLabel
+            // PIZZA1SubTotal
             // 
-            this.PIZZA1SubLabel.AutoSize = true;
-            this.PIZZA1SubLabel.Location = new System.Drawing.Point(532, 97);
-            this.PIZZA1SubLabel.Name = "PIZZA1SubLabel";
-            this.PIZZA1SubLabel.Size = new System.Drawing.Size(52, 13);
-            this.PIZZA1SubLabel.TabIndex = 12;
-            this.PIZZA1SubLabel.Text = "Sub total:";
+            this.PIZZA1SubTotal.AutoSize = true;
+            this.PIZZA1SubTotal.Location = new System.Drawing.Point(532, 97);
+            this.PIZZA1SubTotal.Name = "PIZZA1SubTotal";
+            this.PIZZA1SubTotal.Size = new System.Drawing.Size(52, 13);
+            this.PIZZA1SubTotal.TabIndex = 12;
+            this.PIZZA1SubTotal.Text = "Sub total:";
             // 
             // PIZZA1GroupBox3
             // 
@@ -298,7 +298,7 @@
             // 
             // PIZZA2
             // 
-            this.PIZZA2.Controls.Add(this.PIZZA2SubLabel);
+            this.PIZZA2.Controls.Add(this.PIZZA2SubTotal);
             this.PIZZA2.Controls.Add(this.PIZZA2GroupBox2);
             this.PIZZA2.Controls.Add(this.PIZZA2GroupBox3);
             this.PIZZA2.Controls.Add(this.PIZZA2GroupBox1);
@@ -307,14 +307,14 @@
             this.PIZZA2.Size = new System.Drawing.Size(744, 133);
             this.PIZZA2.TabIndex = 10;
             // 
-            // PIZZA2SubLabel
+            // PIZZA2SubTotal
             // 
-            this.PIZZA2SubLabel.AutoSize = true;
-            this.PIZZA2SubLabel.Location = new System.Drawing.Point(532, 97);
-            this.PIZZA2SubLabel.Name = "PIZZA2SubLabel";
-            this.PIZZA2SubLabel.Size = new System.Drawing.Size(49, 13);
-            this.PIZZA2SubLabel.TabIndex = 14;
-            this.PIZZA2SubLabel.Text = "Sub total";
+            this.PIZZA2SubTotal.AutoSize = true;
+            this.PIZZA2SubTotal.Location = new System.Drawing.Point(532, 97);
+            this.PIZZA2SubTotal.Name = "PIZZA2SubTotal";
+            this.PIZZA2SubTotal.Size = new System.Drawing.Size(49, 13);
+            this.PIZZA2SubTotal.TabIndex = 14;
+            this.PIZZA2SubTotal.Text = "Sub total";
             // 
             // PIZZA2GroupBox2
             // 
@@ -498,12 +498,12 @@
         private System.Windows.Forms.GroupBox PIZZA2GroupBox2;
         private System.Windows.Forms.GroupBox PIZZA2GroupBox3;
 
-        private System.Windows.Forms.Label PIZZA1SubLabel;     
+        private System.Windows.Forms.Label PIZZA1SubTotal;     
         private System.Windows.Forms.Label PIZZA1KaloriLabel;
         private System.Windows.Forms.TextBox P1_KCAL;
 
 
-        private System.Windows.Forms.Label PIZZA2SubLabel;       
+        private System.Windows.Forms.Label PIZZA2SubTotal;       
         private System.Windows.Forms.Label PIZZA2KaloriLabel;
         private System.Windows.Forms.TextBox P2_KCAL;
         private System.Windows.Forms.Button bestilButton;

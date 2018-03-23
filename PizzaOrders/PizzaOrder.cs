@@ -58,9 +58,11 @@ namespace PizzaOrders
             List<decimal> list = new List<decimal>();
             foreach (string added in arr)
             {
-
+               // Console.WriteLine(added);
                 string[] tokens = added.Split('-');
-                decimal addPrice = PriceCatalog.GetValue(tokens[0]) * sizeModifier;
+              //  Console.WriteLine(tokens[0]);
+                decimal addPrice = GetFieldValue.Get(tokens[0]) * sizeModifier;
+               // decimal addPrice = PriceCatalog.GetValue(tokens[0]) * sizeModifier;
 
                 list.Add(addPrice);
             }
@@ -69,7 +71,10 @@ namespace PizzaOrders
         }
         public void CalculatePizzas(string id, string navn, string size, int antal, decimal added)
         {
-            int idPrice = PriceCatalog.GetValue(id);
+            Console.WriteLine(id);
+          //  int idPrice = PriceCatalog.GetValue(id);
+            int idPrice = GetFieldValue.Get(id);
+
             decimal sizeModifier = (size == "family") ? 1.5M : 1;
             string key = id;
             decimal subtotal = (idPrice * antal * sizeModifier) + (added * antal);

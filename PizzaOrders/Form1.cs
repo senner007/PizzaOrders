@@ -20,55 +20,22 @@ namespace PizzaOrders
         {
             InitializeComponent();
             AllocConsole();
-            //rejerTunPizzaGroupBox.Tag = "PIZZA1";
-            //pepperoniPizzaGroupBox.Tag = "PIZZA2";
 
-            // TODO : Name groupBox text + tag
 
-            PIZZA1.Name = Constants.P1_NAME; // pizza 1
+       //     PIZZA1.Name = Constants.P1_NAME; // pizza 1
             PIZZA1.Text = Constants.P1_TEXT;
 
 
-            PIZZA2.Name = Constants.P2_NAME; // pizza 2
+         //   PIZZA2.Name = Constants.P2_NAME; // pizza 2
             PIZZA2.Text = Constants.P2_TEXT;
 
-            PIZZA1AddCheckBox1.Name = Constants.P1_CHK1_NAME; //pizza 1 checkboxes 1-3
-            PIZZA1AddCheckBox2.Name = Constants.P1_CHK2_NAME;
-            PIZZA1AddCheckBox3.Name = Constants.P1_CHK3_NAME;
-
-            PIZZA1AddCheckBox1.Text = Constants.P1_CHK1_TEXT + " " + Constants.P1_CHK1_TAG + " kr."; 
-            PIZZA1AddCheckBox2.Text = Constants.P1_CHK2_TEXT + " " + Constants.P1_CHK2_TAG + " kr.";
-            PIZZA1AddCheckBox3.Text = Constants.P1_CHK3_TEXT + " " + Constants.P1_CHK3_TAG + " kr.";
-
-            PIZZA2AddCheckBox1.Name = Constants.P2_CHK1_NAME;    //pizza 2 checkboxes 1-3
-            PIZZA2AddCheckBox2.Name = Constants.P2_CHK2_NAME;
-            PIZZA2AddCheckBox3.Name = Constants.P2_CHK3_NAME;
-
-            PIZZA2AddCheckBox1.Text = Constants.P2_CHK1_TEXT + " " + Constants.P2_CHK1_TAG + " kr."; 
-            PIZZA2AddCheckBox2.Text = Constants.P2_CHK2_TEXT + " " + Constants.P2_CHK2_TAG + " kr.";
-            PIZZA2AddCheckBox3.Text = Constants.P2_CHK3_TEXT + " " + Constants.P2_CHK3_TAG + " kr.";
-
-
-            PIZZA1GroupBox1.Text = Constants.P1_GRP1_TEXT + " " + Constants.P1_GRP1_TAG + " kr.";
-            PIZZA2GroupBox1.Text = Constants.P2_GRP1_TEXT + " " + Constants.P2_GRP1_TAG + " kr.";
-
-            P1_KCAL.Name = Constants.P1_KCAL_NAME; // kalorietekstbox 1 -2
-            P2_KCAL.Name = Constants.P2_KCAL_NAME;
 
             PIZZA1KaloriLabel.Name = Constants.KCAL_SLICE_NAME;
             PIZZA2KaloriLabel.Name = Constants.KCAL_SLICE_NAME;
 
-
             PIZZA1KaloriLabel.Text = Constants.KCAL_SLICE_TEXT;
             PIZZA2KaloriLabel.Text = Constants.KCAL_SLICE_TEXT;
 
-            PIZZA1SubLabel.Text = Constants.SUBTOTAL_TEXT;
-            PIZZA2SubLabel.Text = Constants.SUBTOTAL_TEXT;
-
-            PIZZA1SubLabel.Name = Constants.SUBTOTAL_NAME; // p1 sublabel
-
-            PIZZA2SubLabel.Name = Constants.SUBTOTAL_NAME; // p2 sublabel
-            // TODO : name ui elements according to constants
 
         }
       
@@ -122,7 +89,6 @@ namespace PizzaOrders
             ArrayList order = new ArrayList();
             var panels = this.Controls.OfType<Panel>();
 
-
             foreach (Panel panel in panels)
             {
                 GroupBox panelGrpBox1 =  panel.Controls.OfType<GroupBox>().FirstOrDefault(l => l.Name.EndsWith(panel.Name + "GroupBox1"));
@@ -146,7 +112,6 @@ namespace PizzaOrders
                 foreach (TextBox tBox in panelGrpBox3.Controls.OfType<TextBox>())
                 {
 
-
                     foreach (Label label in panelGrpBox3.Controls.OfType<Label>())
                     {
 
@@ -155,16 +120,14 @@ namespace PizzaOrders
 
                         if (int.TryParse(tBox.Text, out value) && value > 1 && value  < 11)
                         {
-                            decimal i = PriceCatalog.GetValue(tBox.Name);
-                            Console.WriteLine(i);
+                          //  decimal i = PriceCatalog.GetValue(tBox.Name);
+                            decimal i = GetFieldValue.Get(tBox.Name);            
                             decimal value2 = 0;
                             if (value != 0)
                             {
                                 if (label.Name == Constants.KCAL_SLICE_NAME) 
                                  label.Text = Constants.KCAL_SLICE_TEXT + (i / value).ToString("##.##") + "KCal\n" +
                                  " Kalorier (family): " + ((i / value) * 1.5M).ToString("##.##") + "KCal";
-
-
                             }
                             else if (tBox.Text != "")
                             {
@@ -189,7 +152,7 @@ namespace PizzaOrders
 
             foreach (Panel panel in panels) // add to subtotal
             {            
-                panel.Controls.OfType<Label>().FirstOrDefault(l => l.Name.EndsWith(Constants.SUBTOTAL_NAME)).Text = Constants.SUBTOTAL_TEXT + pizzaOrder.DisplayPizzaSubTotal(panel.Name);
+                panel.Controls.OfType<Label>().FirstOrDefault(l => l.Name.EndsWith("SubTotal")).Text = "SubTotal: " + pizzaOrder.DisplayPizzaSubTotal(panel.Name);
             }
 
             this.Controls["totalLabel"].Text = "Total: " + pizzaOrder.total.ToString();
@@ -208,17 +171,13 @@ namespace PizzaOrders
 
         private void bestilButton_Click(object sender, EventArgs e)
         {
-
-
             PendingOrder pizzaCounter = new PendingOrder();
             pizzaCounter.IncrementCounter();
             System.Windows.Forms.MessageBox.Show(pizzaCounter.GetOrder());
             Clear(this);
             this.Controls["bestilButton"].Enabled = false;
-
         }
        
-
         private void cancelButton_Click(object sender, EventArgs e)
         {
             Clear(this);
@@ -263,35 +222,15 @@ namespace PizzaOrders
             return Pending.ToString();
         }
     }
-   
-   
-    static class Constants_old
+    static class GetFieldValue
     {
-        public const string PIZZA_LARGE = "family";
-        public const string PIZZA_SMALL = "almindelig";
-
-        public const string PIZZA1_NAME = "REJER MED OST";
-        public const int PIZZA1_PRICE = 64;
-        //public const string PIZZA1AddCheckBox1 = "LØG";
-        //public const string PIZZA1AddCheckBox2 = "REJER";
-        //public const string PIZZA1AddCheckBox3 = "TUN";
-        public const int PIZZA1AddCheckBox1 = 5,
-                         PIZZA1AddCheckBox2 = 10,
-                         PIZZA1AddCheckBox3 = 7;
-
-        public const float PIZZA1_KCAL = 42.2F;
-
-        public const string PIZZA2_NAME = "PEPPERONI";
-        public const int PIZZA2_PRICE = 59;
-        //public const string PIZZA2AddCheckBox1 = "PEPPERONI";
-        //public const string PIZZA2AddCheckBox2 = "CHAMPIGNON";
-        //public const string PIZZA2AddCheckBox3 = "OST";
-        public const int PIZZA2AddCheckBox1 = 8,
-                         PIZZA2AddCheckBox2 = 11,
-                         PIZZA2AddCheckBox3 = 6;
-        public const float PIZZA1_KCA2 = 31.6F;
-
+        public static int Get (string name)
+        {
+            var prop = typeof(Constants).GetField(name).GetValue(null);
+            return (int)prop;
+        } 
     }
+   
     
 
 
