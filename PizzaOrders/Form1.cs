@@ -215,10 +215,7 @@ namespace PizzaOrders
         public static int Counter { get; private set; } = 1;
         public static string Pending { get; private set; }
         public PendingOrder() {}
-        public PendingOrder(string pending)
-        {
-            Pending = pending;
-        }
+        public PendingOrder(string pending) { Pending = pending; }
         public void IncrementCounter() => Counter++;    
         public string GetCounter() => Counter.ToString();
         public string GetOrder() => Pending.ToString();

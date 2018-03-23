@@ -12,7 +12,6 @@ namespace PizzaOrders
         {
             orderLines = arr;
             ProcessOrder();
-
         }
         public void ProcessOrder () 
         {
@@ -63,22 +62,13 @@ namespace PizzaOrders
         public decimal Total { get; private set; } = 0;
         public decimal GetSubtotal(string id)
         {
-            if (Subtotal.ContainsKey(id))
-            {
-                return Subtotal[id];
-            }
-            return 0;
+            return Subtotal.ContainsKey(id) ? Subtotal[id] : 0;
         }
         public string GetInfo ()
         {
-            string order = "";
-            foreach (KeyValuePair<string, int> kvp in PizzaList)
-            {
-                order += kvp.Key + " antal: " + kvp.Value + " beløb " + OrderLineSum[kvp.Key] + "\n";
-
-            }
-            order += "Det total beløb er " + Total;
-            return order;
+            string s = string.Join(";", PizzaList.Select(x => x.Key + " antal:" + x.Value + " beløb " + OrderLineSum[x.Key] + "\n").ToArray());
+            s += "Det total beløb er " + Total;
+            return s;
         }
 
     }
