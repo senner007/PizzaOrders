@@ -48,8 +48,6 @@ namespace PizzaOrders
         }
         private ArrayList OrderLine(TextBox tBox, string pizzaId, string pizzaText, out bool abort)
         {
-            ArrayList _temp = new ArrayList();
-            string size = tBox.Name.StartsWith("family") ? "family" : "almindelig";
             abort = false;
             int validation = ValidateTBox(tBox.Text);              
             if (tBox.Enabled && validation < 1)
@@ -58,7 +56,7 @@ namespace PizzaOrders
                 System.Windows.Forms.MessageBox.Show("Indtast 1 eller flere antal pizzaer eller fravælg pågældende pizza");
                     return new ArrayList();
             }            
-            return new ArrayList() { pizzaId, pizzaText, size, validation };
+            return new ArrayList() { pizzaId, pizzaText, tBox.Name.StartsWith("family") ? "family" : "almindelig", validation };
 
         }
         private int ValidateTBox (string tBoxText)
