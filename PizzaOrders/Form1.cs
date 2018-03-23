@@ -122,8 +122,8 @@ namespace PizzaOrders
                             if (value != 0)
                             {
                                 if (label.Name.EndsWith("KaloriLabel")) 
-                                 label.Text = Constants.KCAL_SLICE_TEXT + (i / value).ToString("##.##") + "KCal\n" +
-                                 " Kalorier (family): " + ((i / value) * 1.5M).ToString("##.##") + "KCal";
+                                 label.Text = Constants.KCAL_SLICE_TEXT + (i / value).ToString("##.#") + "KCal\n" +
+                                 " Kalorier (family): " + ((i / value) * 1.5M).ToString("##.#") + "KCal";
                             }
                             else if (tBox.Text != "")
                             {
@@ -161,6 +161,7 @@ namespace PizzaOrders
                 this.Controls["bestilButton"].Enabled = true;
             }
 
+            this.Controls["forventetLabel"].Text = "Forventet færdig: " + DateTime.Now.AddMinutes(4).ToString("T");
             // TODO : Tilføj klokkeslet
 
         }
@@ -193,6 +194,7 @@ namespace PizzaOrders
             if (ctrl is Label && ctrl.Name.EndsWith("totalLabel")) ctrl.Text = "Total: ";
             if (ctrl is Label && ctrl.Name.EndsWith("bestillingsNummerLabel")) ctrl.Text = "Dit bestillingsnummer er: ";
             if (ctrl is Label && ctrl.Text.StartsWith("Skær i skiver")) ctrl.Text = Constants.KCAL_SLICE_TEXT;
+            if (ctrl is Label && ctrl.Name.EndsWith("forventetLabel")) ctrl.Text = "Forventet færdig: ";
 
             foreach (Control childCtrl in ctrl.Controls) Clear(childCtrl);
         }
