@@ -59,28 +59,6 @@ namespace PizzaOrders
                 if (tBox.Enabled && orderline.antal > 0) order.Add(orderline);
             }
         }
-        //void GetSetKcal(Panel panel)
-        //{
-        //    GroupBox panelGrpBox3 = FindGrp<GroupBox>(panel, panel.Name + "GroupBox3");
-
-        //    TextBox tBoxGrp3 = panelGrpBox3.Controls.OfType<TextBox>().FirstOrDefault();
-        //    Label labelGrp3 = panelGrpBox3.Controls.OfType<Label>().FirstOrDefault();
-
-        //    if (int.TryParse(tBoxGrp3.Text, out int value) && value > 1 && value < 11) 
-        //        // validate textbox in groupbox 3
-        //    {
-        //        decimal i = GetFieldValue.Get(tBoxGrp3.Name);            // write to KCAL label
-        //        if (value != 0)
-        //            labelGrp3.Text = Constants.KCAL_SLICE_TEXT + (i / value).ToString("##.#") + "KCal\n" +
-        //            " Kalorier (family): " + ((i / value) * 1.5M).ToString("##.#") + "KCal";
-
-        //    }
-        //    else if (tBoxGrp3.Text != "")
-        //    {
-        //        System.Windows.Forms.MessageBox.Show("Indtast 2 til 10 antal skiver");
-        //        return;
-        //    }
-        //}
         public int GetKcal (string ToValidate)
         {
             return (int.TryParse(ToValidate, out int value) && value > 1 && value < 11) ? value : 0;
@@ -103,14 +81,13 @@ namespace PizzaOrders
            
             foreach (Panel panel in panels)
             {
-                GetPizza(panel, ref order);
+                GetPizza(panel, ref order); // get Pizza
 
                 GroupBox grpBox3 = FindGrp<GroupBox>(panel, panel.Name + "GroupBox3");
                 TextBox tBox = grpBox3.Controls.OfType<TextBox>().FirstOrDefault();
 
-                grpBox3.Controls.OfType<Label>().FirstOrDefault().Text =
+                grpBox3.Controls.OfType<Label>().FirstOrDefault().Text =   // Get/Set Kcal
                     "Skær i 2-10 skiver: \n Kalorier pr skive = " + SetKcal( GetKcal(tBox.Text), tBox.Name );
-
             }
 
             PizzaOrder pizzaOrder = new PizzaOrder(order);  // New pizza order
