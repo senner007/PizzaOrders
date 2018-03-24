@@ -2,8 +2,6 @@
 using System.Collections.Generic;
 using System.Linq;
 
-using System.Collections;
-
 namespace PizzaOrders
 {
     class PizzaOrder
@@ -13,7 +11,7 @@ namespace PizzaOrders
             Order = order;
             ProcessOrder(order);
         }
-        public void ProcessOrder (List<OrderLine> order) 
+        private void ProcessOrder (List<OrderLine> order) // TODO : more functions
         {
             decimal total = 0;
             
@@ -25,7 +23,6 @@ namespace PizzaOrders
                 decimal addedSum = ol.added.Select(x => GetFieldValue.Get(x.Split('-')[0]) * sizeModifier * antal).Sum();
 
                 total += pizzaSum + addedSum;
-
                 string key = ol.id;
 
                 if (!Subtotal.ContainsKey(key))
@@ -37,7 +34,6 @@ namespace PizzaOrders
 
                 OrderLineSum.Add(keyLine, pizzaSum + addedSum);
                 PizzaList.Add(keyLine, antal);                
-
             }
 
             Total = total;
@@ -47,15 +43,10 @@ namespace PizzaOrders
         private Dictionary<string, decimal> Subtotal = new Dictionary<string, decimal>();
         private List<OrderLine> Order = new List<OrderLine>();
         public decimal Total { get; private set; } = 0;
-        public decimal GetSubtotal(string id)
-        {
-            return Subtotal.ContainsKey(id) ? Subtotal[id] : 0;
-        }
-        public string GetInfo ()
-        {
-           return string.Join("", PizzaList.Select(x => x.Key + " antal:" + x.Value + " beløb " + OrderLineSum[x.Key] + "\n").ToArray()) 
-                     + "\nDet total beløb er " + Total;
-        }
+        public decimal GetSubtotal(string id) => Subtotal.ContainsKey(id) ? Subtotal[id] : 0;
+        public string GetInfo () => string.Join("", PizzaList
+            .Select(x => x.Key + " antal:" + x.Value + " beløb " + OrderLineSum[x.Key] + "\n").ToArray()) 
+                     + "\nDet total beløb er " + Total;     
     }
 }
 
