@@ -22,141 +22,84 @@ namespace PizzaOrders
             AllocConsole();
 
             PIZZA1.Text = Constants.P1_TEXT;
-
             PIZZA2.Text = Constants.P2_TEXT;
-
-
-            //PIZZA1KaloriLabel.Name = Constants.KCAL_SLICE_NAME;
-            //PIZZA2KaloriLabel.Name = Constants.KCAL_SLICE_NAME;
-
-            //PIZZA1KaloriLabel.Text = Constants.KCAL_SLICE_TEXT;
-            //PIZZA2KaloriLabel.Text = Constants.KCAL_SLICE_TEXT;
-
-
         }
       
         [DllImport("kernel32.dll", SetLastError = true)]
         [return: MarshalAs(UnmanagedType.Bool)]
         static extern bool AllocConsole();
 
-        private void pizzaCheckBoxGlobal_CheckedChanged(object sender, EventArgs e) // global
+        private void pizzaCheckBoxGlobal_CheckedChanged(object sender, EventArgs e) 
         {
-            almPizzaTextbox1.Enabled = almPizzaCheckBox1.Checked == true ? true : false;
-            almPizzaTextbox2.Enabled = almPizzaCheckBox2.Checked == true ? true : false;
-            familyPizzaTextbox1.Enabled = familyPizzaCheckBox1.Checked == true ? true : false;
-            familyPizzaTextbox2.Enabled = familyPizzaCheckBox2.Checked == true ? true : false;
+            var send = ((CheckBox)sender);
+            send.Parent.Controls.OfType<TextBox>().FirstOrDefault(t => t.Name.StartsWith(send.Name.Substring(0, 3))).Enabled = send.Checked;
         }
-        private ArrayList OrderLine(TextBox tBox, string pizzaId, string pizzaText, out bool abort)
-        {
-            abort = false;
-            int validation = ValidateTBox(tBox.Text);              
-            if (tBox.Enabled && validation < 1)
-            {
-                abort = true;
-                System.Windows.Forms.MessageBox.Show("Indtast 1 eller flere antal pizzaer eller fravælg pågældende pizza");
-                    return new ArrayList();
-            }            
-            return new ArrayList() { pizzaId, pizzaText, tBox.Name.StartsWith("family") ? "family" : "almindelig", validation };
 
-        }
         private int ValidateTBox (string tBoxText)
         {
             return int.TryParse(tBoxText, out int parsed) ? parsed : 0;     
         }
-        //private string IncrementCounter ()
-        //{
-        //    PendingOrder pizzaCounter = new PendingOrder();
-        //    pizzaCounter.IncrementCounter();
-        //    string bestilling = "Dit bestillingsnummer er: ";
-        //    return bestilling + " " + pizzaCounter.GetCounter();
-        //}
-        //public static T FindParent<T>(Control ctrl)
-        //{
-        //    var curParent = ctrl.Parent;
-        //    while (curParent != null && !(curParent is T))
-        //    {
-        //        curParent = curParent.Parent;
-        //    }
-        //    return (T)(object)curParent;
-        //}
+
         public static T Findall<T>(Control ctrl, string name)
         {
 
             return (T)(object)ctrl.Controls.OfType<GroupBox>().FirstOrDefault(l => l.Name.EndsWith(name));
         }
-
-        void Recursify(Control ctrl)
-        {
-            if (ctrl is CheckBox)
-            {
-               //if (ctrl.Checked
-
-            }
-
-            foreach (Control childCtrl in ctrl.Controls) Recursify(childCtrl);
-        }
-
-
-
         private void BeregnButton1_Click(object sender, EventArgs e)
         {
 
-            ArrayList order = new ArrayList();
+            List<OrderLine> order = new List<OrderLine>();
             var panels = this.Controls.OfType<Panel>();
+
 
             foreach (Panel panel in panels)
             {
                 
-
-                   //  GroupBox panelGrpBox1 =  panel.Controls.OfType<GroupBox>().FirstOrDefault(l => l.Name.EndsWith(panel.Name + "GroupBox1"));
-                   //GroupBox panelGrpBox2 = panel.Controls.OfType<GroupBox>().FirstOrDefault(l => l.Name.EndsWith(panel.Name + "GroupBox2"));
-                   //GroupBox panelGrpBox3 = panel.Controls.OfType<GroupBox>().FirstOrDefault(l => l.Name.EndsWith(panel.Name + "GroupBox3"));
-
-                   //  Tbox d = FindParent<Panel>(panelGrpBox3);
-                  GroupBox panelGrpBox1 = Findall<GroupBox>(panel, panel.Name + "GroupBox1");
+                GroupBox panelGrpBox1 = Findall<GroupBox>(panel, panel.Name + "GroupBox1");
                 GroupBox panelGrpBox2 = Findall<GroupBox>(panel, panel.Name + "GroupBox2");
                 GroupBox panelGrpBox3 = Findall<GroupBox>(panel, panel.Name + "GroupBox3");
 
-                //  Console.WriteLine(ds.Name);
-
                 foreach (TextBox tBox in panelGrpBox1.Controls.OfType<TextBox>())
                 {
-                     ArrayList orderline = OrderLine(tBox, (string)panel.Name, panelGrpBox1.Text, out bool abort );
-                     if (abort) return;
-                     ArrayList added = new ArrayList();
-               
+                    OrderLine orderline = new OrderLine();
+
+                    int validation = ValidateTBox(tBox.Text);
+                    if (tBox.Enabled && validation < 1)
+                    {
+                     
+                        System.Windows.Forms.MessageBox.Show("Indtast 1 eller flere antal pizzaer eller fravælg pågældende pizza");
+                        return;
+                    }
+                    orderline.id = (string)panel.Name;
+                    orderline.name = panelGrpBox1.Text;
+                    orderline.size = tBox.Name.StartsWith("family") ? "family" : "almindelig";
+                    orderline.antal = validation;            
+
                     foreach (CheckBox chkBox in panelGrpBox2.Controls)
                      { 
-                        if (chkBox.Checked) added.Add(chkBox.Name + "-" + chkBox.Text);
+                        if (chkBox.Checked) orderline.added.Add(chkBox.Name + "-" + chkBox.Text);
                      }
-                     orderline.Add(added);
 
-                     if (tBox.Enabled && orderline.Count > 0) order.Add(orderline);
+                     if (tBox.Enabled && orderline.antal > 0) order.Add(orderline);
                 }
-                foreach (TextBox tBox in panelGrpBox3.Controls.OfType<TextBox>())
-                {
 
-                    foreach (Label label in panelGrpBox3.Controls.OfType<Label>())
+                TextBox tBoxGrp3 = panelGrpBox3.Controls.OfType<TextBox>().FirstOrDefault();
+                Label labelGrp3 = panelGrpBox3.Controls.OfType<Label>().FirstOrDefault();
+
+                    if (int.TryParse(tBoxGrp3.Text, out int value) && value > 1 && value  < 11)
                     {
-
-                        if (int.TryParse(tBox.Text, out int value) && value > 1 && value  < 11)
-                        {
-                            decimal i = GetFieldValue.Get(tBox.Name);            
-                            if (value != 0)
-                            {
-
-                                 label.Text = Constants.KCAL_SLICE_TEXT + (i / value).ToString("##.#") + "KCal\n" +
-                                 " Kalorier (family): " + ((i / value) * 1.5M).ToString("##.#") + "KCal";
-                            }
-                        }
-                        else if (tBox.Text != "")
-                        {
-                            System.Windows.Forms.MessageBox.Show("Indtast 2 til 10 antal skiver");
-                            return;
-                        }
-
+                        decimal i = GetFieldValue.Get(tBoxGrp3.Name);            
+                        if (value != 0)
+                              labelGrp3.Text = Constants.KCAL_SLICE_TEXT + (i / value).ToString("##.#") + "KCal\n" +
+                                " Kalorier (family): " + ((i / value) * 1.5M).ToString("##.#") + "KCal";
+               
                     }
-                }
+                    else if (tBoxGrp3.Text != "")
+                    {
+                        System.Windows.Forms.MessageBox.Show("Indtast 2 til 10 antal skiver");
+                        return;
+                    }
+
             }
 
             PizzaOrder pizzaOrder = new PizzaOrder(order);  // Get pizza order
@@ -211,6 +154,16 @@ namespace PizzaOrders
 
             foreach (Control childCtrl in ctrl.Controls) Clear(childCtrl);
         }
+    }
+    public class OrderLine
+    {
+       
+        public string id { get; set; }
+        public string name { get; set; }
+        public string size { get; set; }
+        public int antal { get; set; }
+        public List<string> added = new List<string>();
+
     }
     class PendingOrder
     {

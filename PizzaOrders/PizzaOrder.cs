@@ -8,41 +8,32 @@ namespace PizzaOrders
 {
     class PizzaOrder
     {
-        public PizzaOrder(ArrayList arr)
+        public PizzaOrder(List<OrderLine> order)
         {
-            orderLines = arr;
-            ProcessOrder();
+            Order = order;
+            ProcessOrder(order);
         }
-        public void ProcessOrder () 
+        public void ProcessOrder (List<OrderLine> order) 
         {
             decimal total = 0;
             
-            foreach (ArrayList ol in orderLines)
+            foreach (OrderLine ol in order)
             {
+                decimal sizeModifier = (ol.size == "family") ? 1.5M : 1;
+                int antal = ol.antal;
+                decimal pizzaSum = GetFieldValue.Get(ol.id) * antal * sizeModifier;
+                decimal addedSum = ol.added.OfType<string>().Select(x => GetFieldValue.Get(x.Split('-')[0]) * sizeModifier * antal).Sum();
 
-                
-
-                decimal sizeModifier = ((string)ol[2] == "family") ? 1.5M : 1;
-                decimal pizzaPrice = GetFieldValue.Get((string)ol[0]);
-                int antal = (int)ol[3];
-                decimal pizzaSum = pizzaPrice * antal * sizeModifier;
-               // string addedNames = "";
-
-                decimal addedSum = ((ArrayList)ol[4]).OfType<string>().Select(x => GetFieldValue.Get(x.Split('-')[0]) * sizeModifier * antal).Sum();
-                string addedNames = String.Join(" ", ((ArrayList)ol[4]).OfType<string>().Select(x => x.Split('-')[1]));
-              
-                Console.WriteLine(addedSum);
                 total += pizzaSum + addedSum;
 
-                string key = (string)ol[0];
+                string key = ol.id;
 
                 if (!Subtotal.ContainsKey(key))
                     Subtotal.Add(key, pizzaSum + addedSum);
                 else
                     Subtotal[key] += pizzaSum + addedSum;
 
-
-                string keyLine = ol[0] + " " + ol[1] + ol[2] + addedNames;
+                string keyLine = ol.id + " " + ol.name + ol.size + String.Join(" ", ol.added.OfType<string>().Select(x => x.Split('-')[1]));
 
                 OrderLineSum.Add(keyLine, pizzaSum + addedSum);
                 PizzaList.Add(keyLine, antal);                
@@ -51,11 +42,10 @@ namespace PizzaOrders
 
             Total = total;
         }
-        public Dictionary<string, int> PizzaList = new Dictionary<string, int>();
-        public Dictionary<string, decimal> OrderLineSum = new Dictionary<string, decimal>();
-        public Dictionary<string, decimal> Subtotal = new Dictionary<string, decimal>();
-
-        private ArrayList orderLines = new ArrayList();
+        private Dictionary<string, int> PizzaList = new Dictionary<string, int>();
+        private Dictionary<string, decimal> OrderLineSum = new Dictionary<string, decimal>();
+        private Dictionary<string, decimal> Subtotal = new Dictionary<string, decimal>();
+        private List<OrderLine> Order = new List<OrderLine>();
         public decimal Total { get; private set; } = 0;
         public decimal GetSubtotal(string id)
         {
