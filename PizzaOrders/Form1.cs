@@ -69,13 +69,13 @@ namespace PizzaOrders
                         System.Windows.Forms.MessageBox.Show("Indtast 1 eller flere antal pizzaer eller fravælg pågældende pizza");
                         return;
                     }
-                    orderline.id = (string)panel.Name;
+                    orderline.id =  panel.Name;
                     orderline.name = panelGrpBox1.Text;
                     orderline.size = tBox.Name.StartsWith("family") ? "family" : "almindelig";
                     orderline.antal = antalValidated;
 
                     // add added from groupbox 2
-                    panelGrpBox2.Controls.OfType<CheckBox>().Where(c=> c.Checked).ToList().ForEach(c => orderline.added.Add(c.Name + "-" + c.Text)); 
+                    panelGrpBox2.Controls.OfType<CheckBox>().Where(c => c.Checked).ToList().ForEach(c => orderline.added.Add(c.Name + "-" + c.Text)); 
                     
 
                      if (tBox.Enabled && orderline.antal > 0) order.Add(orderline);
@@ -107,16 +107,16 @@ namespace PizzaOrders
                 panel.Controls.OfType<Label>().FirstOrDefault(l => l.Name.EndsWith("SubTotal")).Text = "SubTotal: " + pizzaOrder.GetSubtotal(panel.Name); // Sub total
             }
 
-            this.Controls["totalLabel"].Text = "Total: " + pizzaOrder.Total.ToString();  // Total
+            this.totalLabel.Text = "Total: " + pizzaOrder.Total.ToString();  // Total
 
             if (pizzaOrder.Total > 0)
             {
                 PendingOrder pizzaCounter = new PendingOrder(pizzaOrder.GetInfo()); // Add new pizza order to pending order
-                this.Controls["bestillingsNummerLabel"].Text = "Dit bestillingsnummer er: " + pizzaCounter.GetCounter();
-                this.Controls["bestilButton"].Enabled = true;
+                this.bestillingsNummerLabel.Text = "Dit bestillingsnummer er: " + pizzaCounter.GetCounter();
+                this.bestilButton.Enabled = true;
             }
 
-            this.Controls["forventetLabel"].Text = "Forventet færdig: " + DateTime.Now.AddMinutes(4).ToString("T"); // klokkeslet
+           this.forventetLabel.Text = "Forventet færdig: " + DateTime.Now.AddMinutes(4).ToString("T"); // klokkeslet
  
         }
 
@@ -126,7 +126,7 @@ namespace PizzaOrders
             System.Windows.Forms.MessageBox.Show(pizzaCounter.GetOrder() + "\nDit Bestillingsnummer er " + pizzaCounter.GetCounter());
             pizzaCounter.IncrementCounter();
             Clear(this);
-            this.Controls["bestilButton"].Enabled = false;
+            this.bestilButton.Enabled = false;
         }
        
         private void cancelButton_Click(object sender, EventArgs e)
@@ -135,24 +135,13 @@ namespace PizzaOrders
         }
         void Clear(Control ctrl) // clear controls
         {
-            if (ctrl is GroupBox)
-            {
-                foreach (CheckBox chkBox in ctrl.Controls.OfType<CheckBox>())
-                {
-                    Console.WriteLine(chkBox.Name);
-                    chkBox.Checked = false;
-                }
-              
-            }
+            ctrl.Controls.OfType<CheckBox>().ToList().ForEach(c => c.Checked = false);
+        
             if (ctrl is TextBox) ctrl.Text = "";
-            if (ctrl is Label && ctrl.Name.EndsWith("SubTotal")) ctrl.Text = "Sub Total:";
-            if (ctrl is Label && ctrl.Name.EndsWith("totalLabel")) ctrl.Text = "Total: ";
-            if (ctrl is Label && ctrl.Name.EndsWith("bestillingsNummerLabel")) ctrl.Text = "Dit bestillingsnummer er: ";
-            if (ctrl is Label && ctrl.Text.StartsWith(Constants.KCAL_SLICE_TEXT)) ctrl.Text = Constants.KCAL_SLICE_TEXT;
-            if (ctrl is Label && ctrl.Name.EndsWith("forventetLabel")) ctrl.Text = "Forventet færdig: ";
-
+            if (ctrl is Label) ctrl.Text = ctrl.Text.Split(':')[0];
             foreach (Control childCtrl in ctrl.Controls) Clear(childCtrl);
         }
+
     }
     public class OrderLine 
     {
