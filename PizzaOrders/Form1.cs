@@ -40,10 +40,9 @@ namespace PizzaOrders
             return int.TryParse(tBoxText, out int parsed) ? parsed : 0;     
         }
 
-        public static T Findall<T>(Control ctrl, string name)
+        public static T FindGrp<T>(Control ctrl, string name)
         {
-
-            return (T)(object)ctrl.Controls.OfType<GroupBox>().FirstOrDefault(l => l.Name.EndsWith(name));
+            return (T)(object)ctrl.Controls.OfType<Control>().FirstOrDefault(l => l.Name.EndsWith(name));
         }
         private void BeregnButton1_Click(object sender, EventArgs e)
         {
@@ -55,30 +54,26 @@ namespace PizzaOrders
             foreach (Panel panel in panels)
             {
                 
-                GroupBox panelGrpBox1 = Findall<GroupBox>(panel, panel.Name + "GroupBox1");
-                GroupBox panelGrpBox2 = Findall<GroupBox>(panel, panel.Name + "GroupBox2");
-                GroupBox panelGrpBox3 = Findall<GroupBox>(panel, panel.Name + "GroupBox3");
+                GroupBox panelGrpBox1 = FindGrp<GroupBox>(panel, panel.Name + "GroupBox1");
+                GroupBox panelGrpBox2 = FindGrp<GroupBox>(panel, panel.Name + "GroupBox2");
+                GroupBox panelGrpBox3 = FindGrp<GroupBox>(panel, panel.Name + "GroupBox3");
 
                 foreach (TextBox tBox in panelGrpBox1.Controls.OfType<TextBox>())
                 {
                     OrderLine orderline = new OrderLine();
 
-                    int validation = ValidateTBox(tBox.Text);
-                    if (tBox.Enabled && validation < 1)
-                    {
-                     
+                    int antalValidated = ValidateTBox(tBox.Text);
+                    if (tBox.Enabled && antalValidated < 1)
+                    {               
                         System.Windows.Forms.MessageBox.Show("Indtast 1 eller flere antal pizzaer eller fravælg pågældende pizza");
                         return;
                     }
                     orderline.id = (string)panel.Name;
                     orderline.name = panelGrpBox1.Text;
                     orderline.size = tBox.Name.StartsWith("family") ? "family" : "almindelig";
-                    orderline.antal = validation;            
+                    orderline.antal = antalValidated;
 
-                    foreach (CheckBox chkBox in panelGrpBox2.Controls)
-                     { 
-                        if (chkBox.Checked) orderline.added.Add(chkBox.Name + "-" + chkBox.Text);
-                     }
+                    panelGrpBox2.Controls.OfType<CheckBox>().Where(x=> x.Checked).ToList().ForEach(x => orderline.added.Add(x.Name + "-" + x.Text));
 
                      if (tBox.Enabled && orderline.antal > 0) order.Add(orderline);
                 }
@@ -137,10 +132,11 @@ namespace PizzaOrders
         }
         void Clear(Control ctrl)
         {
-            if (ctrl is CheckBox)
+            if (ctrl is GroupBox)
             {
                 foreach (CheckBox chkBox in ctrl.Controls.OfType<CheckBox>())
                 {
+                    Console.WriteLine(chkBox.Name);
                     chkBox.Checked = false;
                 }
               
@@ -149,7 +145,7 @@ namespace PizzaOrders
             if (ctrl is Label && ctrl.Name.EndsWith("SubTotal")) ctrl.Text = "Sub Total:";
             if (ctrl is Label && ctrl.Name.EndsWith("totalLabel")) ctrl.Text = "Total: ";
             if (ctrl is Label && ctrl.Name.EndsWith("bestillingsNummerLabel")) ctrl.Text = "Dit bestillingsnummer er: ";
-            if (ctrl is Label && ctrl.Text.StartsWith("Skær i skiver")) ctrl.Text = Constants.KCAL_SLICE_TEXT;
+            if (ctrl is Label && ctrl.Text.StartsWith(Constants.KCAL_SLICE_TEXT)) ctrl.Text = Constants.KCAL_SLICE_TEXT;
             if (ctrl is Label && ctrl.Name.EndsWith("forventetLabel")) ctrl.Text = "Forventet færdig: ";
 
             foreach (Control childCtrl in ctrl.Controls) Clear(childCtrl);
