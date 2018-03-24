@@ -67,15 +67,7 @@
             this.totalLabel = new System.Windows.Forms.Label();
             this.bestillingsNummerLabel = new System.Windows.Forms.Label();
             this.forventetLabel = new System.Windows.Forms.Label();
-            this.PIZZA1GroupBox1.SuspendLayout();
-            this.PIZZA2GroupBox1.SuspendLayout();
-            this.PIZZA1.SuspendLayout();
-            this.PIZZA1GroupBox3.SuspendLayout();
-            this.PIZZA1GroupBox2.SuspendLayout();
-            this.PIZZA2.SuspendLayout();
-            this.PIZZA2GroupBox2.SuspendLayout();
-            this.PIZZA2GroupBox3.SuspendLayout();
-            this.SuspendLayout();
+
             // 
             // almPizzaCheckBox1
             // 
@@ -477,24 +469,7 @@
             this.Controls.Add(this.beregnButton1);
             this.Name = "Form1";
             this.Text = "Form1";
-            this.PIZZA1GroupBox1.ResumeLayout(false);
-            this.PIZZA1GroupBox1.PerformLayout();
-            this.PIZZA2GroupBox1.ResumeLayout(false);
-            this.PIZZA2GroupBox1.PerformLayout();
-            this.PIZZA1.ResumeLayout(false);
-            this.PIZZA1.PerformLayout();
-            this.PIZZA1GroupBox3.ResumeLayout(false);
-            this.PIZZA1GroupBox3.PerformLayout();
-            this.PIZZA1GroupBox2.ResumeLayout(false);
-            this.PIZZA1GroupBox2.PerformLayout();
-            this.PIZZA2.ResumeLayout(false);
-            this.PIZZA2.PerformLayout();
-            this.PIZZA2GroupBox2.ResumeLayout(false);
-            this.PIZZA2GroupBox2.PerformLayout();
-            this.PIZZA2GroupBox3.ResumeLayout(false);
-            this.PIZZA2GroupBox3.PerformLayout();
-            this.ResumeLayout(false);
-            this.PerformLayout();
+   
 
         }
 
