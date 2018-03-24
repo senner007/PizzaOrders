@@ -44,7 +44,7 @@ namespace PizzaOrders
         {
             return (T)(object)ctrl.Controls.OfType<Control>().FirstOrDefault(l => l.Name.EndsWith(name));
         }
-        private void BeregnButton1_Click(object sender, EventArgs e)
+        private void BeregnButton1_Click(object sender, EventArgs e)        // beregn knap
         {
 
             List<OrderLine> order = new List<OrderLine>();
@@ -60,8 +60,9 @@ namespace PizzaOrders
 
                 foreach (TextBox tBox in panelGrpBox1.Controls.OfType<TextBox>())
                 {
-                    OrderLine orderline = new OrderLine();
+                    OrderLine orderline = new OrderLine(); // new orderline(n)(max 4)
 
+                    // add pizzas from groupbox 1
                     int antalValidated = ValidateTBox(tBox.Text);
                     if (tBox.Enabled && antalValidated < 1)
                     {               
@@ -73,17 +74,19 @@ namespace PizzaOrders
                     orderline.size = tBox.Name.StartsWith("family") ? "family" : "almindelig";
                     orderline.antal = antalValidated;
 
-                    panelGrpBox2.Controls.OfType<CheckBox>().Where(x=> x.Checked).ToList().ForEach(x => orderline.added.Add(x.Name + "-" + x.Text));
+                    // add added from groupbox 2
+                    panelGrpBox2.Controls.OfType<CheckBox>().Where(c=> c.Checked).ToList().ForEach(c => orderline.added.Add(c.Name + "-" + c.Text)); 
+                    
 
                      if (tBox.Enabled && orderline.antal > 0) order.Add(orderline);
                 }
 
-                TextBox tBoxGrp3 = panelGrpBox3.Controls.OfType<TextBox>().FirstOrDefault();
+                TextBox tBoxGrp3 = panelGrpBox3.Controls.OfType<TextBox>().FirstOrDefault();    
                 Label labelGrp3 = panelGrpBox3.Controls.OfType<Label>().FirstOrDefault();
 
-                    if (int.TryParse(tBoxGrp3.Text, out int value) && value > 1 && value  < 11)
+                    if (int.TryParse(tBoxGrp3.Text, out int value) && value > 1 && value  < 11) // validate textbox in groupbox 3
                     {
-                        decimal i = GetFieldValue.Get(tBoxGrp3.Name);            
+                        decimal i = GetFieldValue.Get(tBoxGrp3.Name);            // write to KCAL label
                         if (value != 0)
                               labelGrp3.Text = Constants.KCAL_SLICE_TEXT + (i / value).ToString("##.#") + "KCal\n" +
                                 " Kalorier (family): " + ((i / value) * 1.5M).ToString("##.#") + "KCal";
@@ -97,7 +100,7 @@ namespace PizzaOrders
 
             }
 
-            PizzaOrder pizzaOrder = new PizzaOrder(order);  // Get pizza order
+            PizzaOrder pizzaOrder = new PizzaOrder(order);  // New pizza order
 
             foreach (Panel panel in panels) // add to subtotal
             {
@@ -108,7 +111,7 @@ namespace PizzaOrders
 
             if (pizzaOrder.Total > 0)
             {
-                PendingOrder pizzaCounter = new PendingOrder(pizzaOrder.GetInfo());
+                PendingOrder pizzaCounter = new PendingOrder(pizzaOrder.GetInfo()); // Add new pizza order to pending order
                 this.Controls["bestillingsNummerLabel"].Text = "Dit bestillingsnummer er: " + pizzaCounter.GetCounter();
                 this.Controls["bestilButton"].Enabled = true;
             }
@@ -117,7 +120,7 @@ namespace PizzaOrders
  
         }
 
-        private void bestilButton_Click(object sender, EventArgs e)
+        private void bestilButton_Click(object sender, EventArgs e) // Bestil knap
         {
             PendingOrder pizzaCounter = new PendingOrder();          
             System.Windows.Forms.MessageBox.Show(pizzaCounter.GetOrder() + "\nDit Bestillingsnummer er " + pizzaCounter.GetCounter());
@@ -130,7 +133,7 @@ namespace PizzaOrders
         {
             Clear(this);
         }
-        void Clear(Control ctrl)
+        void Clear(Control ctrl) // clear controls
         {
             if (ctrl is GroupBox)
             {
@@ -151,7 +154,7 @@ namespace PizzaOrders
             foreach (Control childCtrl in ctrl.Controls) Clear(childCtrl);
         }
     }
-    public class OrderLine
+    public class OrderLine 
     {
        
         public string id { get; set; }
