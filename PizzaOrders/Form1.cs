@@ -63,13 +63,13 @@ namespace PizzaOrders
         {
             return int.TryParse(tBoxText, out int parsed) ? parsed : 0;     
         }
-        private string IncrementCounter ()
-        {
-            PendingOrder pizzaCounter = new PendingOrder();
-            pizzaCounter.IncrementCounter();
-            string bestilling = "Dit bestillingsnummer er: ";
-            return bestilling + " " + pizzaCounter.GetCounter();
-        }
+        //private string IncrementCounter ()
+        //{
+        //    PendingOrder pizzaCounter = new PendingOrder();
+        //    pizzaCounter.IncrementCounter();
+        //    string bestilling = "Dit bestillingsnummer er: ";
+        //    return bestilling + " " + pizzaCounter.GetCounter();
+        //}
         //public static T FindParent<T>(Control ctrl)
         //{
         //    var curParent = ctrl.Parent;
@@ -85,6 +85,18 @@ namespace PizzaOrders
             return (T)(object)ctrl.Controls.OfType<GroupBox>().FirstOrDefault(l => l.Name.EndsWith(name));
         }
 
+        void Recursify(Control ctrl)
+        {
+            if (ctrl is CheckBox)
+            {
+               //if (ctrl.Checked
+
+            }
+
+            foreach (Control childCtrl in ctrl.Controls) Recursify(childCtrl);
+        }
+
+
 
         private void BeregnButton1_Click(object sender, EventArgs e)
         {
@@ -94,14 +106,14 @@ namespace PizzaOrders
 
             foreach (Panel panel in panels)
             {
-             
+                
 
-              //  GroupBox panelGrpBox1 =  panel.Controls.OfType<GroupBox>().FirstOrDefault(l => l.Name.EndsWith(panel.Name + "GroupBox1"));
-                //GroupBox panelGrpBox2 = panel.Controls.OfType<GroupBox>().FirstOrDefault(l => l.Name.EndsWith(panel.Name + "GroupBox2"));
-                //GroupBox panelGrpBox3 = panel.Controls.OfType<GroupBox>().FirstOrDefault(l => l.Name.EndsWith(panel.Name + "GroupBox3"));
+                   //  GroupBox panelGrpBox1 =  panel.Controls.OfType<GroupBox>().FirstOrDefault(l => l.Name.EndsWith(panel.Name + "GroupBox1"));
+                   //GroupBox panelGrpBox2 = panel.Controls.OfType<GroupBox>().FirstOrDefault(l => l.Name.EndsWith(panel.Name + "GroupBox2"));
+                   //GroupBox panelGrpBox3 = panel.Controls.OfType<GroupBox>().FirstOrDefault(l => l.Name.EndsWith(panel.Name + "GroupBox3"));
 
-              //  Tbox d = FindParent<Panel>(panelGrpBox3);
-                GroupBox panelGrpBox1 = Findall<GroupBox>(panel, panel.Name + "GroupBox1");
+                   //  Tbox d = FindParent<Panel>(panelGrpBox3);
+                  GroupBox panelGrpBox1 = Findall<GroupBox>(panel, panel.Name + "GroupBox1");
                 GroupBox panelGrpBox2 = Findall<GroupBox>(panel, panel.Name + "GroupBox2");
                 GroupBox panelGrpBox3 = Findall<GroupBox>(panel, panel.Name + "GroupBox3");
 
@@ -112,8 +124,8 @@ namespace PizzaOrders
                      ArrayList orderline = OrderLine(tBox, (string)panel.Name, panelGrpBox1.Text, out bool abort );
                      if (abort) return;
                      ArrayList added = new ArrayList();
-
-                     foreach (CheckBox chkBox in panelGrpBox2.Controls.OfType<CheckBox>())
+               
+                    foreach (CheckBox chkBox in panelGrpBox2.Controls)
                      { 
                         if (chkBox.Checked) added.Add(chkBox.Name + "-" + chkBox.Text);
                      }
@@ -126,7 +138,6 @@ namespace PizzaOrders
 
                     foreach (Label label in panelGrpBox3.Controls.OfType<Label>())
                     {
-
 
                         if (int.TryParse(tBox.Text, out int value) && value > 1 && value  < 11)
                         {

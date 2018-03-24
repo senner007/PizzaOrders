@@ -20,19 +20,18 @@ namespace PizzaOrders
             foreach (ArrayList ol in orderLines)
             {
 
+                
+
                 decimal sizeModifier = ((string)ol[2] == "family") ? 1.5M : 1;
                 decimal pizzaPrice = GetFieldValue.Get((string)ol[0]);
                 int antal = (int)ol[3];
                 decimal pizzaSum = pizzaPrice * antal * sizeModifier;
-                string addedNames = "";
-                decimal addedSum = 0; // TODO : Replace with lambda
+               // string addedNames = "";
 
-                foreach (string added in (ArrayList)ol[4])
-                {
-                    string[] _tokens = added.Split('-');
-                    addedNames += " " + _tokens[1];
-                    addedSum += GetFieldValue.Get(_tokens[0]) * sizeModifier * antal;                                
-                }
+                decimal addedSum = ((ArrayList)ol[4]).OfType<string>().Select(x => GetFieldValue.Get(x.Split('-')[0]) * sizeModifier * antal).Sum();
+                string addedNames = String.Join(" ", ((ArrayList)ol[4]).OfType<string>().Select(x => x.Split('-')[1]));
+              
+                Console.WriteLine(addedSum);
                 total += pizzaSum + addedSum;
 
                 string key = (string)ol[0];
