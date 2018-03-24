@@ -15,7 +15,7 @@ namespace PizzaOrders
             InitializeComponent();
             AllocConsole();
         }
-      
+  
         [DllImport("kernel32.dll", SetLastError = true)]
         [return: MarshalAs(UnmanagedType.Bool)]
         static extern bool AllocConsole();
@@ -24,17 +24,15 @@ namespace PizzaOrders
         {
             var send = ((CheckBox)sender);
             send.Parent.Controls.OfType<TextBox>()
-                .FirstOrDefault(t => t.Name.StartsWith(send.Name.Substring(0, 3))).Enabled = send.Checked;
+                .FirstOrDefault(t => t.Tag.ToString()== send.Tag.ToString()).Enabled = send.Checked;
         }
 
         private int ValidateTBox (string tBoxText) => int.TryParse(tBoxText, out int parsed) ? parsed : 0;     
     
-        public static T FindGrp<T>(Control ctrl, string name) => (T)(object)ctrl.Controls.OfType<Control>().FirstOrDefault(l => l.Name.EndsWith(name));
-
         void GetPizza(Panel panel, ref List<OrderLine> order)
         {
-            GroupBox panelGrpBox1 = FindGrp<GroupBox>(panel, panel.Name + "GroupBox1");
-            GroupBox panelGrpBox2 = FindGrp<GroupBox>(panel, panel.Name + "GroupBox2");
+            GroupBox panelGrpBox1 = panel.Controls.OfType<GroupBox>().Where(x => x.Tag.ToString() == panel.Tag + "GroupBox1").FirstOrDefault();
+            GroupBox panelGrpBox2 = panel.Controls.OfType<GroupBox>().Where(x => x.Tag.ToString() == panel.Tag + "GroupBox2").FirstOrDefault();
             foreach (TextBox tBox in panelGrpBox1.Controls.OfType<TextBox>())
             {
                 OrderLine orderline = new OrderLine(); // new orderline(n)(max 4)
@@ -47,14 +45,15 @@ namespace PizzaOrders
                         .Show("Indtast 1 eller flere antal pizzaer eller fravælg pågældende pizza");
                     return;
                 }
-                orderline.id = panel.Name;
+                orderline.id = panel.Tag.ToString();
                 orderline.name = panelGrpBox1.Text;
-                orderline.size = tBox.Name.StartsWith("family") ? "family" : "almindelig";
+                orderline.size = tBox.Tag.ToString().StartsWith("fam") ? "family" : "almindelig";
                 orderline.antal = antalValidated;
+                orderline.price = Constants.Get(panel.Tag.ToString());
 
                 // add added from groupbox 2
                 panelGrpBox2.Controls.OfType<CheckBox>().Where(c => c.Checked).ToList()
-                    .ForEach(c => orderline.added.Add(c.Name + "-" + c.Text));
+                    .ForEach(c => orderline.added.Add( new AddedLine(c.Text, Constants.Get(c.Tag.ToString()))));
 
                 if (tBox.Enabled && orderline.antal > 0) order.Add(orderline);
             }
@@ -67,7 +66,7 @@ namespace PizzaOrders
         {
             if (ToValidate != 0)
             {
-              decimal i = GetFieldValue.Get(tBoxName);         
+              decimal i = Constants.Get(tBoxName);         
               return (i / ToValidate).ToString("##.#") + "KCal\n" +
                     " Kalorier (family): " + ((i / ToValidate) * 1.5M).ToString("##.#") + "KCal";
             }
@@ -83,19 +82,20 @@ namespace PizzaOrders
             {
                 GetPizza(panel, ref order); // get Pizza
 
-                GroupBox grpBox3 = FindGrp<GroupBox>(panel, panel.Name + "GroupBox3");
+                GroupBox grpBox3 = panel.Controls.OfType<GroupBox>().Where(x => x.Tag.ToString() == panel.Tag + "GroupBox3").FirstOrDefault();
                 TextBox tBox = grpBox3.Controls.OfType<TextBox>().FirstOrDefault();
 
+
                 grpBox3.Controls.OfType<Label>().FirstOrDefault().Text =   // Get/Set Kcal
-                    "Skær i 2-10 skiver: \n Kalorier pr skive = " + SetKcal( GetKcal(tBox.Text), tBox.Name );
+                    "Skær i 2-10 skiver: \n Kalorier pr skive = " + SetKcal( GetKcal(tBox.Text), tBox.Tag.ToString() );
             }
 
             PizzaOrder pizzaOrder = new PizzaOrder(order);  // New pizza order
 
             foreach (Panel panel in panels) // add to subtotal
             {
-                panel.Controls.OfType<Label>().FirstOrDefault(l => l.Name.EndsWith("SubTotal"))
-                    .Text = "SubTotal: " + pizzaOrder.GetSubtotal(panel.Name); // Sub total
+                panel.Controls.OfType<Label>().Where(x => x.Tag.ToString() == panel.Tag + "SubTotal").FirstOrDefault()
+                    .Text = "SubTotal: " + pizzaOrder.GetSubtotal(panel.Tag.ToString()); // Sub total
             }
 
             this.totalLabel.Text = "Total: " + pizzaOrder.Total.ToString();  // Total
@@ -136,9 +136,20 @@ namespace PizzaOrders
         public string id { get; set; }
         public string name { get; set; }
         public string size { get; set; }
+        public int price { get; set; }
         public int antal { get; set; }
-        public List<string> added = new List<string>();
+        public List<AddedLine> added = new List<AddedLine>();
 
+    }
+    public class AddedLine
+    {
+        public string Name { get; set; }
+        public int Price { get; set; }
+        public AddedLine(string n, int p)
+        {
+            Name = n;
+            Price = p;
+        }
     }
     class PendingOrder
     {
@@ -149,11 +160,7 @@ namespace PizzaOrders
         public void IncrementCounter() => Counter++;    
         public string GetCounter() => Counter.ToString();
         public string GetOrder() => Pending.ToString();
-    }
-    static class GetFieldValue
-    {
-        public static int Get (string name) => (int)typeof(Constants).GetField(name).GetValue(null);
-    }
+    }   
 }
       
     

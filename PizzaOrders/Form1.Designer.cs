@@ -84,6 +84,7 @@
             this.almPizzaCheckBox1.Name = "almPizzaCheckBox1";
             this.almPizzaCheckBox1.Size = new System.Drawing.Size(73, 17);
             this.almPizzaCheckBox1.TabIndex = 0;
+            this.almPizzaCheckBox1.Tag = "alm";
             this.almPizzaCheckBox1.Text = "Almindelig";
             this.almPizzaCheckBox1.UseVisualStyleBackColor = true;
             this.almPizzaCheckBox1.CheckedChanged += new System.EventHandler(this.pizzaCheckBoxGlobal_CheckedChanged);
@@ -104,6 +105,7 @@
             this.almPizzaTextbox1.Name = "almPizzaTextbox1";
             this.almPizzaTextbox1.Size = new System.Drawing.Size(34, 20);
             this.almPizzaTextbox1.TabIndex = 2;
+            this.almPizzaTextbox1.Tag = "alm";
             // 
             // almPizzaCheckBox2
             // 
@@ -112,6 +114,7 @@
             this.almPizzaCheckBox2.Name = "almPizzaCheckBox2";
             this.almPizzaCheckBox2.Size = new System.Drawing.Size(73, 17);
             this.almPizzaCheckBox2.TabIndex = 3;
+            this.almPizzaCheckBox2.Tag = "alm";
             this.almPizzaCheckBox2.Text = "Almindelig";
             this.almPizzaCheckBox2.UseVisualStyleBackColor = true;
             this.almPizzaCheckBox2.CheckedChanged += new System.EventHandler(this.pizzaCheckBoxGlobal_CheckedChanged);
@@ -123,6 +126,7 @@
             this.familyPizzaCheckBox1.Name = "familyPizzaCheckBox1";
             this.familyPizzaCheckBox1.Size = new System.Drawing.Size(55, 17);
             this.familyPizzaCheckBox1.TabIndex = 4;
+            this.familyPizzaCheckBox1.Tag = "fam";
             this.familyPizzaCheckBox1.Text = "Family";
             this.familyPizzaCheckBox1.UseVisualStyleBackColor = true;
             this.familyPizzaCheckBox1.CheckedChanged += new System.EventHandler(this.pizzaCheckBoxGlobal_CheckedChanged);
@@ -134,6 +138,7 @@
             this.familyPizzaCheckBox2.Name = "familyPizzaCheckBox2";
             this.familyPizzaCheckBox2.Size = new System.Drawing.Size(55, 17);
             this.familyPizzaCheckBox2.TabIndex = 5;
+            this.familyPizzaCheckBox2.Tag = "fam";
             this.familyPizzaCheckBox2.Text = "Family";
             this.familyPizzaCheckBox2.UseVisualStyleBackColor = true;
             this.familyPizzaCheckBox2.CheckedChanged += new System.EventHandler(this.pizzaCheckBoxGlobal_CheckedChanged);
@@ -145,6 +150,7 @@
             this.familyPizzaTextbox1.Name = "familyPizzaTextbox1";
             this.familyPizzaTextbox1.Size = new System.Drawing.Size(34, 20);
             this.familyPizzaTextbox1.TabIndex = 6;
+            this.familyPizzaTextbox1.Tag = "fam";
             // 
             // almPizzaTextbox2
             // 
@@ -153,6 +159,7 @@
             this.almPizzaTextbox2.Name = "almPizzaTextbox2";
             this.almPizzaTextbox2.Size = new System.Drawing.Size(34, 20);
             this.almPizzaTextbox2.TabIndex = 7;
+            this.almPizzaTextbox2.Tag = "alm";
             // 
             // familyPizzaTextbox2
             // 
@@ -161,6 +168,7 @@
             this.familyPizzaTextbox2.Name = "familyPizzaTextbox2";
             this.familyPizzaTextbox2.Size = new System.Drawing.Size(34, 20);
             this.familyPizzaTextbox2.TabIndex = 8;
+            this.familyPizzaTextbox2.Tag = "fam";
             // 
             // PIZZA1GroupBox1
             // 
@@ -174,6 +182,7 @@
             this.PIZZA1GroupBox1.Size = new System.Drawing.Size(263, 95);
             this.PIZZA1GroupBox1.TabIndex = 9;
             this.PIZZA1GroupBox1.TabStop = false;
+            this.PIZZA1GroupBox1.Tag = "PIZZA1GroupBox1";
             this.PIZZA1GroupBox1.Text = "Rejer med Tun     64 kr.";
             // 
             // beregnButton1
@@ -198,6 +207,7 @@
             this.PIZZA2GroupBox1.Size = new System.Drawing.Size(263, 94);
             this.PIZZA2GroupBox1.TabIndex = 11;
             this.PIZZA2GroupBox1.TabStop = false;
+            this.PIZZA2GroupBox1.Tag = "PIZZA2GroupBox1";
             this.PIZZA2GroupBox1.Text = "Pepperoni    59 kr.";
             // 
             // PepperoniAntalLabel
@@ -219,6 +229,7 @@
             this.PIZZA1.Name = "PIZZA1";
             this.PIZZA1.Size = new System.Drawing.Size(744, 128);
             this.PIZZA1.TabIndex = 12;
+            this.PIZZA1.Tag = "PIZZA1";
             // 
             // PIZZA1SubTotal
             // 
@@ -228,6 +239,8 @@
             this.PIZZA1SubTotal.Size = new System.Drawing.Size(52, 13);
             this.PIZZA1SubTotal.TabIndex = 12;
             this.PIZZA1SubTotal.Text = "Sub total:";
+            this.PIZZA1SubTotal.Tag = "PIZZA1SubTotal";
+
             // 
             // PIZZA1GroupBox3
             // 
@@ -238,6 +251,7 @@
             this.PIZZA1GroupBox3.Size = new System.Drawing.Size(200, 62);
             this.PIZZA1GroupBox3.TabIndex = 11;
             this.PIZZA1GroupBox3.TabStop = false;
+            this.PIZZA1GroupBox3.Tag = "PIZZA1GroupBox3";
             this.PIZZA1GroupBox3.Text = "Kalori";
             // 
             // PIZZA1KaloriLabel
@@ -255,6 +269,7 @@
             this.P1_KCAL.Name = "P1_KCAL";
             this.P1_KCAL.Size = new System.Drawing.Size(40, 20);
             this.P1_KCAL.TabIndex = 0;
+            this.P1_KCAL.Tag = "P1_KCAL";
             // 
             // PIZZA1GroupBox2
             // 
@@ -266,6 +281,7 @@
             this.PIZZA1GroupBox2.Size = new System.Drawing.Size(200, 95);
             this.PIZZA1GroupBox2.TabIndex = 10;
             this.PIZZA1GroupBox2.TabStop = false;
+            this.PIZZA1GroupBox2.Tag = "PIZZA1GroupBox2";
             this.PIZZA1GroupBox2.Text = "Ekstras";
             // 
             // PIZZA1AddCheckBox3
@@ -275,6 +291,7 @@
             this.PIZZA1AddCheckBox3.Name = "PIZZA1AddCheckBox3";
             this.PIZZA1AddCheckBox3.Size = new System.Drawing.Size(114, 17);
             this.PIZZA1AddCheckBox3.TabIndex = 2;
+            this.PIZZA1AddCheckBox3.Tag = "PIZZA1AddCheckBox3";
             this.PIZZA1AddCheckBox3.Text = "Tun                7 kr.";
             this.PIZZA1AddCheckBox3.UseVisualStyleBackColor = true;
             // 
@@ -285,6 +302,7 @@
             this.PIZZA1AddCheckBox2.Name = "PIZZA1AddCheckBox2";
             this.PIZZA1AddCheckBox2.Size = new System.Drawing.Size(114, 17);
             this.PIZZA1AddCheckBox2.TabIndex = 1;
+            this.PIZZA1AddCheckBox2.Tag = "PIZZA1AddCheckBox2";
             this.PIZZA1AddCheckBox2.Text = "Rejer            10 kr.";
             this.PIZZA1AddCheckBox2.UseVisualStyleBackColor = true;
             // 
@@ -295,6 +313,7 @@
             this.PIZZA1AddCheckBox1.Name = "PIZZA1AddCheckBox1";
             this.PIZZA1AddCheckBox1.Size = new System.Drawing.Size(113, 17);
             this.PIZZA1AddCheckBox1.TabIndex = 0;
+            this.PIZZA1AddCheckBox1.Tag = "PIZZA1AddCheckBox1";
             this.PIZZA1AddCheckBox1.Text = "Løg                5 kr.";
             this.PIZZA1AddCheckBox1.UseVisualStyleBackColor = true;
             // 
@@ -308,6 +327,7 @@
             this.PIZZA2.Name = "PIZZA2";
             this.PIZZA2.Size = new System.Drawing.Size(744, 133);
             this.PIZZA2.TabIndex = 10;
+            this.PIZZA2.Tag = "PIZZA2";
             // 
             // PIZZA2SubTotal
             // 
@@ -317,6 +337,7 @@
             this.PIZZA2SubTotal.Size = new System.Drawing.Size(49, 13);
             this.PIZZA2SubTotal.TabIndex = 14;
             this.PIZZA2SubTotal.Text = "Sub total";
+            this.PIZZA2SubTotal.Tag = "PIZZA2SubTotal";
             // 
             // PIZZA2GroupBox2
             // 
@@ -328,6 +349,7 @@
             this.PIZZA2GroupBox2.Size = new System.Drawing.Size(200, 94);
             this.PIZZA2GroupBox2.TabIndex = 12;
             this.PIZZA2GroupBox2.TabStop = false;
+            this.PIZZA2GroupBox2.Tag = "PIZZA2GroupBox2";
             this.PIZZA2GroupBox2.Text = "Ekstras";
             // 
             // PIZZA2AddCheckBox3
@@ -337,6 +359,7 @@
             this.PIZZA2AddCheckBox3.Name = "PIZZA2AddCheckBox3";
             this.PIZZA2AddCheckBox3.Size = new System.Drawing.Size(117, 17);
             this.PIZZA2AddCheckBox3.TabIndex = 2;
+            this.PIZZA2AddCheckBox3.Tag = "PIZZA2AddCheckBox3";
             this.PIZZA2AddCheckBox3.Text = "Ost                  6 kr.";
             this.PIZZA2AddCheckBox3.UseVisualStyleBackColor = true;
             // 
@@ -347,6 +370,7 @@
             this.PIZZA2AddCheckBox2.Name = "PIZZA2AddCheckBox2";
             this.PIZZA2AddCheckBox2.Size = new System.Drawing.Size(118, 17);
             this.PIZZA2AddCheckBox2.TabIndex = 1;
+            this.PIZZA2AddCheckBox2.Tag = "PIZZA2AddCheckBox2";
             this.PIZZA2AddCheckBox2.Text = "Champignon  11 kr.";
             this.PIZZA2AddCheckBox2.UseVisualStyleBackColor = true;
             // 
@@ -357,6 +381,7 @@
             this.PIZZA2AddCheckBox1.Name = "PIZZA2AddCheckBox1";
             this.PIZZA2AddCheckBox1.Size = new System.Drawing.Size(119, 17);
             this.PIZZA2AddCheckBox1.TabIndex = 0;
+            this.PIZZA2AddCheckBox1.Tag = "PIZZA2AddCheckBox1";
             this.PIZZA2AddCheckBox1.Text = "Pepperoni        8 kr.";
             this.PIZZA2AddCheckBox1.UseVisualStyleBackColor = true;
             // 
@@ -369,6 +394,7 @@
             this.PIZZA2GroupBox3.Size = new System.Drawing.Size(200, 62);
             this.PIZZA2GroupBox3.TabIndex = 13;
             this.PIZZA2GroupBox3.TabStop = false;
+            this.PIZZA2GroupBox3.Tag = "PIZZA2GroupBox3";
             this.PIZZA2GroupBox3.Text = "Kalori";
             // 
             // PIZZA2KaloriLabel
@@ -386,6 +412,7 @@
             this.P2_KCAL.Name = "P2_KCAL";
             this.P2_KCAL.Size = new System.Drawing.Size(40, 20);
             this.P2_KCAL.TabIndex = 0;
+            this.P2_KCAL.Tag = "P2_KCAL";
             // 
             // bestilButton
             // 
@@ -519,6 +546,8 @@
         private System.Windows.Forms.CheckBox PIZZA2AddCheckBox3;
         private System.Windows.Forms.CheckBox PIZZA2AddCheckBox2;
         private System.Windows.Forms.CheckBox PIZZA2AddCheckBox1;
+
+       
     }
 }
 

@@ -19,8 +19,9 @@ namespace PizzaOrders
             {
                 decimal sizeModifier = (ol.size == "family") ? 1.5M : 1;
                 int antal = ol.antal;
-                decimal pizzaSum = GetFieldValue.Get(ol.id) * antal * sizeModifier;
-                decimal addedSum = ol.added.Select(x => GetFieldValue.Get(x.Split('-')[0]) * sizeModifier * antal).Sum();
+                decimal pizzaSum = ol.price * antal * sizeModifier;
+                decimal addedSum = ol.added.Select(x => x.Price * sizeModifier * antal).Sum();
+               
 
                 total += pizzaSum + addedSum;
                 string key = ol.id;
@@ -30,7 +31,7 @@ namespace PizzaOrders
                 else
                     Subtotal[key] += pizzaSum + addedSum;
 
-                string keyLine = ol.id + " " + ol.name + ol.size + String.Join(" ", ol.added.Select(x => x.Split('-')[1]));
+                string keyLine = ol.id + " " + ol.name + ol.size + String.Join(" ", ol.added.Select(x => x.Name));
 
                 OrderLineSum.Add(keyLine, pizzaSum + addedSum);
                 PizzaList.Add(keyLine, antal);                
