@@ -67,7 +67,15 @@
             this.totalLabel = new System.Windows.Forms.Label();
             this.bestillingsNummerLabel = new System.Windows.Forms.Label();
             this.forventetLabel = new System.Windows.Forms.Label();
-
+            this.PIZZA1GroupBox1.SuspendLayout();
+            this.PIZZA2GroupBox1.SuspendLayout();
+            this.PIZZA1.SuspendLayout();
+            this.PIZZA1GroupBox3.SuspendLayout();
+            this.PIZZA1GroupBox2.SuspendLayout();
+            this.PIZZA2.SuspendLayout();
+            this.PIZZA2GroupBox2.SuspendLayout();
+            this.PIZZA2GroupBox3.SuspendLayout();
+            this.SuspendLayout();
             // 
             // almPizzaCheckBox1
             // 
@@ -169,7 +177,7 @@
             this.PIZZA1GroupBox1.Controls.Add(this.RejerTunAntalLabel);
             this.PIZZA1GroupBox1.Controls.Add(this.almPizzaCheckBox1);
             this.PIZZA1GroupBox1.Controls.Add(this.familyPizzaCheckBox1);
-            this.PIZZA1GroupBox1.Location = new System.Drawing.Point(14, 16);
+            this.PIZZA1GroupBox1.Location = new System.Drawing.Point(14, 15);
             this.PIZZA1GroupBox1.Name = "PIZZA1GroupBox1";
             this.PIZZA1GroupBox1.Size = new System.Drawing.Size(263, 95);
             this.PIZZA1GroupBox1.TabIndex = 9;
@@ -214,10 +222,10 @@
             // PIZZA1
             // 
             this.PIZZA1.Controls.Add(this.PIZZA1SubTotal);
-            this.PIZZA1.Controls.Add(this.PIZZA1GroupBox3);
-            this.PIZZA1.Controls.Add(this.PIZZA1GroupBox2);
             this.PIZZA1.Controls.Add(this.PIZZA1GroupBox1);
-            this.PIZZA1.Location = new System.Drawing.Point(60, 60);
+            this.PIZZA1.Controls.Add(this.PIZZA1GroupBox2);
+            this.PIZZA1.Controls.Add(this.PIZZA1GroupBox3);
+            this.PIZZA1.Location = new System.Drawing.Point(60, 64);
             this.PIZZA1.Name = "PIZZA1";
             this.PIZZA1.Size = new System.Drawing.Size(744, 128);
             this.PIZZA1.TabIndex = 12;
@@ -230,30 +238,29 @@
             this.PIZZA1SubTotal.Name = "PIZZA1SubTotal";
             this.PIZZA1SubTotal.Size = new System.Drawing.Size(52, 13);
             this.PIZZA1SubTotal.TabIndex = 12;
-            this.PIZZA1SubTotal.Text = "Sub total:";
             this.PIZZA1SubTotal.Tag = "PIZZA1SubTotal";
-
+            this.PIZZA1SubTotal.Text = "Sub total:";
             // 
             // PIZZA1GroupBox3
             // 
             this.PIZZA1GroupBox3.Controls.Add(this.PIZZA1KaloriLabel);
             this.PIZZA1GroupBox3.Controls.Add(this.P1_KCAL);
-            this.PIZZA1GroupBox3.Location = new System.Drawing.Point(532, 16);
+            this.PIZZA1GroupBox3.Location = new System.Drawing.Point(532, 15);
             this.PIZZA1GroupBox3.Name = "PIZZA1GroupBox3";
             this.PIZZA1GroupBox3.Size = new System.Drawing.Size(200, 62);
             this.PIZZA1GroupBox3.TabIndex = 11;
             this.PIZZA1GroupBox3.TabStop = false;
             this.PIZZA1GroupBox3.Tag = "PIZZA1GroupBox3";
-            this.PIZZA1GroupBox3.Text = "Kalori";
+            this.PIZZA1GroupBox3.Text = "Kalorier";
             // 
             // PIZZA1KaloriLabel
             // 
             this.PIZZA1KaloriLabel.AutoSize = true;
             this.PIZZA1KaloriLabel.Location = new System.Drawing.Point(6, 19);
             this.PIZZA1KaloriLabel.Name = "PIZZA1KaloriLabel";
-            this.PIZZA1KaloriLabel.Size = new System.Drawing.Size(85, 13);
+            this.PIZZA1KaloriLabel.Size = new System.Drawing.Size(94, 13);
             this.PIZZA1KaloriLabel.TabIndex = 2;
-            this.PIZZA1KaloriLabel.Text = "Kalori pr. skive =";
+            this.PIZZA1KaloriLabel.Text = "Kalorier pr. skive =";
             // 
             // P1_KCAL
             // 
@@ -265,10 +272,10 @@
             // 
             // PIZZA1GroupBox2
             // 
-            this.PIZZA1GroupBox2.Controls.Add(this.PIZZA1AddCheckBox3);
-            this.PIZZA1GroupBox2.Controls.Add(this.PIZZA1AddCheckBox2);
             this.PIZZA1GroupBox2.Controls.Add(this.PIZZA1AddCheckBox1);
-            this.PIZZA1GroupBox2.Location = new System.Drawing.Point(302, 16);
+            this.PIZZA1GroupBox2.Controls.Add(this.PIZZA1AddCheckBox2);
+            this.PIZZA1GroupBox2.Controls.Add(this.PIZZA1AddCheckBox3);
+            this.PIZZA1GroupBox2.Location = new System.Drawing.Point(309, 15);
             this.PIZZA1GroupBox2.Name = "PIZZA1GroupBox2";
             this.PIZZA1GroupBox2.Size = new System.Drawing.Size(200, 95);
             this.PIZZA1GroupBox2.TabIndex = 10;
@@ -279,7 +286,7 @@
             // PIZZA1AddCheckBox3
             // 
             this.PIZZA1AddCheckBox3.AutoSize = true;
-            this.PIZZA1AddCheckBox3.Location = new System.Drawing.Point(7, 68);
+            this.PIZZA1AddCheckBox3.Location = new System.Drawing.Point(8, 68);
             this.PIZZA1AddCheckBox3.Name = "PIZZA1AddCheckBox3";
             this.PIZZA1AddCheckBox3.Size = new System.Drawing.Size(114, 17);
             this.PIZZA1AddCheckBox3.TabIndex = 2;
@@ -290,7 +297,7 @@
             // PIZZA1AddCheckBox2
             // 
             this.PIZZA1AddCheckBox2.AutoSize = true;
-            this.PIZZA1AddCheckBox2.Location = new System.Drawing.Point(7, 45);
+            this.PIZZA1AddCheckBox2.Location = new System.Drawing.Point(8, 41);
             this.PIZZA1AddCheckBox2.Name = "PIZZA1AddCheckBox2";
             this.PIZZA1AddCheckBox2.Size = new System.Drawing.Size(114, 17);
             this.PIZZA1AddCheckBox2.TabIndex = 1;
@@ -301,7 +308,7 @@
             // PIZZA1AddCheckBox1
             // 
             this.PIZZA1AddCheckBox1.AutoSize = true;
-            this.PIZZA1AddCheckBox1.Location = new System.Drawing.Point(7, 22);
+            this.PIZZA1AddCheckBox1.Location = new System.Drawing.Point(8, 18);
             this.PIZZA1AddCheckBox1.Name = "PIZZA1AddCheckBox1";
             this.PIZZA1AddCheckBox1.Size = new System.Drawing.Size(113, 17);
             this.PIZZA1AddCheckBox1.TabIndex = 0;
@@ -312,9 +319,9 @@
             // PIZZA2
             // 
             this.PIZZA2.Controls.Add(this.PIZZA2SubTotal);
+            this.PIZZA2.Controls.Add(this.PIZZA2GroupBox1);
             this.PIZZA2.Controls.Add(this.PIZZA2GroupBox2);
             this.PIZZA2.Controls.Add(this.PIZZA2GroupBox3);
-            this.PIZZA2.Controls.Add(this.PIZZA2GroupBox1);
             this.PIZZA2.Location = new System.Drawing.Point(60, 218);
             this.PIZZA2.Name = "PIZZA2";
             this.PIZZA2.Size = new System.Drawing.Size(744, 133);
@@ -328,14 +335,14 @@
             this.PIZZA2SubTotal.Name = "PIZZA2SubTotal";
             this.PIZZA2SubTotal.Size = new System.Drawing.Size(49, 13);
             this.PIZZA2SubTotal.TabIndex = 14;
-            this.PIZZA2SubTotal.Text = "Sub total";
             this.PIZZA2SubTotal.Tag = "PIZZA2SubTotal";
+            this.PIZZA2SubTotal.Text = "Sub total";
             // 
             // PIZZA2GroupBox2
             // 
-            this.PIZZA2GroupBox2.Controls.Add(this.PIZZA2AddCheckBox3);
-            this.PIZZA2GroupBox2.Controls.Add(this.PIZZA2AddCheckBox2);
             this.PIZZA2GroupBox2.Controls.Add(this.PIZZA2AddCheckBox1);
+            this.PIZZA2GroupBox2.Controls.Add(this.PIZZA2AddCheckBox2);
+            this.PIZZA2GroupBox2.Controls.Add(this.PIZZA2AddCheckBox3);
             this.PIZZA2GroupBox2.Location = new System.Drawing.Point(302, 16);
             this.PIZZA2GroupBox2.Name = "PIZZA2GroupBox2";
             this.PIZZA2GroupBox2.Size = new System.Drawing.Size(200, 94);
@@ -369,7 +376,7 @@
             // PIZZA2AddCheckBox1
             // 
             this.PIZZA2AddCheckBox1.AutoSize = true;
-            this.PIZZA2AddCheckBox1.Location = new System.Drawing.Point(7, 17);
+            this.PIZZA2AddCheckBox1.Location = new System.Drawing.Point(7, 16);
             this.PIZZA2AddCheckBox1.Name = "PIZZA2AddCheckBox1";
             this.PIZZA2AddCheckBox1.Size = new System.Drawing.Size(119, 17);
             this.PIZZA2AddCheckBox1.TabIndex = 0;
@@ -387,16 +394,16 @@
             this.PIZZA2GroupBox3.TabIndex = 13;
             this.PIZZA2GroupBox3.TabStop = false;
             this.PIZZA2GroupBox3.Tag = "PIZZA2GroupBox3";
-            this.PIZZA2GroupBox3.Text = "Kalori";
+            this.PIZZA2GroupBox3.Text = "Kalorier";
             // 
             // PIZZA2KaloriLabel
             // 
             this.PIZZA2KaloriLabel.AutoSize = true;
             this.PIZZA2KaloriLabel.Location = new System.Drawing.Point(6, 18);
             this.PIZZA2KaloriLabel.Name = "PIZZA2KaloriLabel";
-            this.PIZZA2KaloriLabel.Size = new System.Drawing.Size(85, 13);
+            this.PIZZA2KaloriLabel.Size = new System.Drawing.Size(94, 13);
             this.PIZZA2KaloriLabel.TabIndex = 2;
-            this.PIZZA2KaloriLabel.Text = "Kalori pr. skive =";
+            this.PIZZA2KaloriLabel.Text = "Kalorier pr. skive =";
             // 
             // P2_KCAL
             // 
@@ -464,12 +471,29 @@
             this.Controls.Add(this.totalLabel);
             this.Controls.Add(this.cancelButton);
             this.Controls.Add(this.bestilButton);
-            this.Controls.Add(this.PIZZA2);
             this.Controls.Add(this.PIZZA1);
+            this.Controls.Add(this.PIZZA2);
             this.Controls.Add(this.beregnButton1);
             this.Name = "Form1";
-            this.Text = "Form1";
-   
+            this.Text = "Smart Pizza";
+            this.PIZZA1GroupBox1.ResumeLayout(false);
+            this.PIZZA1GroupBox1.PerformLayout();
+            this.PIZZA2GroupBox1.ResumeLayout(false);
+            this.PIZZA2GroupBox1.PerformLayout();
+            this.PIZZA1.ResumeLayout(false);
+            this.PIZZA1.PerformLayout();
+            this.PIZZA1GroupBox3.ResumeLayout(false);
+            this.PIZZA1GroupBox3.PerformLayout();
+            this.PIZZA1GroupBox2.ResumeLayout(false);
+            this.PIZZA1GroupBox2.PerformLayout();
+            this.PIZZA2.ResumeLayout(false);
+            this.PIZZA2.PerformLayout();
+            this.PIZZA2GroupBox2.ResumeLayout(false);
+            this.PIZZA2GroupBox2.PerformLayout();
+            this.PIZZA2GroupBox3.ResumeLayout(false);
+            this.PIZZA2GroupBox3.PerformLayout();
+            this.ResumeLayout(false);
+            this.PerformLayout();
 
         }
 

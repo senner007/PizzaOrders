@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Globalization;
 
 namespace PizzaOrders
 {
@@ -11,18 +12,17 @@ namespace PizzaOrders
             Order = order;
             ProcessOrder(order);
         }
-        private void ProcessOrder (List<OrderLine> order) // TODO : more functions
+        private void ProcessOrder (List<OrderLine> order)
         {
             decimal total = 0;
             
             foreach (OrderLine ol in order)
             {
-                decimal sizeModifier = (ol.size == "family") ? 1.5M : 1;
+                decimal sizeModifier = (ol.size == "family(pris x 1,5)") ? 1.5M : 1;
                 int antal = ol.antal;
                 decimal pizzaSum = ol.price * antal * sizeModifier;
                 decimal addedSum = ol.added.Select(x => x.Price * sizeModifier * antal).Sum();
                
-
                 total += pizzaSum + addedSum;
                 string key = ol.id;
 
@@ -31,7 +31,7 @@ namespace PizzaOrders
                 else
                     Subtotal[key] += pizzaSum + addedSum;
 
-                string keyLine = ol.id + " " + ol.name + ol.size + String.Join(" ", ol.added.Select(x => x.Name));
+                string keyLine = ol.id + " " + ol.name + " " + ol.size + "\n - Tilbehør: " + String.Join(" ", ol.added.Select(x => x.Name));
 
                 OrderLineSum.Add(keyLine, pizzaSum + addedSum);
                 PizzaList.Add(keyLine, antal);                
@@ -46,8 +46,8 @@ namespace PizzaOrders
         public decimal Total { get; private set; } = 0;
         public decimal GetSubtotal(string id) => Subtotal.ContainsKey(id) ? Subtotal[id] : 0;
         public string GetInfo () => string.Join("", PizzaList
-            .Select(x => x.Key + " antal:" + x.Value + " beløb " + OrderLineSum[x.Key] + "\n").ToArray()) 
-                     + "\nDet total beløb er " + Total;     
+            .Select(x => x.Key + "\n - Antal: " + x.Value + " \n - Beløb: " + OrderLineSum[x.Key] + "\n").ToArray()) 
+                     + "\nDet total beløb er " + Total.ToString("#.00", CultureInfo.InvariantCulture);     
     }
 }
 
