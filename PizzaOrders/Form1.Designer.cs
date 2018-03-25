@@ -182,7 +182,7 @@
             this.PIZZA1GroupBox1.Size = new System.Drawing.Size(263, 95);
             this.PIZZA1GroupBox1.TabIndex = 9;
             this.PIZZA1GroupBox1.TabStop = false;
-            this.PIZZA1GroupBox1.Tag = "PIZZA1GroupBox1";
+            this.PIZZA1GroupBox1.Tag = "PizzaGrp1";
             this.PIZZA1GroupBox1.Text = "Rejer med Tun     64 kr.";
             // 
             // beregnButton1
@@ -207,7 +207,7 @@
             this.PIZZA2GroupBox1.Size = new System.Drawing.Size(263, 94);
             this.PIZZA2GroupBox1.TabIndex = 11;
             this.PIZZA2GroupBox1.TabStop = false;
-            this.PIZZA2GroupBox1.Tag = "PIZZA2GroupBox1";
+            this.PIZZA2GroupBox1.Tag = "PizzaGrp1";
             this.PIZZA2GroupBox1.Text = "Pepperoni    59 kr.";
             // 
             // PepperoniAntalLabel
@@ -250,7 +250,7 @@
             this.PIZZA1GroupBox3.Size = new System.Drawing.Size(200, 62);
             this.PIZZA1GroupBox3.TabIndex = 11;
             this.PIZZA1GroupBox3.TabStop = false;
-            this.PIZZA1GroupBox3.Tag = "PIZZA1GroupBox3";
+            this.PIZZA1GroupBox3.Tag = "KcalGrp3";
             this.PIZZA1GroupBox3.Text = "Kalorier";
             // 
             // PIZZA1KaloriLabel
@@ -280,7 +280,7 @@
             this.PIZZA1GroupBox2.Size = new System.Drawing.Size(200, 95);
             this.PIZZA1GroupBox2.TabIndex = 10;
             this.PIZZA1GroupBox2.TabStop = false;
-            this.PIZZA1GroupBox2.Tag = "PIZZA1GroupBox2";
+            this.PIZZA1GroupBox2.Tag = "EkstrasGrp2";
             this.PIZZA1GroupBox2.Text = "Ekstras";
             // 
             // PIZZA1AddCheckBox3
@@ -348,7 +348,7 @@
             this.PIZZA2GroupBox2.Size = new System.Drawing.Size(200, 94);
             this.PIZZA2GroupBox2.TabIndex = 12;
             this.PIZZA2GroupBox2.TabStop = false;
-            this.PIZZA2GroupBox2.Tag = "PIZZA2GroupBox2";
+            this.PIZZA2GroupBox2.Tag = "EkstrasGrp2";
             this.PIZZA2GroupBox2.Text = "Ekstras";
             // 
             // PIZZA2AddCheckBox3
@@ -393,7 +393,7 @@
             this.PIZZA2GroupBox3.Size = new System.Drawing.Size(200, 62);
             this.PIZZA2GroupBox3.TabIndex = 13;
             this.PIZZA2GroupBox3.TabStop = false;
-            this.PIZZA2GroupBox3.Tag = "PIZZA2GroupBox3";
+            this.PIZZA2GroupBox3.Tag = "KcalGrp3";
             this.PIZZA2GroupBox3.Text = "Kalorier";
             // 
             // PIZZA2KaloriLabel
@@ -476,24 +476,7 @@
             this.Controls.Add(this.beregnButton1);
             this.Name = "Form1";
             this.Text = "Smart Pizza";
-            this.PIZZA1GroupBox1.ResumeLayout(false);
-            this.PIZZA1GroupBox1.PerformLayout();
-            this.PIZZA2GroupBox1.ResumeLayout(false);
-            this.PIZZA2GroupBox1.PerformLayout();
-            this.PIZZA1.ResumeLayout(false);
-            this.PIZZA1.PerformLayout();
-            this.PIZZA1GroupBox3.ResumeLayout(false);
-            this.PIZZA1GroupBox3.PerformLayout();
-            this.PIZZA1GroupBox2.ResumeLayout(false);
-            this.PIZZA1GroupBox2.PerformLayout();
-            this.PIZZA2.ResumeLayout(false);
-            this.PIZZA2.PerformLayout();
-            this.PIZZA2GroupBox2.ResumeLayout(false);
-            this.PIZZA2GroupBox2.PerformLayout();
-            this.PIZZA2GroupBox3.ResumeLayout(false);
-            this.PIZZA2GroupBox3.PerformLayout();
-            this.ResumeLayout(false);
-            this.PerformLayout();
+
 
         }
 

@@ -32,9 +32,9 @@ namespace PizzaOrders
         void GetPizza(Panel panel, ref List<OrderLine> order)
         {
             
-            GroupBox panelGrpBox1 = panel.Controls.OfType<GroupBox>().Where(x => x.Tag.ToString() == panel.Tag + "GroupBox1").FirstOrDefault();
-            GroupBox panelGrpBox2 = panel.Controls.OfType<GroupBox>().Where(x => x.Tag.ToString() == panel.Tag + "GroupBox2").FirstOrDefault();
-            foreach (TextBox tBox in panelGrpBox1.Controls.OfType<TextBox>())
+            GroupBox pizzaGrp1 = panel.Controls.OfType<GroupBox>().Where(x => x.Tag.ToString() == "PizzaGrp1").FirstOrDefault();
+            GroupBox panelGrpBox2 = panel.Controls.OfType<GroupBox>().Where(x => x.Tag.ToString() == "EkstrasGrp2").FirstOrDefault();
+            foreach (TextBox tBox in pizzaGrp1.Controls.OfType<TextBox>())
             {
                 OrderLine orderline = new OrderLine(); // new orderline(n)(max 4)
                 // add pizzas from groupbox 1
@@ -46,7 +46,7 @@ namespace PizzaOrders
                     return;
                 }
                 orderline.id = panel.Tag.ToString();
-                orderline.name = panelGrpBox1.Text;
+                orderline.name = pizzaGrp1.Text;
                 orderline.size = tBox.Tag.ToString().StartsWith("fam") ? "family(pris x 1,5)" : "almindelig";
                 orderline.antal = antalValidated;
     
@@ -85,14 +85,14 @@ namespace PizzaOrders
             {
                 GetPizza(panel, ref order); // get Pizza
 
-                GroupBox grpBox3 = panel.Controls.OfType<GroupBox>().Where(x => x.Tag.ToString() == panel.Tag + "GroupBox3").FirstOrDefault();
-                TextBox tBox = grpBox3.Controls.OfType<TextBox>().FirstOrDefault();
+                GroupBox kcalGrp3 = panel.Controls.OfType<GroupBox>().Where(x => x.Tag.ToString() == "KcalGrp3").FirstOrDefault();
+                TextBox kcaltBox = kcalGrp3.Controls.OfType<TextBox>().FirstOrDefault();
 
-                int slices = GetKcalSlices(tBox.Text);
-                if (slices == 1) tBox.Text = "1";
+                int slices = GetKcalSlices(kcaltBox.Text);
+                if (slices == 1) kcaltBox.Text = "1";
 
-                grpBox3.Controls.OfType<Label>().FirstOrDefault().Text =   // Get/Set Kcal
-                    "Skær i 2-10 skiver: \n Kalorier pr skive = " + SetKcal(slices, tBox.Tag.ToString() , panel.Tag.ToString());
+                kcalGrp3.Controls.OfType<Label>().FirstOrDefault().Text =   // Get/Set Kcal
+                    "Skær i 2-10 skiver: \n Kalorier pr skive = " + SetKcal(slices, kcaltBox.Tag.ToString() , panel.Tag.ToString());
             }
 
             PizzaOrder pizzaOrder = new PizzaOrder(order);  // New pizza order
